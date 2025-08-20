@@ -6,8 +6,10 @@ import pandas as pd
 from dankpy import acoustics, color
 import numpy as np
 from sklearn.linear_model import LinearRegression
+from scipy import signal
 
 plt.style.use("dankpy.styles.latex")
+noise = pd.read_pickle(r"data/noise_500-6000.pkl")
 
 db = spidb.Database(r"data/spi.db")
 #%%
@@ -32,24 +34,32 @@ for i, event in enumerate(events):
 
     nspas = []
     nsels = []
-    for channel in event.sensor.channels[:4]:
+
+    fig, ax = plt.subplots()
+    for i, channel in enumerate(event.sensor.channels[4:]):
         audio = db.get_audio(start, end, sensor=event.sensor, channel_number=channel.number)
+        f, p = signal.welch(audio.data.signal, fs=audio.sample_rate, nperseg=1024, noverlap=512, window="blackmanharris", scaling="spectrum")
 
-        nspa = normalization.calculate_nspa(audio, filter="bandpass", low=500, high=6000, channel=channel)
-        nspas.append(nspa)
+        p = 10 * np.log10(p)
+        snr = p - 10*np.log10(noise[f"{channel.number}"])
 
-        nsel = normalization.calculate_nsel(audio, filter="bandpass", low=500, high=6000, channel=channel, db=db)
-        nsels.append(nsel)
+        ax.plot(f, snr, label=f"Ch. {channel.number}", color=color.colors[i])
+
+    ax.set_xlim(0, 8000)
+    ax.set_xlabel("Frequency [Hz]")
+    ax.set_ylim(0, 70)
+    ax.set_yticks([0, 35, 70])
+    ax.set_ylabel("SNR [dB]")
+    ax.legend(loc="upper right", ncols=4)
+    fig.savefig(f"projects/Dissertation/proposal/figures/external_noise/snr_{event.id}.pdf", dpi=300)
 
     data.append({
         "event": event.id,
         "type": event.description.split("-")[0],
         "actual": int(event.description.split("-")[1].strip().replace("dB", "").strip()),
         "spl": spl,
-        "nspa": max(nspas),
-        "nsel": max(nsels)
     })
-    
+    #%%
     spl = normalization.spl_coefficient(spl)
 
     fig, ax = visualizer.spectra_display(db, start=start, end=end, sensor=event.sensor, section="external")
@@ -59,6 +69,9 @@ for i, event in enumerate(events):
     ax.set_ylim(-125, -25)
     ax.set_yticks([-125, -75, -25])
     fig.savefig(rf"projects/Dissertation/proposal/figures/external_noise/external_noise_{spl:.2f}.pdf", dpi=300)
+
+
+
 
     #%%
 

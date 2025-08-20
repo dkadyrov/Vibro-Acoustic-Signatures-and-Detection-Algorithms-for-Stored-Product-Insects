@@ -192,7 +192,7 @@ for i, t in targets.iterrows():
     ax.set_xlim(0, 8000)
     ax.set_ylim(-100, 0)
     ax.set_xlabel("Frequency [Hz]")
-    ax.set_ylabel("PSD [dB]")
+    ax.set_ylabel("Spectral Power [dB]")
     ax.legend(ncols=2, loc="upper right")
     fig.savefig(rf"projects/Dissertation/proposal/figures/bug_bytes/{t['sensor']} - {t['target']}_spectra.pdf", dpi=300)
 

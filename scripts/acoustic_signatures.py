@@ -94,7 +94,7 @@ for i, t in enumerate([targets[0], targets[2], targets[3]]):
     record = db.session.get(spidb.Record, t["record"])
     audio = db.get_audio(start=record.start, end=record.end, sensor=record.sensor, channel_number=t["channel"])
 
-    fig, ax = audio.plot_spectrogram(window_size=1024, nperseg=1024, nfft=1024, noverlap=512, zmin=-140, zmax=-80, time_format="seconds") # showscale="right")
+    fig, ax = audio.plot_spectrogram(window_size=1024, nperseg=1024, nfft=1024, noverlap=512, zmin=-140, zmax=-80, time_format="seconds", showscale="right")
 
     ax.set_ylim(0, 8000)
     ax.set_yticks([0, 4000, 8000])
