@@ -8,17 +8,25 @@
 
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.25\baselineskip}
-% \usepackage{titlesec}
-% % Reduce space before and after section headers to less than one line
-% 	\titleformat{\section}[block]{\normalfont\Large\bfseries}{\thesection}{1em}{}
-% 	\titleformat{\subsection}[block]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
-% 	\titleformat{\subsubsection}[block]{\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+\usepackage{titlesec}
+% Set consistent spacing before and after section headers
+\titlespacing*{\section}{0pt}{0.25\baselineskip}{0.25\baselineskip}
+\titlespacing*{\subsection}{0pt}{0.25\baselineskip}{0.25\baselineskip}
+\titlespacing*{\subsubsection}{0pt}{0.25\baselineskip}{0.25\baselineskip}
 
 \usepackage[separate-uncertainty=true, multi-part-units=single]{siunitx}
 \sisetup{
 	exponent-to-prefix = true,
-	zero-decimal-to-integer = true,
 	range-independent-prefix = true, 
+}
+
+\usepackage{minted}
+\usemintedstyle{friendly}
+\setminted{
+  frame=single,
+  framesep=2mm,
+  baselinestretch=1.2,
+  fontsize=\footnotesize,
 }
 
 \usepackage{tabularx}
@@ -31,6 +39,7 @@
 \usepackage{subcaption}
 \usepackage{caption}
 \usepackage{amsmath} % Added for equation* environment
+\usepackage{todonotes} % Add this line
 
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -47,54 +56,105 @@
 \usepackage[toc,page]{appendix}  % For structured appendices
 
 
-\title{Ph.D. Dissertation Proposal}
-\author{Daniel Kadyrov}
+\title{VIBRO-ACOUSTIC SIGNATURES AND DETECTION ALGORITHMS FOR STORED PRODUCT INSECTS}
+\author{Daniel Kadyrov, Ph.D. Candidate}
 \date{\today}
+
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{center}
+    % \vspace*{-1cm}  % Adjust this value
+    {\Large \@title \par}
+	\vskip 1em
+	{\normalsize by \par}
+	\vskip 1em
+    {\normalsize \@author \par}
+    \vskip 1em
+	{\large A DISSERTATION PROPOSAL \par}
+    \vskip 1.5em
+	{Submitted to the Faculty of Stevens Institute of Technology\\in partial fulfillment of the requirements for the degree of \par} 
+	\vskip 1.5em
+	{\large DOCTOR OF PHILOSOPHY \par}
+    % {\large \@date \par}
+	\vskip 1.5em
+	Daniel Kadyrov, Candidate\\
+	\vskip 1.5em
+	ADVISORY COMMITTEE\\
+	\vskip 1em
+	Alexander Sutin\\
+	Muhammad Hajj\\
+	Raju Datla\\
+	Richard Mankin
+
+  \end{center}
+  \par
+  \vskip 1.5em
+}
+\makeatother
+
 
 \begin{document}
 
+% \vspace*{-2\baselineskip}
 \maketitle
 \thispagestyle{empty}
 
-\section*{Pertinent Information}
+% \textbf{Committee Members}
+% \begin{itemize}
+% 	\item Dr. Alexander Sutin, Stevens Institute of Technology
+% 	\item Dr. Muhammad Hajj, Stevens Institute of Technology
+% 	\item Dr. Raju Datla, Stevens Institute of Technology
+% 	\item Dr. Richard Mankin, USDA Agricultural Research Service
+% \end{itemize}
 
-\textbf{Proposed Title:} Detection of Insects in Stored Products using Acoustic Spectral and Temporal Characteristics
+% \newpage
+% This research originated from a project funded by the Cross-Border Threat Screening and Supply Chain Defense (CBTS) to extend earlier work conducted by the Stevens Institute of Technology on the use of passive acoustic sensing for the detection of insects in stored products. The presentation and subsequent conference paper at the Acoustic Society of America Conference in 2022 on the topic of \citetitle{kadyrovImprovementsStevensDrone2022} showed promising results on the capabilities of the lab to accommodate detection of various targets using acoustics and signal-processing techniques. The preliminary work of research and development of alternative low-cost sensors to assist Custom and Border Protection Agricultural Specialists at United States Ports of Entry expanded into deeper analysis of utilizing the recordings made of live insect specimen in various materials using the sensor to study their acoustic characteristics, explore normalization methods, investigate reducing the influence of background noise, and eventually implement a detection algorithm.
 
+% In \citetitle{kadyrovVibroAcousticSignaturesVarious2024}, we introduced the Acoustic Stored Product Insect Detection System (A-SPIDS) and published a comprehensive analysis of the signatures of various stored product insects in different materials based on the recordings. Highlighting their unique spectral and temporal characteristics, we developed normalization methods that used the sensor's self-noise to standardize the recordings between different, non-calibrated, piezoelectric discs deployed in the sensor. This normalization method was extended to use the median of the signal and shown that it could be used when a sensor's self-noise data is not available, like in the case of the publicly available BugBytes dataset. 
 
-\textbf{Prospective Committee Members}
-\begin{itemize}
-	\item Dr. Alexander Sutin, Stevens Institute of Technology
-	\item Dr. Muhammad Hajj, Stevens Institute of Technology
-	\item Dr. Raju Datla, Stevens Institute of Technology
-	\item Dr. Richard Mankin, USDA Agricultural Research Service
-\end{itemize}
+% These findings were presented as a poster ``Perspectives of Machine Learning for Acoustic Methods of Stored Product Insect Detection''  at the Artificial Intelligence Meets Science (AIMS) Conference in 2024. After publishing the underlying data and software from the recordings as the Acoustic Stored Product Insect Dataset and Acoustic Stored Product Insect Database on Kaggle and GitHub, respectively, we received interest from the NYU AI for Scientific Research (AIfSR) group to explore applying machine learning techniques on the data. Although there were interesting findings, we were not able to publish in NeurIPS because the recording subjects were not sufficiently diverse. A presentation was also made at the DHS RDT\&E summit.
+
+% In the upcoming publication, titled ``Acoustic Detection of Insects in Stored Products in the Presence of Strong Ambient Noise", we will focus on how we could use the spectral and temporal characteristics, normalization, and metrics we found in the earlier publication to contrive a robust detection algorithm. The article begins by showing that although the insulation of the A-SPIDS sensor provides some protection against ambient noise, it is not entirely effective and often appears as similar signals to those produced by insects. At this moment, we have made significant progress in showing how the normalization metrics could be used in order to optimize the examination frequency range to avoid this interference. The next steps are to implement the detection algorithm and evaluate its performance.
 
 % table of contents 
-\setcounter{tocdepth}{1}
+\newpage
+\setcounter{tocdepth}{2}
 \tableofcontents
+
+
 
 \newpage
 \section{Introduction}
 
-% Acoustics, the studies of the movement of sound waves through a medium, has numerous applications in a variety of fields ranging from music and entertainment, to 
+Stored Product Pests (SPP) refers to the insects that target products such as grains, legumes, spices, and processed foods throughout supply chain. An undetected or unmitigated insect infestation can lead to quantitative and qualitative damage to the commodity as they consume and contaminate the material, promote infections, and accelerate deterioration. Furthermore, the introduction of non-native species into ecological environments can exacerbate negative effects. As a result, efficaciously inspecting products for pests throughout the global supply chain is not only crucial for the integrity of the product and mitigate greater infestation but also secure regional agricultural and environmental ecologies. 
 
-Acoustic sensing has been a reliable and relatively low-cost alternative to even the most advanced sensing technologies to provide a method of detecting, localizing, tracking, and classifying subjects including but not limited to wood boring insects \cite{flynnAcousticMethodsInvasive2016, sutinVibroacousticMethodsInsect2017, sutinAutomatedAcousticDetection2019}, marine mammals, scuba divers and surface vessels \cite{sutinStevensPassiveAcoustic2010a, sutinStevensPassiveAcoustic2013, pollaraPassiveAcousticMethods2017, sedunovLowSizeCostAcoustic2022, salloumLowcostMultimodalIntegrated2022, sedunovStevensPassiveAcoustic2022a}, low-flying aircrafts \cite{sutinAcousticDetectionTracking2013, sedunovPassiveAcousticLocalization2013}, and unmanned aerial vehicles \cite{yakubovskiyFeatureExtractionAcoustic2015, salloumAcousticSystemLow2015, sedunovUAVPassiveAcoustic2018, sedunovStevensDroneDetection2019}.
+A strategic gateway to control the entry of SPPs into the United States is through inspection at Ports of Entry (PoE) such as seaports, airports, and land border crossings. Currently, the main method of stored product inspection at these locations depends on manual visual examination by Customs and Border Protection Agricultural Specialists. This process is labor-intensive, time-consuming, and prone to human error, making it less effective in detecting pests that may be hidden within the product. Various physical, chemical, spectral, and microwave methods have been explored to enhance and automate detection capabilities but these technologies are often relatively expensive, complex, require specialized training, extensive time, or may damage the produce in the process.  
+
+Passive acoustic sensing has been a reliable and relatively low-cost alternative to even the most advanced sensing technologies to provide a method of detecting, localizing, tracking, and classifying subjects including but not limited to wood boring insects \cite{flynnAcousticMethodsInvasive2016, sutinVibroacousticMethodsInsect2017, sutinAutomatedAcousticDetection2019}, marine mammals, scuba divers and surface vessels \cite{sutinStevensPassiveAcoustic2010a, sutinStevensPassiveAcoustic2013, pollaraPassiveAcousticMethods2017, sedunovLowSizeCostAcoustic2022, salloumLowcostMultimodalIntegrated2022, sedunovStevensPassiveAcoustic2022a}, low-flying aircrafts \cite{sutinAcousticDetectionTracking2013, sedunovPassiveAcousticLocalization2013}, and unmanned aerial vehicles \cite{yakubovskiyFeatureExtractionAcoustic2015, salloumAcousticSystemLow2015, sedunovUAVPassiveAcoustic2018, sedunovStevensDroneDetection2019}. The presentation and subsequent conference paper at the Acoustic Society of America Conference in 2022 on the topic of \citetitle{kadyrovImprovementsStevensDrone2022} showed promising results on the capabilities of acoustic sensors to detect various targets using signal-processing techniques \cite{kadyrovImprovementsStevensDrone2022}. Within stored product insect detection, acoustic detection is significantly lower priced than other methods and can detect insects hidden within kernels. It can also provide real-time monitoring which can be performed non-invasively and without product loss or damage.
 
 % Large amount of acoustic data recordings are required not only to study the characteristics of the acoustic signals generated by the studied subjects, develop algorithms, validate sensor performance, but also to support the increased advancements and usage of machine learning and artificial intelligence. While the research community has access to vast repositories of text, image, and video datasets that have driven significant advances in learned language modeling (LLM) and computer vision, acoustic datasets remain comparatively scarce \cite{longpreBridgingDataProvenance2024, chasmaiINaturalistSoundsDataset, dataChallengesTextAudio2024}. This might be attributed to visual data modalities such as images and video are easily annotated and inherently interpretable due to their direct representation of observable phenomena. Acoustic data presents a more abstract signal that necessitates corroborative information including subject characteristics, environmental parameters, and sensor specifications to enable meaningful analysis and classification.
 
 % This work focuses on the demonstration of the possibilities of acoustic sensing to detect unmanned aerial vehicles and insects within stored products by using simple signal processing techniques with promising performance and avoiding the need for machine learning and artificial intelligence. On the surface, these targets seem superficially different from their size and function to their acoustic signatures. Conversely, their audible existence with unique sonic characteristics make them opportune candidates for acoustic tracking. Furthermore, they both pose a threat to national security, drones as they become more prevalent for espionage, smuggling, and as weapons or insects as they affect food safety, agriculture, the environment, or enter delicate ecologies as invasive species.
 
-The Acoustic Stored Product Insect Detection System (A-SPIDS) was developed to address the need for an efficient alternative to manual visual inspection of materials such as grain, rice, and legumes for insects at United States Ports of Entry. The sensor uses piezoelectric discs to detect insects in a material while also leveraging acoustic microphones to monitor and reduce the influence of external noise and vibration from interfering with the results.
+The Acoustic Stored Product Insect Detection System (A-SPIDS) was developed to address the need for an efficient alternative to manual visual inspection of stored products for insects. Originally funded by the Department of Homeland Security (DHS) Cross-Border Threat Screening and Supply Chain Defense (CBTS) to research and prototype alternative low-cost sensors, expanded into deeper analysis utilizing the recordings made of live insect specimen in various materials using the systems to study their acoustic characteristics, explore normalization methods, investigate reducing the influence of background noise, and implement a detection algorithm. 
 
-The sensor was used to collect an extensive amount of recordings using live insect specimens at various life stages in materials of different kernel size and hardness while exposed to varying levels of natural and simulated background noise. This data was used to study the spectral and temporal characteristics of the impulses generated by the insects as they maneuvered around the material. Since the piezoelectric discs are not calibrated, a method of normalization was introduced that used the system's self noise as a reference level to compare the respective signals. This normalization algorithm was extended to apply to other acoustic based insect sensors.
+A-SPIDS uses piezoelectric disc sensors to capture the acoustic signals generated by insects as they move around the product. The system was used to collect an extensive amount of recordings using live insect specimens at various life stages in materials of different kernel size and hardness while exposed to varying levels of natural and simulated background noise. A database package was created to assist in collecting, storing, organizing, and retrieving the recorded audio and its associated metadata. The Stored Product Insect Database (SPIDB) extends the Sound Organization for Network Integration, and Collection/Collaboration (SONICDB) framework that was used in other acoustic projects including the Boat Detection System \cite{salloumLowcostMultimodalIntegrated2022} and the Drone Acoustic Database (DADB) \cite{danielkadyrovDkadyrovSpidbSPIDB2024}. The data was published as the Acoustic Stored Product Insect Dataset on Kaggle \cite{danielkadyrovStoredProductInsect}. 
 
-Utilizing this normalization algorithm enabled the derivation of two metrics to analyze and compare the acoustic properties of the recorded signals. The Normalized Strong Pulse Amplitude (NSPA) and the Normalized Signal Energy Level (NSEL) use the amplitude and spectral energy components, respectively. These metrics, when statistically analyzed, provided insight to the variation between the insect-material pairings and a foundation towards an effective detection algorithm.
+In \citetitle{kadyrovVibroAcousticSignaturesVarious2024}, the impulse signals generated by the insects as they manuevered around the material were analyzed to identify unique spectral and temporal characteristics. Since the piezoelectric discs are not calibrated, a method of normalization was introduced that used the system's self-noise as a reference level to compare the respective signals. When self-noise was not available, a normalization method using the median of the signal was shown to be just as effective. 
 
-One challenge in acoustic sensing is the interference of background noise influencing the detection of target signals. The A-SPIDS was built with significant physical insulation that was shown to reduce noise by almost \SI{30}{\deci\bel}. The integrated acoustic microphones were calibrated using the simulated noise levels. The original implementation of the NSPA and NSEL metrics could not overcome the influence of external noise. Through spectral analysis of the insect signals when significant background noise was present, a frequency bandwidth was selected where the target signals could be effectively isolated while exposed to noise levels of up to \SI{90}{\deci\bel A}.
+The normalization methods enabled the derivation of two metrics to analyze and compare the acoustic properties of the recorded signals. The Normalized Strong Pulse Amplitude (NSPA) and the Normalized Signal Energy Level (NSEL) use the amplitude and spectral energy components, respectively. These metrics, when statistically analyzed, provided insight to the variation between the insect-material pairings and a foundation towards an effective detection algorithm. This analysis was extended to recordings made by other systems available through BugBytes dataset \cite{mankinBugBytesSound2019}. 
 
-A detection algorithm was designed that segments the signals from the piezoelectric discs and external microphone into \SI{1}{\second} bins over the course of the recording duration. The signals are filtered using a bandpass filter to retain only the frequencies of interest, enveloped, and normalized. The internal and external thresholds, IT and ET, define the cutoff amplitude that determines if the piezoelectric disc bins have a detection and the external microphone bins are considered to be noise, respectively. The detection and noise rate, DR and NR, are the number of detection or noise bins that would classify the sample as infested, clean, or uncertain based on the amount of external noise. These parameters as well as the duration necessary to sample were optimized using Poisson distribution.
+One challenge in acoustic sensing is the interference of background noise influencing the detection of target signals. Although A-SPIDS was built with significant physical insulation that was shown to reduce noise by an average of \SI{35}{\deci\bel}, the sensitive piezoelectric sensors capture external noise which often manifested as signals similar to those produced by insects and would result as false positives. Microphones were included in the system design to provide situational awareness and minimize its impact. In the upcoming work, we will focus on investigating how to estimate the levels of background noise using the external microphone by correcting its readings with recordings made in when a calibrated SPL meter was available. The original implementation of the NSPA and NSEL metrics could not overcome the influence of external noise but through spectral analysis of the insect signals when significant background is present, a frequency bandwidth will be selected where the target signals could be effectively isolated when exposed to noise levels of up to \SI{90}{\deci\bel A}. 
 
-Underlying this work is the Stored Product Insect Database (SPIDB) which enables the collection, storage, organization, and retrieval of acoustic data and its associated metadata. The database utilizes the Sound Organization for Network Integration and Collection/Collaboration (SONICDB) package that was developed and utilized to support other projects at Stevens Institute of Technology including the Boat Detection System (BDS) \cite{salloumLowcostMultimodalIntegrated2022} and the Drone Acoustic Database (DADB).
+The work for the thesis finalization will include developing a detection algorithm that leverages the insights gained from characterizing the insect sounds, normalization methods, and the background noise attenuation. The performance of the algorithm will be evaluated based on its detection, false positive, and false negative rates for various insect species, materials, and background noise levels. 
+
+% Although machine learning and AI have been used in other acoustic sensing applications and in other insect detection modalities, it requires large amount of diverse and annotated data. This was highlighted in the presentation ``Perspectives of Machine Learning for Acoustic Methods of Stored Product Insect Detection'' at the Artificial Intelligence Meets Science (AIMS) Conference in 2024. Since target insect species are not readily available and it is difficult to predict the material any species would infest, the development of a robust detection algorithm without relying on extensive machine learning techniques is essential.
+
+% Although collaboration with the NYU AI for Scientific Research (AIfSR) showed promising results in applying computer vision techniques to detect insects in spectrograms generated from A-SPIDS recordings, the need for a larger more diverse dataset was the primary reason for rejection from publishing the findings in NeurIPS. 
+
+This research provides several unique and impactful contributions to the field of acoustic sensing for insect detection. It demonstrates the feasibility of using simple signal processing techniques for effective insect detection without relying on complex machine learning models. The usage of filters and external microphones enabled the sensor to effectively capture and isolate insect sounds from background noise while maintaining a small and portable footprint, ensuring its practicality for real-world applications. It also makes publicly available a large dataset of acoustic recordings, that can be expanded and utilized by other researchers in the field.
+
+Despite the expected usage of this sensor to be within port facilities, its design and implementation could be adapted for use in other environments, such as warehouses, processing plants, and even agricultural fields. The underlying algorithms could further accommodate detection of insects in other agricultural products.
 
 \newpage
 \section{Literature Review}
@@ -111,9 +171,8 @@ Stored product pests (SPPs) can infest crops at any point from the field to stor
 
 An unmitigated infestation can lead to significant ecological, agricultural, and economic impact. Estimates by the Food and Agriculture Organization (FAO) of the United Nations suggest that \SI{20}{\percent} of the global food production is lost to herbivorous insects \cite{mohamedn.sallamInsectDamagePostHarvest2013}. Other sources state that post-harvest insects are responsible for \SIrange{10}{20}{\percent} of storage losses \cite{phillipsBiorationalApproachesManaging2010,gogiToxicityRepellencePlant2016} and cost up to \$470 billion USD per year in 2001 \cite{aliSustainableManagementInsect2023}. Introduction of non-native insects into ecological environments can further exacerbate negative effects if the species has no natural predators. Invasive species cost the United States \$2 trillion USD from 1960 to 2020, costing \$1 billion USD a year from 2010 to 2020 in damages, losses, and prevention \cite{fantle-lepczykEconomicCostsBiological2022}. Globally, stored product pests inflict over \$100 billion USD \cite{harmanIncreasingGlobalRisk2025}.
 
-The khapra beetle, \textit{T. granarium}, also known as the cabinet beetle, represents one of the most significant stored product threats. It is capable of destroying \SIrange{30}{70}{\percent} of an infested commodity. Its larvae can survive years without food through diapause, are highly resistant to insecticides, prefer hiding in cracks and crevices of storage containers, and produce an abundance of exuviae and frass during their infestation. Native to South Asia, it has not become established in the United States. The United States Department of Agriculture (USDA) estimates that an established infestation would result in economic consequences up to billions of dollars from direct crop losses and immediate embargos from trading partners. In the 1950s, the US spent 13 years eradicating infestations at 600 sites across southwestern states with a cost of \$141.8 million USD \cite{harmanIncreasingGlobalRisk2025}. As a result, the US maintains a zero-tolerance policy and enforces strict phytosanitary restrictions and inspections for products that might contain the khapra beetle \cite{KhapraBeetleProgram}.
+The khapra beetle, \textit{T. granarium}, also known as the cabinet beetle, represents one of the most significant stored product threats. It is capable of destroying \SIrange{30}{70}{\percent} of an infested commodity. Its larvae can survive years without food through diapause, are highly resistant to insecticides, prefer hiding in cracks and crevices of storage containers, and produce an abundance of exuviae and frass during their infestation. Native to South Asia, it has not become established in the United States. The United States Department of Agriculture (USDA) estimates that an established infestation would result in economic consequences up to billions of dollars from direct crop losses and immediate embargoes from trading partners. In the 1950s, the US spent 13 years eradicating infestations at 600 sites across southwestern states with a cost of \$141.8 million USD \cite{harmanIncreasingGlobalRisk2025}. As a result, the US maintains a zero-tolerance policy and enforces strict phytosanitary restrictions and inspections for products that might contain the khapra beetle \cite{u.s.departmentofagricultureanimalandplanthealthinspectionserviceKhapraBeetleProgram2022}.
 
-\newpage
 \subsection{Inspection Methods for Stored Product Insect Infestation}
 
 \subsubsection{Standards for Inspecting Stored Product for Pests}
@@ -124,7 +183,7 @@ The main method employed at United States Ports of Entry to inspect stored produ
 
 \subsubsection{Methods for Inspecting Stored Products for Insects}
 
-Various tools and devices have been developed, often leveraging sensing technologies, in order to expedite areas within the inspection including automating the examination process, detecting insect infestation, or identifying the insect species. The application of these inspection methods has to balance the accuracy of detecting and classifying pests of various life stages with safeguarding product quality, minimizing associated costs, ensuring the efficiency of supply chain movement, and limiting the amount of damage or loss during examination.
+Various tools and devices have been developed, often leveraging sensing technologies, in order to expedite areas within the inspection including automating the examination process, detecting insect infestation, or identifying the insect species. The application of these inspection methods has to balance the accuracy of detecting and classifying pests of various life stages with safeguarding product quality, minimizing associated costs, ensuring the efficiency of supply chain movement, and limiting product damage and loss. % during examination.
 
 Physical methods use probe traps and counters, such as the Berlese-Tullgren trap, the TNAU Insect Detection System, and the Electronic Grain Probe Insect Counter (EGPIC), to enumerate the captured insects and determine the level of infestation using extrapolation. Some probe traps can be placed at different grain depths for extensive amounts of time and periodically removed to evaluate the number, species, and density of the infestation. Although low-cost, passive, and effective at long-term storage facilities, this method is restricted to easily accessible locations within the container and the capture rate is influenced by the insect species, grain type, as well as temperature and humidity. Although visual lures and pheromones assist in attracting insects to the traps, these physical methods require a long time duration and cannot detect insects buried inside kernels \cite{neethirajanDetectionTechniquesStoredProduct2007, hoffmanStoredProductPestMonitoring2005}. Other physical methods include rolling machines that automate the sieving of products, systems that monitor for changes in electrical conductance between whole, damaged, and infested kernels, and the flotation method which separates possible insects from product by density, but these tend to damage the material in the process \cite{bonjourEvaluatingRemoteMonitoring2004, t.pearsonDetectionWheatKernels2007, thindDeterminationLowLevels2000}.
 
@@ -134,23 +193,23 @@ Advanced imaging technologies offer non-destructive solutions for pest detection
 
 \citeauthor{mankinMicrowaveRadarDetection2004} demonstrated that a \SI{24}{\giga\hertz} microwave Doppler radar, originally used for termite detection, can also find stored product pests. The insect movement is detected by radiating a microwave signal and observing the change in the frequency of the received reflection, which increases as the insects move slightly closer or decreases as they move further away from the sensor. The system was able to detect the cigarette beetle, \textit{Lasioderma serricorne}, the sawtoothed grain beetle, \textit{Oryzaephilus surinamensis}, the black carpet beetle, \textit{Attagenus unicolor}, and the red flour beetle, \textit{Tribolium castaneum} within a corn meal and flour mixture \cite{mankinMicrowaveRadarDetection2004}.
 
-% Acoustic sensors leverage traditional microphones, piezoelectric discs, and accelerometers to detect the sound waves and vibrations generated by the insects as they move, communicate, masticate, and procreate in the material \cite{mankinAcousticIndicatorsTargeted2010, mankinAutomatedApplicationsAcoustics2021,flynnAcousticMethodsInvasive2016,kadyrovVibroAcousticSignaturesVarious2024}. These systems are designed as standalone receptacles where product is placed momentarily during examination or as  probes and sensors that could be inserted into the product or mounted on the storage containers even for continuous monitoring. Microwave systems track the movement of insects through a material by detecting differences between emitted and reflected radar frequencies \cite{mankinMicrowaveRadarDetection2004}. Although both these methods are relatively low-cost and non-destructive, they are highly succeptible to external environmental noise and vibration.
+% Acoustic sensors leverage traditional microphones, piezoelectric discs, and accelerometers to detect the sound waves and vibrations generated by the insects as they move, communicate, masticate, and procreate in the material \cite{mankinAcousticIndicatorsTargeted2010, mankinAutomatedApplicationsAcoustics2021,flynnAcousticMethodsInvasive2016,kadyrovVibroAcousticSignaturesVarious2024}. These systems are designed as standalone receptacles where product is placed momentarily during examination or as  probes and sensors that could be inserted into the product or mounted on the storage containers even for continuous monitoring. Microwave systems track the movement of insects through a material by detecting differences between emitted and reflected radar frequencies \cite{mankinMicrowaveRadarDetection2004}. Although both these methods are relatively low-cost and non-destructive, they are highly susceptible to external environmental noise and vibration.
 
 \subsection{Acoustic Methods and Algorithms for Detecting Insects in Stored Products}
 
-Insects generate sounds within the material during locomotion through friction between the body and the material as well as through the movement of the wings, legs, and other body parts. Sounds are also generated by mastication, communication, and procreation. The production and magnitude of these sounds are strongly affected by the insect size and lifestage, feeding habits, speed, activity, the density of the infestation, and the general behavior of the subject which can vary with temperature and external disturbance. The propogation of the sound is dependent on the material properties including density, kernel size and hardness, relative humidity, and the amount of air in the material \cite{mankinPerspectivePromiseCentury2011}. The distance between the insect and the sensor as well as variation in the recording equipment and environmental conditions can also introduce differences in the results from different studies and publications. Often the sensors, signal features, processing, and algorithms are common with the platforms, analysis, and detection methods for insect infestations in other materials such as plants, soil, and wood \cite{sutinAutomatedAcousticDetection2019}.
+Insects generate sounds within the material during locomotion through friction between the body and the material as well as through the movement of the wings, legs, and other body parts. Sounds are also generated by mastication, communication, and procreation. The production and magnitude of these sounds are strongly affected by the insect size and lifestage, feeding habits, speed, activity, the density of the infestation, and the general behavior of the subject which can vary with temperature and external disturbance. The propagation of the sound is dependent on the material properties including density, kernel size and hardness, relative humidity, and the amount of air in the material \cite{mankinPerspectivePromiseCentury2011}. The distance between the insect and the sensor as well as variation in the recording equipment and environmental conditions can also introduce differences in the results from different studies and publications. Often the sensors, signal features, processing, and algorithms are common with the platforms, analysis, and detection methods for insect infestations in other materials such as plants, soil, and wood \cite{sutinAutomatedAcousticDetection2019}.
 
 The insect activity manifests in acoustic recordings as impulses, high magnitude signals across a wide frequency range and short duration which can be characterized by their intensity, duration, and spectral features. Microphones, piezoelectric sensors, laser vibrometers, micromechanical sensors (MEMS), accelerometers, ultrasonic transducers, and seismic sensors have all been effective at capturing these features to be used by detection algorithms to determine the presence of an insect, monitor for hidden infestations without destroying the product, classify specific species and their respective life stage, quantify the magnitude of the infestation, as well as mitigate the influence of external noise.
 
-The spectral domain refers to the frequency content of a sound. Generally, insect noise occurs in the frequency band between \SIrange{80}{8000}{\hertz} \cite{mankinPerspectivePromiseCentury2011} and can vary between the species and lifestages \cite{azizifarsaniBioacousticsTrogodermaGranarium2023,fleurat-lessardAcousticDetectionAutomatic2006}. The khapra beetle, \textit{T. granarium}, in wheat grains was most dominant in frequencies \SIrange{1000}{8000}{\kilo\hertz}. The adult and larva occupied different bands, \SIrange{3500}{4500}{\hertz} and \SIrange{1000}{1700}{\hertz}, respectively. Female adults resonated mainly in the \SIrange{1000}{3000}{\hertz} and \SIrange{4000}{5000}{\hertz} frequency bands \cite{azizifarsaniBioacousticsTrogodermaGranarium2023}. The peak energies for an adult and larva of the rice weevil, \textit{Sitophilus oryzae}, in wheat grains were within \SIrange{1800}{3000}{\hertz} and \SIrange{1300}{2000}{\hertz}, respectively \cite{fleurat-lessardAcousticDetectionAutomatic2006}. This variety in frequency content enabled \citeauthor{schwabAutomaticAcousticalSurveillance2005} to distinguish between the larval and adult stages of the \textit{S. granarius}, \textit{T. confusum}, and the \textit{R. dominica} through spectral features alone.
+The spectral domain refers to the frequency content of a sound. Generally, insect noise occurs in the frequency band between \SIrange{80}{8000}{\hertz} \cite{mankinPerspectivePromiseCentury2011} and can vary between the species and lifestages \cite{azizifarsaniBioacousticsTrogodermaGranarium2023,fleurat-lessardAcousticDetectionAutomatic2006}. The khapra beetle, \textit{T. granarium}, in wheat grains was most dominant in frequencies \SIrange{1000}{8000}{\kilo\hertz}. The adult and larva occupied different bands, \SIrange{3500}{4500}{\hertz} and \SIrange{1000}{1700}{\hertz}, respectively. Female adults dominated mainly in the \SIrange{1000}{3000}{\hertz} and \SIrange{4000}{5000}{\hertz} frequency bands \cite{azizifarsaniBioacousticsTrogodermaGranarium2023}. The peak energies for an adult and larva of the rice weevil, \textit{Sitophilus oryzae}, in wheat grains were within \SIrange{1800}{3000}{\hertz} and \SIrange{1300}{2000}{\hertz}, respectively \cite{fleurat-lessardAcousticDetectionAutomatic2006}. This variety in frequency content enabled \citeauthor{schwabAutomaticAcousticalSurveillance2005} to distinguish between the larval and adult stages of the \textit{S. granarius}, \textit{T. confusum}, and the \textit{R. dominica} through spectral features alone.
 
 The temporal domain refers to the time-varying nature of the signal including amplitude and duration. A single impulse might be \SIrange{3}{30}{\milli\second}. Bursts, which are a series of pulses that can be enumerated by their number and rate within a time period, can range from 50 to 2000 impulses for a duration from \SIrange{3}{30}{\milli\second} with up to \SI{250}{\milli\second} intervals of seperation. Adult lesser grain borers, \textit{R. dominica}, and red flour beetles, \textit{T. castaneum}, produced 37 and 80 times more sound than their larvae \cite{mankinPerspectivePromiseCentury2011}. An increase in impulses could be indicative of a higher population infesting the material \cite{hagstrumAutomatedAcousticalMonitoring1991}. Some algorithms count the number of bursts and impulses to determine an infestation \cite{mankinAcousticIndicatorsTargeted2010,mankinPerspectivePromiseCentury2011, njorogeAcousticPitfallTrap2019, mankinAutomatedApplicationsAcoustics2021}.
 
-Signal processing such as filters and transformations can be used to isolate the frequency range of interest and expose the relevant signals while removing superfluous noise from analysis that can vary between sensors and environments. The waveform envelope allows for threshold crossing algorithms to determine an insect presence if the amplitude exceeds a statistically or empirically determined cutoff \cite{mankinAutomatedApplicationsAcoustics2021}. \citeauthor{mankinNoiseShieldingAcoustic1996} observed that the sounds of \textit{S. oryzae} movement and feeding were \SI{23}{\deci\bel}. \citeauthor{balingbingDeterminingSoundSignatures2024} continously recorded the \textit{R. dominica}, the \textit{S. oryzae}, and the \textit{T. castaneum} in rice over a \SI{24}{\hour} time frame using an Adafruit 12S MEMS SPH0645 microphone and calculated the root-mean-square (RMS) of \SI{3}{\minute} windows at each hour of a signal filtered between \SIrange{93.75}{2500}{\hertz}. \citeauthor{eliopoulosDetectionAdultBeetles2015} utilized a \SI{14}{\centi\meter} long piezoelectric sensor inserted with a probe into hard wheat grain. The system was able accurately detected the presence of an insect with a probability range from \SIrange{72}{100}{\percent}, a \SI{100}{\percent} false positive rate. Their algorithm was based on extracting the Hilbert envelope and indicating a detection when it meant a certain threshold.
+Signal processing such as filters and transformations can be used to isolate the frequency range of interest and expose the relevant signals while removing superfluous noise from analysis that can vary between sensors and environments. The waveform envelope allows for threshold crossing algorithms to determine an insect presence if the amplitude exceeds a statistically or empirically determined cutoff \cite{mankinAutomatedApplicationsAcoustics2021}. \citeauthor{mankinNoiseShieldingAcoustic1996} observed that the sounds of \textit{S. oryzae} movement and feeding were \SI{23}{\deci\bel}. \citeauthor{balingbingDeterminingSoundSignatures2024} continuously recorded the \textit{R. dominica}, the \textit{S. oryzae}, and the \textit{T. castaneum} in rice over a \SI{24}{\hour} time frame using an Adafruit 12S MEMS SPH0645 microphone and calculated the root-mean-square (RMS) of \SI{3}{\minute} windows at each hour of a signal filtered between \SIrange{93.75}{2500}{\hertz}. \citeauthor{eliopoulosDetectionAdultBeetles2015} utilized a \SI{14}{\centi\meter} long piezoelectric sensor inserted with a probe into hard wheat grain. The system was able accurately detected the presence of an insect with a probability range from \SIrange{72}{100}{\percent}, a \SI{100}{\percent} false positive rate. Their algorithm was based on extracting the Hilbert envelope and indicating a detection when it meant a certain threshold.
 
 The regularity and duration of the monitoring also has an effect on the performance of the sensor and its algorithm. \citeauthor{vickSoundDetectionStoredProduct1988} noted that the \textit{R. dominica}, \textit{S. cerealella}, and \textit{S. oryzae} produced sounds \SI{61}{\percent}, \SI{71}{\percent}, and \SI{90}{\percent} of the time in grain during sampling durations of \SI{180}{\second}. Short analysis durations can increase high rates of false negatives especially if the insects are not active during the sampling period. Longer sampling periods, such as \SIrange{10}{20}{\minute} allow for a more accurate detection as well as enable identification of background noise \cite{mankinPerspectivePromiseCentury2011}. Deployment of multiple sensors simultaneously could increase detection performance, determine locations of insects, level of infestation, and to offset the frequency and duration of monitoring \cite{mankinPerspectivePromiseCentury2011}. \citeauthor{hagstrumAutomatedAcousticalMonitoring1991} concluded that the frequency of monitoring a single sensor had an equivalent performance as monitoring multiple sensors at a lower frequency \cite{hagstrumAutomatedAcousticalMonitoring1991}.
 
-Limiting the influence of external noise and vibration from the surrounding environment, such as factory machinery, vehicles, and other sources,  is critical to the success of these algorithms. External noise can mask the low-intensity sounds produced by insect feeding and movement, which typically range from \SIrange{20}{80}{\deci\bel} SPL (sound pressure level) at frequencies below \SI{10}{\kilo\hertz}. Often this background noise can be reduced physically through shielding, sound-proofing, and vibration isolation. \citeauthor{mankinNoiseShieldingAcoustic1996} was able to detect internally feeding larvae in grain samples at an inspection facility with high noise backgrounds by shielding the acoustic detectors using a multi-layered enclosure that attenuated sound by \SIrange{70}{85}{\deci\bel} between \SIrange{1}{10}{\kilo\hertz} \cite{mankinNoiseShieldingAcoustic1996}. Other methods could be through box in a box design, anechoic chambers, employing Faraday cages, and shock mounts. Alternatively, reference sensors could be used to measure and identify peripheral noise and vibration \cite{mankinAcousticIndicatorsTargeted2010}.
+Limiting the influence of external noise and vibration from the surrounding environment, such as factory machinery, vehicles, and other sources,  is critical to the success of these algorithms. External noise can mask the low-intensity sounds produced by insect feeding and movement, which typically range from \SIrange{20}{80}{\deci\bel} SPL (sound pressure level) at frequencies below \SI{10}{\kilo\hertz}. Often this background noise can be reduced physically through shielding, sound-proofing, and vibration isolation. \citeauthor{mankinNoiseShieldingAcoustic1996} was able to detect internally feeding larvae in grain samples at an inspection facility with high noise backgrounds by shielding the acoustic detectors using a \SI{81}{\kilo\gram}, \SI{26}{\centi\meter} thick, six layer muffle box that attenuated sound by \SIrange{70}{85}{\deci\bel} between \SIrange{1}{10}{\kilo\hertz} \cite{mankinNoiseShieldingAcoustic1996}. Other methods could be through box in a box design, anechoic chambers, employing Faraday cages, and shock mounts. Alternatively, reference sensors could be used to measure and identify peripheral noise and vibration \cite{mankinAcousticIndicatorsTargeted2010}.
 
 The spectral and temporal differences between the insects and background noise can also be used to distinguish between the two. \citeauthor{mankinAcousticCharacteristicsDynastid2009} used filtering to reduce signals below \SI{200}{\hertz}. In another algorithm, the bursts characteristic to distinguish the insect sounds from the continuous or isolated impulses commonly found in background noise \cite{mankinDetectionAnoplophoraGlabripennis2008, mankinAcousticCharacteristicsDynastid2009}.
 
@@ -158,7 +217,7 @@ Machine learning algorithms can analyze acoustic signals and identify patterns a
 
 \citeauthor{phungAutomatedInsectDetection2017} used the BugBytes dataset to compare training a linear discriminant, fine kNN, linear SVN, and Bagged Tree model using low-level features such as the zero-crossing rate, short-time average energy, bandwidth, and cut-off frequency as well as the mel-frequency ceptstrum coefficients (MFCC). They concluded that the Bagged Tree model provided the best accuracy for species classification and insect classification with an accuracy of \SI{97.1}{\percent} and \SI{92.3}{\percent}, respectively while using both low-level and MFCC features. \citeauthor{montemayorDetectingRiceWeevils2024} used the mel-frequency cepstrum coefficients from the audio signals and their log-scaled representations as Time-Frequency Patches (TF-Patches) as inputs to a Convolutional Neural Network (CNN) \cite{montemayorDetectingRiceWeevils2024}. \citeauthor{faissAdaptiveRepresentationsSound2023} observed that training a LEAF model with raw waveform data from the diverse InsectSet32, InsectSet47, and InsectSet66 resulted in better performance than a CNN model with spectrograms, a graphical visualization of the frequency magnitude over time \cite{faissAdaptiveRepresentationsSound2023}.
 
-The Acoustic Location Fixing Insect Detector (ALFID) system was designed to be vertically mounted with grains gravity loaded and unloaded. The system utilizes an array of sixteen linearly oriented piezoelectric sensors ranged to identify the number of feeding larvae and their location within the sample. After amplifying the signals from the sensors by \SI{80}{\deci\bel}, a bandpass filter from \SIrange{1000}{10,000}{\hertz} is applied. The arrival time of the signal is identified using amplitude threhold detection and the location is determined by a detection order algorithm.The system was able to detect the presence of up to three rice weevil, \textit{S. oryzae}, larvae in \SI{1}{\kilo\gram} of wheat with a detection probability of \SI{64}{\percent} and a false positive rate of \SI{8}{\percent} \cite{shumanQuantitativeAcousticalDetection1993,vickAcousticLocationFixing1996}.
+The Acoustic Location Fixing Insect Detector (ALFID) system was designed to be vertically mounted with grains gravity loaded and unloaded. The system utilizes an array of sixteen linearly oriented piezoelectric sensors ranged to identify the number of feeding larvae and their location within the sample. After amplifying the signals from the sensors by \SI{80}{\deci\bel}, a bandpass filter from \SIrange{1000}{10,000}{\hertz} is applied. The arrival time of the signal is identified using amplitude threshold detection and the location is determined by a detection order algorithm.The system was able to detect the presence of up to three rice weevil, \textit{S. oryzae}, larvae in \SI{1}{\kilo\gram} of wheat with a detection probability of \SI{64}{\percent} and a false positive rate of \SI{8}{\percent} \cite{shumanQuantitativeAcousticalDetection1993,vickAcousticLocationFixing1996}.
 
 The Beetle Sound Tube was developed to support semi-permanent monitoring of silos and flat stores of grain to detect low levels of infestation early and provide remote reports. The system comprises of perforated metal tubes that are installed into the grain mass. Each tube features an insect trap that can be inspected for species classification, an acoustic sensor, and a climate sensor to measure changes in temperature and humidity. The signal processing on the acoustic signals utilize $\frac{1}{3}$-octave analysis, calculating the energy level for 16 $\frac{1}{3}$-octave bands from \SIrange{250}{8000}{\hertz}. The algorithm determined an insect was present if the energy level exceeded a threshold of \SI{25}{\deci\bel} within \SIrange{250}{800}{\hertz}, \SI{20}{\deci\bel} within \SIrange{800}{2500}{\hertz}, or \SI{15}{\deci\bel} within \SIrange{2500}{8000}{\hertz}, above the background noise. The sensor and algorithm was able to detect the sawtoothed grain beetle, \textit{O. surinamensis}, within barley and was able to determine the level of infestation using cross-correlation \cite{muller-blenkleMethodAcousticStorage2023}.
 
@@ -198,8 +257,16 @@ The Acoustic Stored Product Insect Detection System (A-SPIDS) was designed as a 
 		\caption{Open configuration}
 		\label{fig:aspids_closed}
 	\end{subfigure}%
+
+	\begin{subfigure}{\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figures/methods/annotated_cad.pdf}
+		\caption{Annotated rendered CAD model}
+		\label{fig:annotated_cad}
+	\end{subfigure}%
+
 	% \qquad
-	\caption{The Acoustic Stored Product Insect Detection System in (a) closed and (b) open configurations}%
+	\caption{A-SPIDS in (a) closed, (b) open configurations, and (c) annotated CAD model}%
 	\label{fig:aspids_photos}
 \end{figure}
 
@@ -223,7 +290,6 @@ The main body also contains the supportive hardware for data acquisition, commun
 
 An integrated battery can maintain the system for several hours and recharges using a receiver coil when positioned on the platform base which is powered by a \SI{24}{\volt} power supply. The sensor can be lifted off and operated without the charging platform.
 
-\newpage
 \subsection{Tested Insect, Materials, and Noise Levels}
 
 Although stored products insects proliferate across a wide range of commodities, they are difficult to obtain for research purposes. The cowpea beetle, \textit{Callosobruchus maculatus}, the confused flour beetle, \textit{Tribolium confusum}, and the mealworm and darkling beetle, \textit{Tenebrio molitor}, are commercially available and were chosen based on their similarities to the sizes, qualities, and behavior to the species targeted during inspection. Table \ref{tab:insects} provides a summary of the tested insect species.
@@ -233,12 +299,12 @@ Although stored products insects proliferate across a wide range of commodities,
 	\centering
 	\begin{tabular}{@{}llrrr@{}}
 		\toprule
-		\textbf{Scientific Name} & \textbf{Common Name}  & \textbf{Size [\si{\milli\meter}]} & \textbf{Weight [\si{\milli\gram}]} & \textbf{Density [\si{\kilo\gram\per\liter}]} \\
+		\textbf{Scientific Name}  & \textbf{Common Name}  & \textbf{Size [\si{\milli\meter}]} & \textbf{Weight [\si{\milli\gram}]} & \textbf{Density [\si{\kilo\gram\per\liter}]} \\
 		\midrule
-		\textit{C. maculatus}      & Cowpea beetle         & \(4 \times 1 \times 1\)           & 2.1                                & 0.525                                        \\
-		\textit{T. confusum}       & Confused flour beetle & \(4 \times 2 \times 2\)           & 1.0                                & 0.625                                        \\
-		\textit{T. molitor}        & Darkling beetle       & \(15 \times 5 \times 3\)          & 160.0                              & 0.711                                        \\
-		\textit{T. molitor} larva  & Mealworm              & \(20 \times 2 \times 2\)          & 130.0                              & 1.625                                        \\
+		\textit{C. maculatus}     & Cowpea beetle         & \(4 \times 1 \times 1\)           & 2.1                                & 0.525                                        \\
+		\textit{T. confusum}      & Confused flour beetle & \(4 \times 2 \times 2\)           & 1.0                                & 0.625                                        \\
+		\textit{T. molitor}       & Darkling beetle       & \(15 \times 5 \times 3\)          & 160.0                              & 0.711                                        \\
+		\textit{T. molitor} larva & Mealworm              & \(20 \times 2 \times 2\)          & 130.0                              & 1.625                                        \\
 		\bottomrule
 	\end{tabular}
 \end{table}
@@ -249,6 +315,42 @@ The confused flour beetle, \textit{Tribolium confusum}, is an arthropod that inf
 
 The \textit{Tenebrio molitor} is known in its larval form as the mealworm and in its adult form as the darkling beetle. The larvae are \SIrange{1}{2}{\centi\meter} long, have a dark brown head, and a segmented yellow body with a hard exoskeleton. Adults also grow up to \SI{2}{\centi\meter} in length but are a shiny brown or black color. Females can lay up to 6000 eggs during their lifecycle. Darkling beetles release benzoquinones that result in an unpleasant odor \cite{mohamedn.sallamInsectDamagePostHarvest2013, vigneronImmuneDefensesBeneficial2019}.
 
+\begin{figure}[!htbp]
+	\centering
+	\begin{subfigure}{0.20\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figures/methods/maculatus.jpeg}
+		\caption{\textit{C. maculatus}}
+		\label{fig:maculatus}
+	\end{subfigure}%
+	\qquad
+	\begin{subfigure}{0.20\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figures/methods/confusedflour.jpeg}
+		\caption{\textit{T. confusum}}
+		\label{fig:confusum}
+	\end{subfigure}%
+	\qquad
+	\begin{subfigure}{0.20\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figures/methods/darkling.jpeg}
+		\caption{\textit{T. molitor}}
+		\label{fig:darkling}
+	\end{subfigure}%
+	\qquad
+	\begin{subfigure}{0.20 \textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figures/methods/mealworm.jpg}
+		\caption{\textit{T. molitor} larva}
+		\label{fig:mealworm}
+	\end{subfigure}%
+
+	% \qquad
+	\caption{Drawings of the insects.}%
+	\label{fig:insect_drawings}
+\end{figure}
+
+\newpage
 A variety of stored product materials were tested with and without insect specimen including oatmeal, \textit{Avena sativa}, rice, \textit{Oryza sativa}, wheat in the form of whole groat kernels and processed flour, \textit{Triticum aestivum}, and corn in the form of Corn Flakes, \textit{Zea mays}. The material samples were kept in sealed storage containers to prevent contamination and infestation. During testing, \SI{1}{\liter} of clean material was transferred into a plastic bag and placed into the sensor container. After several minutes of silence were recorded to ensure the grains were settled, a single insect was introduced into the material. Table \ref{tab:recording} summarizes the duration of recordings for each insect-material pairing. The insect-material pairings are not fully balanced as a result of varying life stages and availability of the insects, the need to test in clean and uncontaminated materials, and the time and budget restraints of the project.
 
 \begin{table}[!htbp]
@@ -274,11 +376,55 @@ The expected usage of the system would be within a variety of environments such 
 \newpage
 \subsection{Stored Product Insect Database (SPIDB)}
 
-The Stored Product Insect Database (SPIDB) provides interface to access the data collected from the A-SPIDS platform. The database extends the Sound Organization for Network Integration and Collection/Collaboration (SONICDB) framework, by adding the \texttt{Material} model and additional attributes to the \texttt{Event} and \texttt{Subject} models. This allows for more detailed and structured data storage and retrieval, facilitating advanced queries and analyses. 
+The Stored Product Insect Dataset (SPID) is a repository of audio recordings collected by the Stored Product Insect Detection System. The dataset features the audio recordings as well as metadata describing the recording system, noise conditions, insect species, and material substrates. The full \SI{100}{\giga\byte} dataset can be downloaded from Kaggle \cite{danielkadyrovStoredProductInsecta}. An excerpt of the dataset file structure is shown in Listing \ref{lst:spid_directory}:
 
-Commonly, datasets, like BugBytes, provide acoustic data as a set of audio files along with text-based files annotating each recording. The SPIDB leverages a relational database to associate these audio files with their corresponding metadata, enabling efficient data management and retrieval as well as simplified sharing accross different users and computers. Although any programming language can be used to interact with the SPIDB, an object-oriented wrapper was developed using Python. This wrapper was used to directly write A-SPIDS data to the database.
+\begin{listing}[htbp]
+	\caption{File organization of the Stored Product Insect Dataset \label{lst:spid_directory}}
+	\begin{minted}{text}
+\---data
+¦   spi.db
+¦  
++---aspids
+¦   ¦   aspids_log.csv
+¦   ¦   
+¦   +---2023
+¦   ¦   ¦   +---24
+¦   ¦   ¦   ¦   +---2023_05_24_19_41_19.559_t00100
+¦   ¦   ¦   ¦   ¦       2023_05_24_19_41_19.559_t00100_Ch0_00001.wav
+¦   ¦   ¦   ¦   ¦       2023_05_24_19_41_19.559_t00100_Ch0_00002.wav
+	\end{minted}
+\end{listing}
 
-Figure \ref{fig:spidb} shows the schema for the SPIDB:
+The audio recordings are organized by date and the file names describe the recording date, time, a string descriptor, sensor channel, and recording iteration. The filename is structured as follows: \texttt{YYYY} is the four-digit year, \texttt{MM} is the two-digit month, \texttt{DD} is the two-digit day, \texttt{HH} is the two-digit hour in 24-hour format, \texttt{MM} is the two-digit minute, \texttt{SS.fff} is the seconds and milliseconds, \texttt{ssssss} is a string descriptor of the recording conditions, \texttt{Ch\#} is the sensor channel number, and \texttt{iiiii} is the five-digit recording iteration. The file name structure is detailed in Listing \ref{lst:filename}. 
+
+\begin{listing}[htbp]
+	\caption{File organization of the Stored Product Insect Dataset \label{lst:filename}}
+	\begin{minted}{text}
+YYYY_MM_DD_HH_MM_SS.fff_ssssss_Ch#_iiiii.wav
+	\end{minted}
+\end{listing}
+
+The Stored Product Insect Database (SPIDB) provides an interface to access the data collected from the A-SPIDS platform. Acoustic data requires a rich set of metadata to provide context. This could range from information about the recording system such as the sensor type and sensitivity, environmental conditions such as background noise levels and descriptions, as well as details about the featured subjects. Commonly, datasets, like BugBytes, provide acoustic data as a set of audio files along with text-based files annotating each recording. Even when data is provided, it is often decoupled and requires significant effort to match the audio.
+
+SPIDB is a fork of the Sound Organization for Network Integration and Collection/Collaboration (SONICDB) framework, which was developed to address the challenge of organizing and sharing acoustic data when large amounts of associated metadata are required for analysis and interpretation \cite{rochManagementAcousticMetadata2016}. SONICDB leverages relational databases to link audio files with their corresponding minutiae, enabling efficient data management and retrieval as well as simplified sharing across different users and computers. Although any database reader or programming language can be used to interact with the SPIDB, an object-oriented wrapper was developed in Python using industry standard packages and methods. This interface was used to directly write A-SPIDS data to the database as well as throughout the data processing and analysis pipeline. Currently, the database is a locally stored SQLite file, which can be easily version-controlled and distributed. The interface can also support server-based SQL database systems such as MySQL and PostgreSQL.
+
+\newpage
+Installing the SPIDB package can be performed through the Pip Installs Packages (PIP) python package manager or by directly downloading from the GitHub repository. The dataset can be downloaded directly from Kaggle or using a script that is provided with the SPIDB package. Listing \ref{lst:spidb_install} describes the commands to install the SPIDB package and utilize package to download the dataset.  
+
+\begin{listing}[htbp]
+	\caption{Installing SPIDB package and downloading the database \label{lst:spidb_download}}
+	\begin{minted}{bash}
+# Install the SPIDB package
+pip install spidb 
+# Create a directory 
+mkdir spid 
+# Download the SPIDB database into the spid directory
+spidb download --output-dir spid 
+	\end{minted}
+\end{listing}
+
+
+SONICDB initializes with several preliminary models. The \texttt{File} model represents the audio files stored in the database, detailing the filepath, filename, extension, sample rate, duration, start and end time, as well as the sensor and channel the files were recorded with. The sensor and channel properties are directly tied to the \texttt{Sensor} and \texttt{Channel} models, respectively. The \texttt{Sensor} model categorizes the name, subname, manufacturer, sensor type, and number of channels of the sensor as well as a list of associated \texttt{Channel} and \texttt{File} entities. The \texttt{Event} model facilitates storing details of the logged events, including start and end times, description, noise levels, and the associated \texttt{Material} and \texttt{Subject} entities. The \texttt{Subject} model captures information about the subjects being recorded. SPIDB extended it to include bespoke attributes such as scientific name, common name, weight, height, length, width, volume, and density. SPIDB also added the \texttt{Material} model to describe the substrate in which the subjects are placed. Figure \ref{fig:spidb} shows the schema for the SPIDB:
 
 \begin{figure}[!htbp]%
 	\centering
@@ -287,10 +433,54 @@ Figure \ref{fig:spidb} shows the schema for the SPIDB:
 	\label{fig:spidb}%
 \end{figure}
 
-The Stored Product Insect Database (SPIDB) is available on GitHub with supporting documentation \cite{danielkadyrovDkadyrovSpidbSPIDB2024}. The associated dataset is available on Kaggle \cite{danielkadyrovStoredProductInsecta}.
+\newpage
+
+SONICDB uses popular and standard Python packages ensuring standardized database management and coding conventions. SQLAlchemy allows defining the database schema using Python classes, making it easier to interact with the database using an object-oriented approach. Additionally, Alembic is used for database migrations, enabling version control for the database schema \cite{fredstamComparingDatabaseManagement}. The data is extracted as Pandas DataFrames and Numpy Arrays. Audio data is handled through Librosa and PyDub. Listing \ref{lst:spidb_connection} shows an example of connecting to the database using Python once the dataset is downloaded and the user is within the directory containing the database file, \texttt{spi.db}:
+
+\begin{listing}[htbp]
+	\caption{Example of connecting to the SPIDB using Python \label{lst:spidb_connection}}
+	\begin{minted}{python}
+from spidb import spidb 
+
+db = spidb.Database("spi.db")
+	\end{minted}
+\end{listing}
+
+Once available, a user can interact with the database using the defined models and perform various operations such as querying, inserting, updating, and deleting records. Listing \ref{lst:spidb_query} shows an example of querying the database for all the tested materials and then retrieving all recordings where the material is associated with a specific insect species, \textit{C. maculatus}:
+
+\begin{listing}[htbp]
+	\caption{Example of querying the SPIDB for a specific insect species \label{lst:spidb_query}}
+	\begin{minted}{python}
+# Query for all tested materials
+materials = db.Material.query.all() #[Material <id>, ...]
+
+# Retrieve all events for a specific insect species
+species = "Callosobruchus maculatus"
+events = db.session.query(spidb.Event)
+			.filter(spidb.Event.subject.name == species)
+			.filter(spidb.Event.material.id.in_([m.id for m in materials]))
+			.all() # [Event <id>, ...]
+	\end{minted}
+\end{listing}
+
+Although the audio can be retrieved by accessing the \texttt{File} entity, independently or through association to the \texttt{Event}, \texttt{Sensor}, or \texttt{Channel} entities, SONICDB provides an accessible method to retrieve the data if the start, end, and channel are known. Listing \ref{lst:sonicdb_retrieval} shows an example of how to retrieve audio data from SONICDB.
+
+\begin{listing}[htbp]
+	\caption{Example of retrieving audio data from SONICDB \label{lst:sonicdb_retrieval}}
+	\begin{minted}{python}
+# Retrieve the Event entity for which audio is to be extracted
+event = db.session.query(spidb.Event).one() # <Event id>
+
+# Retrieve audio from channel 2 for the duration of the event
+audio = db.get_audio(event.start, event.end, sensor=event.sensor, channel_number=2) # <Audio id>
+	\end{minted}
+\end{listing}
+
+
+The code used to generate the data and figures in this report is available in the appendix and the accompanying GitHub repository. The full documentation, including examples and scripts, for SONICDB and SPIDB is available on GitHub \cite{danielkadyrovDkadyrovSpidbSPIDB2024}.
 
 \newpage
-\section{Preliminary Results}
+\section{Results}
 \subsection{Acoustic Signatures of Insects in Different Stored Product Materials}
 
 Spectrograms visualize the acoustic signal as frequency magnitude over time. The following spectograms were generated with a window size of 1024 samples, an overlap of 512 samples, and within the frequency range of \SIrange{0}{8000}{\hertz}. Figure \ref{fig:darkling_beetle_spectrogram} shows the spectrograms of a darkling beetle, \textit{T. molitor}, in rice from all the piezoelectric channels lining the bottom of the sampling container as an example of a high strength signal.
@@ -313,7 +503,7 @@ The relatively stronger signals in channel zero indicate that the insect was loc
 
 \newpage
 
-Figure \ref{fig:cfb_flour_bb_oatmeal} shows the spectrograms of the confused flour beetle, \textit{T. confusum}, in flour and the bean beetle, \textit{C. maculatus}, in oatmeal as examples of a medium and low strength signal, respectively. Only the sprectograms of the peizoelectric channels with the highest signal strength are visualized.
+Figure \ref{fig:cfb_flour_bb_oatmeal} shows the spectrograms of the confused flour beetle, \textit{T. confusum}, in flour and the bean beetle, \textit{C. maculatus}, in oatmeal as examples of a medium and low strength signal, respectively. Only the spectrograms of the peizoelectric channels with the highest signal strength are visualized.
 
 \begin{figure}[!htbp]
 	\centering
@@ -368,7 +558,7 @@ The Butterworth bandpass filter enables the extraction of the insect signal feat
 \end{equation}
 
 \begin{equation*}
-	\omega_c = \sqrt{\omega_1 \cdot \omega_2} \text{\hspace{0.25\textwidth}} \omega_\Delta = \omega_2 - \omega_1
+	\omega_c = \sqrt{\omega_1 \cdot \omega_2} \qquad \omega_\Delta = \omega_2 - \omega_1
 \end{equation*}
 
 where $\omega_c$ is the center frequency, $\omega_1$ and $\omega_2$ are the lower and higher angular frequencies, respectively, and $n$ is the order of the filter \cite{vanvalkenburgAnalogFilterDesign1982}. Figure \ref{fig:butterworth} shows the waveform of the signal for \textit{T. molitor} larva in wheat groats with a \SIrange{500}{6000}{\hertz} Butterworth 10th order bandpass filter applied.
@@ -414,13 +604,13 @@ where $S_E$ is the envelope of the signal \cite{ulrichEnvelopeCalculationHilbert
 The piezoelectric discs used in the A-SPIDS sensor are highly sensitive with relatively low noise levels but they are not calibrated and the recorded signals cannot be referenced with standard measurement units such as \si{\micro\pascal}, \si{\deci\bel} 20re \si{\micro\pascal}, or for acceleration in vibration measurement \si{\meter\per\second\squared}.
 
 \newpage
-\subsection{Normalization of Signal Amplitude}  
+\subsection{Normalization of Signal Amplitude}
 
 Normalization is a common practice in signal processing to adjust the amplitude of the signal to a common scale, which allows for better comparison and analysis of the signals across different sensors. The normalization process is especially important when dealing with non-calibrated sensors, as it helps to mitigate the effects of varying sensor sensitivities and external noise.
 
 \citeauthor{mainettiAcousticIdentificationWoodBoring} used Z-score normalization, which standardizes every value in the collection of data so that the mean of all the values is zero and the standard deviation is one. They then applied rolling and hopping windows in order to smooth short term fluctuations and highlight trends while maintaining an improved resolution and reduce information loss at window boundaries \cite{mainettiAcousticIdentificationWoodBoring}.
 
-Two normalization methods were implemented to accommodate for the proprietary, non-calibrated sensors. The first method uses the self-noise of the sensors as a reference. The second method was developed when self-noise records were not available and as a effective way to accomodate for influences from external noise.
+Two normalization methods were implemented to accommodate for the proprietary, non-calibrated sensors. The first method uses the self-noise of the sensors as a reference. The second method was developed when self-noise records were not available and as a effective way to accommodate for influences from external noise.
 
 \subsubsection{Self-noise Normalization Method}
 
@@ -590,7 +780,7 @@ Figure \ref{fig:nspa_nsel} shows that in the majority of the tested commodities,
 
 The derived approach can be extended to stored product insect data collected from other sensors including the BugBytes dataset which contains recordings from a piezoelectric disc sensor of a single \textit{Plodia interpunctella} larva in dry dog food and multiple \textit{S. oryzae} larvae in wheat groats. The recording system is not described in the dataset documentation but previous publications by the authors suggest that during recordings insects were placed directly on the piezoelectric disc sensor so the distance could not exceed \SI{1}{\milli\meter} \cite{mankinAcousticIndicatorsTargeted2010}.
 
-The median normalization method was applied to the recordings from the ``Stored Product Insect movement and feeding sounds recorded for insect detection and monitoring studies'' portion of the BugBytes dataset to accomodate for the absense of any recordings without an insect to use as a reference self-noise signal. The recordings include single larva and multiple larvae of the \textit{Plodia interpunctella} in dry dog food, multiple larvae of the \textit{Sitophilus oryzae} larvae in wheat groats, multiple \textit{Sitophilus zeamais} adults and larvae in maize, and multiple \textit{Prostephanus truncatus} adults and larvae in maize. The sensors featured accelerometers, piezoelectric discs, Polyvinylidene difluoride (PVDF) sensors, ultrasonic sensors, and microphones.
+The median normalization method was applied to the recordings from the ``Stored Product Insect movement and feeding sounds recorded for insect detection and monitoring studies'' portion of the BugBytes dataset to accommodate for the absense of any recordings without an insect to use as a reference self-noise signal. The recordings include single larva and multiple larvae of the \textit{Plodia interpunctella} in dry dog food, multiple larvae of the \textit{Sitophilus oryzae} larvae in wheat groats, multiple \textit{Sitophilus zeamais} adults and larvae in maize, and multiple \textit{Prostephanus truncatus} adults and larvae in maize. The sensors featured accelerometers, piezoelectric discs, Polyvinylidene difluoride (PVDF) sensors, ultrasonic sensors, and microphones.
 
 The \textit{Sitophilus oryzae}, lesser grain borer or rice weevil, larvae are internal feeders and develop while
 feeding within the grain. The larvae are \SIrange{1}{4}{\milli\meter} in length and are similar in size to the smaller insects recorded with the A-SPIDS \cite{cabiSitophilusOryzaeLesser2021}. Figure \ref{fig:sitophilus spectrogram} shows a spectrogram recorded by a piezoelectric disc sensor of the \textit{Sitophilus oryzae}, the rice weevil, larvae in wheat groats from the BugBytes dataset:
@@ -648,287 +838,439 @@ The results of the NSPA analysis demonstrated the effectivity of using the media
 \newpage
 \subsection{Reducing Influence of External Noise}
 
-One of the challenges of acoustic sensing is the interference of external noise obscuring the signals of interest. In addition to physical insulation to suppress external noise and vibration, acoustic microphones were included in the design of the A-SPIDS platform to assist the detection algorithm in identifying noise as anomalies. The microphones recording over channel four and five were mounted coaxially with the piezoelectric channels zero and one, respectively, while microphones labeled as channel six and seven were placed within the insulation and externally on the system, respectively.
-
 \subsubsection{Efficacy of Physical Noise Reduction}
 
-Figure \ref{fig:external_microphones_noise} shows the signal-noise ratio of the acoustic microphones during presence of external white noise at \SI{90}{\deci\bel A} without insects present measured against a reference signal when no insect or noise were present:
+One of the challenges of acoustic sensing is the interference of external noise obscuring the signals of interest. In addition to physical insulation to suppress external noise and vibration, acoustic microphones were included in the design of the A-SPIDS platform to assist the detection algorithm in identifying noise as anomalies. The microphones recording over channel four and five were mounted coaxially with the piezoelectric channels zero and one, respectively, while microphones labeled as channel six and seven were placed within the insulation and externally on the system, respectively. Figure \ref{fig:external_microphones_noise} compares the spectra and signal-noise ratio of the acoustic microphones during presence of external white noise at \SI{90}{\deci\bel A} without insects present measured against a reference signal when no insect or noise were present:
 
 \begin{figure}[!htbp]
 	\centering
-	\includegraphics[width=\textwidth]{figures/external_noise/external_noise_89.79.pdf}
+
+	\begin{subfigure}{\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figures/insulation_suppression/spectra_89.88.pdf}
+		\caption{Spectra}
+		\label{fig:insulation_spectra}
+	\end{subfigure}
+
+	\begin{subfigure}{\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figures/insulation_suppression/snr_89.88.pdf}
+		\caption{SNR}
+		\label{fig:insulation_snr}
+	\end{subfigure}
+
 	\caption{SNR of microphones during exposure to \SI{90}{\deci\bel A} external white noise}
 	\label{fig:external_microphones_noise}
 \end{figure}
 
-The difference in strength between the microphones demonstrate the effectiveness of the insulation in muffling external noise especially at frequencies above \SI{2000}{\hertz}. The insulation alone is shown to provide above \SI{35}{\deci\bel} of noise reduction.This level of sound attenuation is within the limits achieved in other studies but with lower material thicknesses \cite{mankinNoiseShieldingAcoustic1996}. The channel seven microphone was chosen as the external noise reference for the detection algorithm.
+The difference in strength between the microphones demonstrate the effectiveness of the insulation in muffling external noise especially at frequencies above \SI{2000}{\hertz}. The insulation alone is shown to provide an average of \SI{35}{\deci\bel} and a maximum of \SI{43}{\deci\bel} noise reduction. Although \citeauthor{mankinNoiseShieldingAcoustic1996} was able to achieve a higher level of attenuation, their solution was signficantly larger and heavier compared to the compact and portable A-SPIDS \cite{mankinNoiseShieldingAcoustic1996}. The channel seven microphone was chosen as the external noise reference for the detection algorithm.
 
-\subsubsection{Calibration of External Microphone}
+% \subsubsection{Calibration of External Microphone}
 
-The channel seven microphone was calibrated using the SPL measurements obtained using the sound level meter during several recordings of external noise. The difference in the SPL measurements between the channel seven microphone and the SPL meter was used to fit a calibration curve using linear regression. Figure \ref{fig:external_microphone_calibration} shows the calibration fit for the channel seven microphone with the SPL measurements.
+% Since the POM-2735P-R microphone is designed to capture sound pressure as a varying electrical signal, beyond specicying a \SI{-35}{\deci\bel} sensitivity, the manufacturer does not provide a calibration curve or built-in circuitry to correct for minor variations. Calibration is required to ensure accurate and consistent measurements. The external microphone is not openly exposed so performing calibration using an acoustic calibrator to IEC 61094 standards was not feasable \cite{auCalibrationMicrophonesAccordance2017}. Instead, recording where the Exotech Sound Pressure Meter was utilized to measure the simulated external noise were used fit the difference in the calculated SPL of the channel seven microphone. An A-weighting filter was applied to the raw signal from channel seven, the root-mean square (RMS) value was computed, and converted to decibels using the standard reference pressure of \SI{20}{\micro\pascal} \cite{chungCalibrationMattersSound2023}. The difference in the SPL measurements between the channel seven microphone and the SPL meter was used to fit a calibration curve using linear regression. Figure \ref{fig:external_microphone_calibration} shows the calibration fit for the channel seven microphone with the SPL measurements.
 
-\begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=\textwidth]{figures/external_noise/ch7_spl_graph.pdf}
-	\caption{Calibration of microphone channel 7 with SPL measurements}
-	\label{fig:external_microphone_calibration}
-\end{figure}
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[width=\textwidth]{figures/external_noise/ch7_spl_graph.pdf}
+% 	\caption{Calibration of microphone channel 7 with SPL measurements}
+% 	\label{fig:external_microphone_calibration}
+% \end{figure}
 
-\subsubsection{Influence of Ambient Noise}
+% By applying the calibration curve obtained from the reference sound level meter, the output of the external microphone can be adjusted to estimate the true sound pressure levels of the environment. 
 
-The high sensitivity of the piezoelectric discs make them vulnerable to external noise even through the physical insulation. Figure \ref{fig:internal_snr_60} shows the SNR response of the internal channels and the channel seven microphone to external noise at \SI{60}{\deci\bel A}:
+% \subsubsection{Influence of Ambient Noise}
 
-\begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=\textwidth]{figures/external_noise/snr_internal_61.pdf}
-	\caption{SNR of internal peizoelectric channels and external microphone channel seven during \SI{60}{\deci\bel A} external noise}
-	\label{fig:internal_snr_60}
-\end{figure}
+% The high sensitivity of the piezoelectric discs make them vulnerable to external noise even through the physical insulation. Figure \ref{fig:90_spectrogram} shows the spectrograms from the four internal piezoelectric sensors and the external microphone, channel seven, during a recording with no insect and \SI{90}{\deci\bel A} of external noise: 
 
-Even at \SI{60}{\deci\bel A} external noise, the piezoelectric discs have a significant response especially from \SIrange{200}{1400}{\hertz} where the SNR is almost identical to the external microphone channel seven. This not only indicates that the piezoelectric discs pick up external noise, even through the physical insulation, but also compromises using the \SIrange{500}{6000}{\hertz} frequency range for detection. Figure \ref{fig:spectrogram_41} shows the spectrograms from the internal piezoelectronic channels and the external microphon channel seven during the \SI{60}{\deci\bel} noise. 
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[width=\textwidth]{figures/acoustic_signatures/complete_Noise_90 dBA_spectrogram_display.pdf}
+% 	\caption{Spectrograms from internal and external sensors during \SI{90}{\deci\bel A} external noise}
+% 	\label{fig:90_spectrogram}
+% \end{figure}
 
-\begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=\textwidth]{figures/external_noise/spectrogram_41.pdf}
-	\caption{Spectrogram display of \SI{60}{\deci\bel A} external noise}
-	\label{fig:spectrogram_41}
-\end{figure}
+% The spectrograms show the inflitration of the impulses from the noise, distinct in channel seven, manifest synchronously in the internal piezoelectric channels and match the impulses observed in recordings of a single insect. After applying the bandpass filtering from \SIrange{500}{6000}{\hertz}, the enveloping, and self-noise normalization, the impulses generated by the external noise signals are indistinguishable from those produced by insects. 
 
-\newpage 
-The spectrograms show the inflitration of the impulses from the noise, distinct in channel seven, manifest synchronously in the piezoelectric channels. This is also clearly seen in Figure \ref{fig:waveform_41} which shows the filtered, enveloped, and normalized waveform from the A-SPIDS sensors during \SI{60}{\deci\bel A} external noise:
+% \newpage
+% Figure \ref{fig:waveform_comparison} juxtaposes the filtered, enveloped, and normalized waveforms for the \textit{T. confusum} in flour and the \textit{C. maculatus} in oatmeal with the \SI{60}{\decibel A} and \SI{90}{\deci\bel A} external noise. 
 
-\begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=\textwidth]{figures/external_noise/waveform_41.pdf}
-	\caption{Waveform display of \SI{60}{\deci\bel A} external noise}
-	\label{fig:waveform_41}
-\end{figure}
+% \begin{figure}[!htbp]
+% 	\centering
 
-The NSPA and NSEL measurements of records when external noise present are shown in Table \ref{tab:nspa_external_noise}:
+% 	\begin{subfigure}{0.45\textwidth}
+% 		\centering
+% 		\includegraphics[width=\textwidth]{figures/normalization/Confused flour beetle_Flour_waveform_normalized_small (500-6000).pdf}
+% 		\caption{\textit{T. confusum} in flour}
+% 		\label{fig:cfb_flour_waveform}
+% 	\end{subfigure}
+% 	\hfill
+% 	\begin{subfigure}{0.45\textwidth}
+% 		\centering
+% 		\includegraphics[width=\textwidth]{figures/normalization/Bean beetle_Oatmeal_waveform_normalized_small (500-6000).pdf}
+% 		\caption{\textit{C. maculatus} in oatmeal}
+% 		\label{fig:bb_oatmeal_waveform}
+% 	\end{subfigure}
 
-\begin{table}[htbp!]
-	\centering
-	\caption{NSPA and NSEL of the maximum internal piezoelectric disc and externally mounted microphone, channel seven, during various levels of background noise \label{tab:nspa_external_noise}}
-	\begin{tabular}{rrrrr}
-		\toprule
-		\multirow{2}{*}{\textbf{Noise Level [\si{\deci\bel A}]} } & \multicolumn{2}{c}{\textbf{Internal}} & \multicolumn{2}{c}{\textbf{External (Ch. 7)}} \\
-												& \textbf{NSPA} & \textbf{NSEL} & \textbf{NSPA} & \textbf{NSEL} \\
-		\midrule
-		60                                      & 44.06                                     & 29.97                                     & 40.55                                  & 27.45                                  \\
-		70                                      & 50.86                                     & 33.99                                     & 46.93                                  & 31.60                                  \\
-		80                                      & 60.57                                     & 44.00                                     & 56.46                                  & 40.80                                  \\
-		90                                      & 61.48                                     & 47.46                                     & 59.63                                  & 45.67                                  \\
-		\bottomrule
-	\end{tabular}
-\end{table}
+% 	\vspace{1em}
 
-Not only do the internal piezoelectric discs exhibit a higher NSPA and NSEL compared to the external microphone, but the magnitude of the metric surpasses the insect measurements shown in Table \ref{tab:nspa_nsel_comparison}. This signifies that the NSPA and NSEL measurements, when extracted within the \SIrange{500}{6000}{\hertz} band, are highly succeptible by the influence of external noise. 
+% 	\begin{subfigure}{0.45\textwidth}
+% 		\centering
+% 		\includegraphics[width=\textwidth]{figures/normalization/Noise_60 dBA_waveform_normalized_small (500-6000).pdf}
+% 		\caption{60 dBA external noise}
+% 		\label{fig:noise_60_waveform}
+% 	\end{subfigure}
+% 	\hfill
+% 	\begin{subfigure}{0.45\textwidth}
+% 		\centering
+% 		\includegraphics[width=\textwidth]{figures/normalization/Noise_90 dBA_waveform_normalized_small (500-6000).pdf}
+% 		\caption{90 dBA external noise}
+% 		\label{fig:noise_90_waveform}
+% 	\end{subfigure}
 
-\newpage 
-The NSPA algorithm was parametrized in order to find the lower and upper frequency limits that would enable the optimal detection of insect signals while minimizing the impact of external noise. This was performed by minimizing the difference between the NSPA calculated for a record containing an insect and no external noise with a record with no insect and external noise. Figure \ref{fig:frequency_finder} shows the process of minimizing the NSPA difference, first to find the lower frequency limit and then the upper frequency limit. The lower and upper frequency bounds were found to be \SI{1625}{\hertz} and \SI{5400}{\hertz}, respectively. 
+% 	\caption{Processed signals from insects and external noise using the \SIrange{500}{6000}{\hertz} frequency band}
+% 	\label{fig:waveform_comparison}
+% \end{figure}
 
-\begin{figure}[!htbp]
-	\centering
-	\begin{subfigure}{\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{figures/external_noise/lower_frequency_nspa_difference.pdf}
-		\caption{Lower Frequency Limit}
-		\label{fig:lower_freq_limit}
-	\end{subfigure} \\
+% Analyzing the spectra of the signals reveals that a more detailed spectral analysis can provide a means to differentiate between insect generated impulses and those from external noise. Figure \ref{fig:spectra_90} compares the spectra measured by a piezoelectric sensor channel zero during \SI{90}{\deci\bel A} external noise with \textit{T. confusum} in flour and \textit{C. maculatus} in oatmeal. 
 
-	\begin{subfigure}{\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{figures/external_noise/upper_frequency_nspa_difference.pdf}
-		\caption{Upper Frequency Limit}
-		\label{fig:upper_freq_limit}
-	\end{subfigure}
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[width=\textwidth]{figures/external_noise/spectra_comparison.pdf}
+% 	\caption{Comparison of insect, noise, and reference spectra}
+% 	\label{fig:spectral_comparison}
+% \end{figure}
 
-	\caption{Finding frequency limits to minimize NSPA difference }%
-	\label{fig:frequency_finder}
-\end{figure}
+% Although the noise signal permeates the internal sensor, especially at frequencies below \SI{1500}{\hertz}, the insect generated impulses have a higher spectral power above that frequency. This demonstrates that this lower frequency bound can be effectivly utilized for detection purposes even in the presence of strong ambient noise.
 
-Table \ref{tab:optimal_frequency} shows the NSPA values when using the frequency range \SIrange{1625}{5400}{\hertz} for the \textit{T. confusum} in flour and external noise with no insect. Even at \SI{90}{\deci\bel A} external noise, the NSPA of the internal piezoelectric channels do not exceed the levels experienced when an insect is present. 
+% \newpage
+% \subsubsection{Optimizing Frequency Range to Limit External Noise Influence}
 
-\begin{table}[htbp!]
-	\centering
-	\caption{NSPA of internal piezoelectric disc and externally mounted microphone, channel seven, during \textit{T. confusum} in flour external noise with no insect and using the optimal frequency range \SIrange{1625}{5400}{\hertz} \label{tab:optimal_frequency}}
-	\begin{tabular}{lrrrrrr}
-		\toprule
-		\textbf{Subject} & \textbf{Ch. 0 [\si{\deci\bel}]} & \textbf{Ch. 1 [\si{\deci\bel}]} & \textbf{Ch. 2 [\si{\deci\bel}]} & \textbf{Ch. 3 [\si{\deci\bel}]} & \textbf{Ch. 7 [\si{\deci\bel}]} & \textbf{SPL [dBA]} \\
-		\midrule
-		\textit{T. confusum} & 48.57 & 37.75 & 44.70 & 42.53 & 41.45 & 32.46\\
-		Noise (No insect) & 9.15 & 10.71 & 9.12 & 15.54 & 41.92 & 68.46\\
-		Noise (No insect) & 15.36 & 17.30 & 19.83 & 24.04 & 51.08 & 80.95\\
-		Noise (No insect) & 21.24 & 23.65 & 25.41 & 30.42 & 60.11 & 89.88\\
-		\bottomrule
-	\end{tabular}
-\end{table}
+% The NSPA algorithm was parametrized in order to find the lower and upper frequency limits that would enable the optimal detection of insect signals while minimizing the impact of external noise. Twenty samples of the insect signals representative of the median strength for each respective insect-material pairing combination were selected for analysis. The frequency bands were systematically varied and the respective NSPA values calculated and compared to the NSPA values of the external noise at \SI{90}{\deci\bel A} at the same range. Figure \ref{fig:nspa_diff_grid} illustrates the magnitude of the difference between the insect and noise NSPA values at different low, $\omega_1$, and high, $\omega_2$, frequency combinations. 
 
-\newpage
-\subsection{Detection Algorithm}
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[width=\textwidth]{figures/nspa_optimization/nspa_diff_grid.pdf}
+% 	\caption{NSPA difference between insect and noise signals at different filter frequency range combinations}
+% 	\label{fig:nspa_diff_grid}
+% \end{figure}
 
-\subsubsection{Detection Algorithm Metrics}
+% Although the NSPA difference significantly increases when the low range is above \SI{1500}{\hertz}, the high frequency bound plays a less critical role maximizing at around \SI{4000}{\hertz}. Focusing on the low frequency range, Figure \ref{fig:nspa_low_frequency} shows the NSPA difference between the insect and noise signals as the low frequency bound is varied while the high frequency bound is fixed at \SI{6000}{\hertz}. The optimal low frequency bound was determined to be \SI{1565}{\hertz} which was where the maximal NSPA difference converged to within \SI{5}{\percent}.  
 
-A successful detection algorithm requires maximizing the ability to successfully detect the presence of an insect in the store product material sample while minimizing the possibility of falsly identifying a pest in a clean sample and failing to detect an insect in an infested sample. The algorithm should be able to process the data in real-time, providing the conclusion within an efficient duration.
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[width=\textwidth]{figures/nspa_optimization/nspa_low_frequency.pdf}
+% 	\caption{Comparison of insect, noise, and reference spectra}
+% 	\label{fig:nspa_low_frequency}
+% \end{figure}
 
-The binary form of the detection algorithm is defined as a decision, $D$, where $D=1$ indicates the presence of an insect and $D=0$ indicates the absence of an insect. Equation \ref{detection} shows the binary detection algorithm:
+% Table \ref{tab:optimal_frequency} compares the averaged NSPA values of the twenty insect-material samples and noise from \SIrange{60}{90}{\deci\bel A} using the original \SIrange{500}{6000}{\hertz} and the \SIrange{1565}{6000}{\hertz} frequency bands. 
 
-\begin{equation}
-	\label{detection}
-	D = \begin{cases}
-		1 & \text{Insect Detected}    \\
-		0 & \text{No Insect Detected}
-	\end{cases}
-\end{equation}
+% \begin{table}[htbp!]
+% 	\centering
+% 	\caption{Comparison of insect and noise NSPA values at different frequency bands \label{tab:optimal_frequency}}
+% 	\begin{tabular}{lrr}
+% 		\toprule
+% 		\textbf{Subject}     & \textbf{\SIrange{500}{6000}{\hertz}} & \textbf{\SIrange{1565}{6000}{\hertz}} \\
+% 		\midrule
+% 		Insect (Averaged) & 47.43 & 47.39 \\
+% 		Noise (\SI{61}{\deci\bel A}) & 39.31 & 8.39 \\
+% 		Noise (\SI{68.46}{\deci\bel A}) & 45.39 & 10.26 \\
+% 		Noise (\SI{80.95}{\deci\bel A}) & 54.81 & 17.91 \\
+% 		Noise (\SI{89.88}{\deci\bel A}) & 58.19 & 26.21 \\
+% 		\bottomrule
+% 	\end{tabular}
+% \end{table}
 
-The probability of detection for an algorithm is measured by the number of times the algorithm correctly identified the presense of an insect in the stored product material sample divided by the total number of opportunities where an insect was present in the tested material. Equation \ref{pd} shows the calculation of the probability of detection:
+% The NSPA values of the insects remain nearly unchanged while the NSPA values of the noise are significantly reduced. Figure \ref{fig:waveform_comparison_optimized} compares the normalized waveforms of the insect signals and external noise using the optimized frequency band.
 
-\begin{equation}
-	\label{pd}
-	\text{PD} = \frac{N(D=1, I=1)}{N(I=1)}
-\end{equation}
+% \begin{figure}[!htbp]
+% 	\centering
 
-where $N(D=1, I=1)$ is the number of records where the algorithm correctly identified the presence of an insect and $N(I=1)$ is the total number of records available with insects present in the tested material. The probability of false positive is the number of times the algorithm incorrectly identified the presence of an insect in a clean stored product material sample divided by the total number of opportunities where no insects were present in the tested material. Equation \ref{pfa} shows the calculation of the probability of false positive:
+% 	\begin{subfigure}{0.45\textwidth}
+% 		\centering
+% 		\includegraphics[width=\textwidth]{figures/normalization/Confused flour beetle_Flour_waveform_normalized_small (1565-6000).pdf}
+% 		\caption{\textit{T. confusum} in flour}
+% 		\label{fig:cfb_flour_waveform_optimal_freq}
+% 	\end{subfigure}
+% 	\hfill
+% 	\begin{subfigure}{0.45\textwidth}
+% 		\centering
+% 		\includegraphics[width=\textwidth]{figures/normalization/Bean beetle_Oatmeal_waveform_normalized_small (1565-6000).pdf}
+% 		\caption{\textit{C. maculatus} in oatmeal}
+% 		\label{fig:bb_oatmeal_waveform_optimal_freq}
+% 	\end{subfigure}
 
-\begin{equation}
-	\label{pfa}
-	\text{PFP} = \frac{N(D=1, I=0)}{N(I=0)}
-\end{equation}
+% 	\vspace{1em}
 
-where $N(D=1, I=0)$ is the number of records where the algorithm incorrectly identified the presence of an insect and $N(I=0)$ is the total number of records available with no insects present in the tested material. The probability of false negative is the number of times the algorithm incorrectly identified the absence of an insect in an infested stored product material sample divided by the total number of opportunities where an insect was present in the tested material. Equation \ref{pfn} shows the calculation of the probability of false negative:
+% 	\begin{subfigure}{0.45\textwidth}
+% 		\centering
+% 		\includegraphics[width=\textwidth]{figures/normalization/Noise_60 dBA_waveform_normalized_small (1565-6000).pdf}
+% 		\caption{60 dBA external noise}
+% 		\label{fig:noise_60_waveform_optimal_freq}
+% 	\end{subfigure}
+% 	\hfill
+% 	\begin{subfigure}{0.45\textwidth}
+% 		\centering
+% 		\includegraphics[width=\textwidth]{figures/normalization/Noise_90 dBA_waveform_normalized_small (1565-6000).pdf}
+% 		\caption{90 dBA external noise}
+% 		\label{fig:noise_90_waveform_optimal_freq}
+% 	\end{subfigure}
 
-\begin{equation}
-	\label{pfn}
-	\text{PFN} = \frac{N(D=0, I=1)}{N(I=1)}
-\end{equation}
+% 	\caption{Comparison of normalized waveforms: insects vs external noise}
+% 	\label{fig:waveform_comparison_optimized}
+% \end{figure}
 
-\newpage
 
-\subsubsection{Development of a Real-Time Detection Algorithm}
+% Even at \SI{60}{\deci\bel A} external noise, the piezoelectric discs have a significant response especially from \SIrange{200}{1400}{\hertz} where the SNR is almost identical to the external microphone channel seven. This not only indicates that the piezoelectric discs pick up external noise, even through the physical insulation, but also compromises using the \SIrange{500}{6000}{\hertz} frequency range for detection. Figure \ref{fig:spectrogram_41} shows the spectrograms from the internal piezoelectronic channels and the external microphon channel seven during the \SI{60}{\deci\bel} noise.
 
-\subsubsection{Optimization of Detection Algorithm Parameters}
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[width=\textwidth]{figures/external_noise/spectrogram_41.pdf}
+% 	\caption{Spectrogram display of \SI{60}{\deci\bel A} external noise}
+% 	\label{fig:spectrogram_41}
+% \end{figure}
 
-Since the events, whether from an insect or external noise, occur within an interval, are independent, and have a constant probability of occurrence, the Poisson distribution was used to optimize the detection algorithm thresholds in order to minimize the false positive and false negative rates to below \SI{5}{\percent} \cite{rossIntroductionProbabilityModels2014}. The cumulative distribution function (CDF) of the Poisson distribution is shown in Equation \ref{eq:poisson_cdf}:
+% \newpage
+% The spectrograms show the inflitration of the impulses from the noise, distinct in channel seven, manifest synchronously in the piezoelectric channels. This is also clearly seen in Figure \ref{fig:waveform_41} which shows the filtered, enveloped, and normalized waveform from the A-SPIDS sensors during \SI{60}{\deci\bel A} external noise:
 
-\begin{equation}
-	\label{eq:poisson_cdf}
-	F(k; \lambda) = P(X \leq k) = \sum_{i=0}^{k} \frac{\lambda^i e^{-\lambda}}{i!}
-\end{equation}
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[width=\textwidth]{figures/external_noise/waveform_41.pdf}
+% 	\caption{Waveform display of \SI{60}{\deci\bel A} external noise}
+% 	\label{fig:waveform_41}
+% \end{figure}
 
-where $P(X \leq k)$ is the probability of the number of occurrences, $X$, being less than or equal to $k$, $k$ is the number of occurrences, $\lambda$ is the average number of occurrences, and $e$ is Euler's number. This distribution function can be adapted to measure the probability of detection, probability of false positive, and probability of false negative shown in Equation \ref{eq:poisson_pd}, Equation \ref{eq:poisson_pfp}, and Equation \ref{eq:poisson_pfn}, respectively:
+% \newpage 
 
-\begin{equation}
-	\label{eq:poisson_pd}
-	\text{PD} = 1 - F(x; \lambda_{\text{detection}} \cdot \text{period})
-\end{equation}
+% The NSPA and NSEL measurements of records when external noise present are shown in Table \ref{tab:nspa_external_noise}:
 
-\begin{equation}
-	\label{eq:poisson_pfp}
-	\text{PFP} = F(x; \lambda_{\text{detection}} \cdot \text{period})
-\end{equation}
+% \begin{table}[htbp!]
+% 	\centering
+% 	\caption{NSPA and NSEL of the maximum internal piezoelectric disc and externally mounted microphone, channel seven, during various levels of background noise \label{tab:nspa_external_noise}}
+% 	\begin{tabular}{rrrrr}
+% 		\toprule
+% 		\multirow{2}{*}{\textbf{Noise Level [\si{\deci\bel A}]} } & \multicolumn{2}{c}{\textbf{Internal}} & \multicolumn{2}{c}{\textbf{External (Ch. 7)}}                                 \\
+% 		                                                          & \textbf{NSPA}                         & \textbf{NSEL}                                 & \textbf{NSPA} & \textbf{NSEL} \\
+% 		\midrule
+% 		60                                                        & 44.06                                 & 29.97                                         & 40.55         & 27.45         \\
+% 		70                                                        & 50.86                                 & 33.99                                         & 46.93         & 31.60         \\
+% 		80                                                        & 60.57                                 & 44.00                                         & 56.46         & 40.80         \\
+% 		90                                                        & 61.48                                 & 47.46                                         & 59.63         & 45.67         \\
+% 		\bottomrule
+% 	\end{tabular}
+% \end{table}
 
-\begin{equation}
-	\label{eq:poisson_pfn}
-	\text{PFN} = 1 - F(x; \lambda_{\text{noise}} \cdot \text{period})
-\end{equation}
+% Not only do the internal piezoelectric discs exhibit a higher NSPA and NSEL compared to the external microphone, but the magnitude of the metric surpasses the insect measurements shown in Table \ref{tab:nspa_nsel_comparison}. This signifies that the NSPA and NSEL measurements, when extracted within the \SIrange{500}{6000}{\hertz} band, are highly succeptible by the influence of external noise.
 
-where $x$ is the number of occurrences, $\lambda_{\text{detection}}$ is the average number of insect detections, $\lambda_{\text{noise}}$ is the average number of noise detections, and $\text{period}$ is the duration of the analysis. These equations were used to find the detection algorithm parameters that maximize the probability of detection while minimizing the probability of false positive and false negative to below \SI{5}{\percent}.
+% \newpage
+% The NSPA algorithm was parametrized in order to find the lower and upper frequency limits that would enable the optimal detection of insect signals while minimizing the impact of external noise. This was performed by minimizing the difference between the NSPA calculated for a record containing an insect and no external noise with a record with no insect and external noise. Figure \ref{fig:frequency_finder} shows the process of minimizing the NSPA difference, first to find the lower frequency limit and then the upper frequency limit. The lower and upper frequency bounds were found to be \SI{1625}{\hertz} and \SI{5400}{\hertz}, respectively.
 
-\newpage
-\subsubsection{Evaluation of the Detection Algorithm Performance}
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\begin{subfigure}{\textwidth}
+% 		\centering
+% 		\includegraphics[width=\textwidth]{figures/external_noise/lower_frequency_nspa_difference.pdf}
+% 		\caption{Lower Frequency Limit}
+% 		\label{fig:lower_freq_limit}
+% 	\end{subfigure}
 
-\begin{table}[!htbp]
-	\caption{Performance of algorithm at different recording durations\label{tab:performance_results}}
-	\centering
-	\begin{tabular}{rrrrrrrr}
-		\toprule
-		\textbf{Time [\si{\minute}]} &
-		\textbf{PD [\si{\percent}]}  &
-		\textbf{PFP [\si{\percent}]} &
-		\textbf{PFN [\si{\percent}]} &
-		\textbf{DT}                  &
-		\textbf{NT}                  &
-		\textbf{IT [\si{\deci\bel}]} &
-		\textbf{ET [\si{\deci\bel}]}                      \\ \midrule
+% 	\begin{subfigure}{\textwidth}
+% 		\centering
+% 		\includegraphics[width=\textwidth]{figures/external_noise/upper_frequency_nspa_difference.pdf}
+% 		\caption{Upper Frequency Limit}
+% 		\label{fig:upper_freq_limit}
+% 	\end{subfigure}
 
-		1.0                          &   &  &  &  &  &  & \\
-		1.5                          &   &  &  &  &  &  & \\
-		2.0                          &   &  &  &  &  &  & \\
-		3.0                          &   &  &  &  &  &  & \\
-		\bottomrule
-	\end{tabular}
-\end{table}
+% 	\caption{Finding frequency limits to minimize NSPA difference }%
+% 	\label{fig:frequency_finder}
+% \end{figure}
 
-\begin{table}[!htbp]
-	\caption{Performance for each subject in all materials at optimized one-minute duration parameters\label{tab:performance_results_insects}}
-	\centering
-	\begin{tabular}{llrr}
-		\toprule
-		\multicolumn{2}{c}{\textbf{Subject}} &
-		\textbf{PD [\si{\percent}]}          &
-		\textbf{PFN [\si{\percent}]}                                      \\
-		\midrule
-		\textit{C. maculatus}           & Cowpea beetle         &  & \\
-		\textit{T. confusum}            & Confused flour beetle &  & \\
-		\textit{T. molitor}             & Darkling beetle       &  & \\
-		\textit{T. molitor} larva       & Mealworm              &  & \\
-		\bottomrule
-	\end{tabular}
-\end{table}
+% Table \ref{tab:optimal_frequency} shows the NSPA values when using the frequency range \SIrange{1625}{5400}{\hertz} for the \textit{T. confusum} in flour and external noise with no insect. Even at \SI{90}{\deci\bel A} external noise, the NSPA of the internal piezoelectric channels do not exceed the levels experienced when an insect is present.
 
-\begin{table}[!htbp]
-	\caption{Performance for each material with all subjects at optimized one-minute duration parameters\label{tab:performance_results_material}}
-	\centering
-	\begin{tabular}{llrr}
-		\toprule
-		\multicolumn{2}{c}{\textbf{Material}} &
-		\textbf{PD [\si{\percent}]}           &
-		\textbf{PFN [\si{\percent}]}                              \\
-		\midrule
-		\textit{A. sativa}               & Oatmeal      &  & \\
-		\textit{O. sativa}               & Rice         &  & \\
-		\textit{T. aestivum}             & Flour        &  & \\
-		\textit{T. aestivum}             & Wheat Groats &  & \\
-		\textit{Z. mays}               & Corn Flakes  &  & \\
-		\bottomrule
-	\end{tabular}
-\end{table}
+% \begin{table}[htbp!]
+% 	\centering
+% 	\caption{NSPA of internal piezoelectric disc and externally mounted microphone, channel seven, during \textit{T. confusum} in flour external noise with no insect and using the optimal frequency range \SIrange{1625}{5400}{\hertz} \label{tab:optimal_frequency}}
+% 	\begin{tabular}{lrrrrrr}
+% 		\toprule
+% 		\textbf{Subject}     & \textbf{Ch. 0 [\si{\deci\bel}]} & \textbf{Ch. 1 [\si{\deci\bel}]} & \textbf{Ch. 2 [\si{\deci\bel}]} & \textbf{Ch. 3 [\si{\deci\bel}]} & \textbf{Ch. 7 [\si{\deci\bel}]} & \textbf{SPL [dBA]} \\
+% 		\midrule
+% 		\textit{T. confusum} & 48.57                           & 37.75                           & 44.70                           & 42.53                           & 41.45                           & 32.46              \\
+% 		Noise (No insect)    & 9.15                            & 10.71                           & 9.12                            & 15.54                           & 41.92                           & 68.46              \\
+% 		Noise (No insect)    & 15.36                           & 17.30                           & 19.83                           & 24.04                           & 51.08                           & 80.95              \\
+% 		Noise (No insect)    & 21.24                           & 23.65                           & 25.41                           & 30.42                           & 60.11                           & 89.88              \\
+% 		\bottomrule
+% 	\end{tabular}
+% \end{table}
 
-\begin{table}[!htbp]
-	\caption{Performance for insect-material pairings at optimized one-minute duration parameters\label{tab:performance_results_insect-material}}
-	\centering
-	\begin{tabular}{rlllll}
-		\toprule
-		\textbf{ }                                             &
-		\textbf{$\it{A.}$ $\it{sativa}$}                       &
-		\textbf{$\it{O.}$ $\it{sativa}$}                       &
-		\multicolumn{2}{c}{\textbf{$\it{T.}$ $\it{aestivum}$}} &
-		\textbf{$\it{Z.}$ $\it{mays}$}                                                                               \\
-		                                                       & Oatmeal & Rice & Flour & Wheat Groats & Corn Flakes \\
-		\midrule
-		\textit{C. maculatus}                             &         &      &       &              &             \\
-		\textit{T. confusum}                              &         &      &       &              &             \\
-		\textit{T. molitor}                               &         &      &       &              &             \\
-		\textit{T. molitor} larva                         &         &      &       &              &             \\
-		\bottomrule
-	\end{tabular}
-\end{table}
+% \newpage
+% \subsection{Detection Algorithm}
 
-\begin{table}[!htbp]
-	\caption{Performance for silence and noise at one-minute duration parameters\label{tab:performance_results_silence-noise}}
-	\centering
-	\begin{tabular}{lrrr}
-		\toprule
-		\textbf{}                    &
-		\textbf{PD [\si{\percent}]}  &
-		\textbf{PFP [\si{\percent}]} &
-		\textbf{PFN [\si{\percent}]}          \\
-		\midrule
-		Silence                      &   &  & \\
-		External Noise               &   &  & \\
-		\bottomrule
-	\end{tabular}
-\end{table}
+% \subsubsection{Detection Algorithm Metrics}
+
+% A successful detection algorithm requires maximizing the ability to successfully detect the presence of an insect in the store product material sample while minimizing the possibility of falsly identifying a pest in a clean sample and failing to detect an insect in an infested sample. The algorithm should be able to process the data in real-time, providing the conclusion within an efficient duration.
+
+% The binary form of the detection algorithm is defined as a decision, $D$, where $D=1$ indicates the presence of an insect and $D=0$ indicates the absence of an insect. Equation \ref{detection} shows the binary detection algorithm:
+
+% \begin{equation}
+% 	\label{detection}
+% 	D = \begin{cases}
+% 		1 & \text{Insect Detected}    \\
+% 		0 & \text{No Insect Detected}
+% 	\end{cases}
+% \end{equation}
+
+% The probability of detection for an algorithm is measured by the number of times the algorithm correctly identified the presense of an insect in the stored product material sample divided by the total number of opportunities where an insect was present in the tested material. Equation \ref{pd} shows the calculation of the probability of detection:
+
+% \begin{equation}
+% 	\label{pd}
+% 	\text{PD} = \frac{N(D=1, I=1)}{N(I=1)}
+% \end{equation}
+
+% where $N(D=1, I=1)$ is the number of records where the algorithm correctly identified the presence of an insect and $N(I=1)$ is the total number of records available with insects present in the tested material. The probability of false positive is the number of times the algorithm incorrectly identified the presence of an insect in a clean stored product material sample divided by the total number of opportunities where no insects were present in the tested material. Equation \ref{pfa} shows the calculation of the probability of false positive:
+
+% \begin{equation}
+% 	\label{pfa}
+% 	\text{PFP} = \frac{N(D=1, I=0)}{N(I=0)}
+% \end{equation}
+
+% where $N(D=1, I=0)$ is the number of records where the algorithm incorrectly identified the presence of an insect and $N(I=0)$ is the total number of records available with no insects present in the tested material. The probability of false negative is the number of times the algorithm incorrectly identified the absence of an insect in an infested stored product material sample divided by the total number of opportunities where an insect was present in the tested material. Equation \ref{pfn} shows the calculation of the probability of false negative:
+
+% \begin{equation}
+% 	\label{pfn}
+% 	\text{PFN} = \frac{N(D=0, I=1)}{N(I=1)}
+% \end{equation}
+
+% \newpage
+
+% \subsubsection{Development of a Real-Time Detection Algorithm}
+
+% \todo[inline]{This subsection will describe the design of the detection algorithm.}
+
+% \subsubsection{Optimization of Detection Algorithm Parameters}
+
+% Since the events, whether from an insect or external noise, occur within an interval, are independent, and have a constant probability of occurrence, the Poisson distribution was used to optimize the detection algorithm thresholds in order to minimize the false positive and false negative rates to below \SI{5}{\percent} \cite{rossIntroductionProbabilityModels2014}. The cumulative distribution function (CDF) of the Poisson distribution is shown in Equation \ref{eq:poisson_cdf}:
+
+% \begin{equation}
+% 	\label{eq:poisson_cdf}
+% 	F(k; \lambda) = P(X \leq k) = \sum_{i=0}^{k} \frac{\lambda^i e^{-\lambda}}{i!}
+% \end{equation}
+
+% where $P(X \leq k)$ is the probability of the number of occurrences, $X$, being less than or equal to $k$, $k$ is the number of occurrences, $\lambda$ is the average number of occurrences, and $e$ is Euler's number. This distribution function can be adapted to measure the probability of detection, probability of false positive, and probability of false negative shown in Equation \ref{eq:poisson_pd}, Equation \ref{eq:poisson_pfp}, and Equation \ref{eq:poisson_pfn}, respectively:
+
+% \begin{equation}
+% 	\label{eq:poisson_pd}
+% 	\text{PD} = 1 - F(x; \lambda_{\text{detection}} \cdot \text{period})
+% \end{equation}
+
+% \begin{equation}
+% 	\label{eq:poisson_pfp}
+% 	\text{PFP} = F(x; \lambda_{\text{detection}} \cdot \text{period})
+% \end{equation}
+
+% \begin{equation}
+% 	\label{eq:poisson_pfn}
+% 	\text{PFN} = 1 - F(x; \lambda_{\text{noise}} \cdot \text{period})
+% \end{equation}
+
+% where $x$ is the number of occurrences, $\lambda_{\text{detection}}$ is the average number of insect detections, $\lambda_{\text{noise}}$ is the average number of noise detections, and $\text{period}$ is the duration of the analysis. These equations were used to find the detection algorithm parameters that maximize the probability of detection while minimizing the probability of false positive and false negative to below \SI{5}{\percent}.
+
+% \newpage
+% \subsubsection{Evaluation of the Detection Algorithm Performance}
+
+% \todo[inline]{Once the detection algorithm is implemented, its performance will be evaluated by comparing the predicted insect presence, or absence, with the actual insect presence, or absence, in the test samples. The evaluation metrics will include the probability of detection (PD), probability of false positive (PFP), and probability of false negative (PFN) at different durations, subjects, materials, subject-material pairings, and environmental conditions.}
+
+% \begin{table}[!htbp]
+% 	\caption{Performance of algorithm at different recording durations\label{tab:performance_results}}
+% 	\centering
+% 	\begin{tabular}{rrrrrrrr}
+% 		\toprule
+% 		\textbf{Time [\si{\minute}]} &
+% 		\textbf{PD [\si{\percent}]}  &
+% 		\textbf{PFP [\si{\percent}]} &
+% 		\textbf{PFN [\si{\percent}]} &
+% 		\textbf{DT}                  &
+% 		\textbf{NT}                  &
+% 		\textbf{IT [\si{\deci\bel}]} &
+% 		\textbf{ET [\si{\deci\bel}]}                      \\ \midrule
+
+% 		1.0                          &   &  &  &  &  &  & \\
+% 		1.5                          &   &  &  &  &  &  & \\
+% 		2.0                          &   &  &  &  &  &  & \\
+% 		3.0                          &   &  &  &  &  &  & \\
+% 		\bottomrule
+% 	\end{tabular}
+% \end{table}
+
+% \begin{table}[!htbp]
+% 	\caption{Performance for each subject in all materials at optimized one-minute duration parameters\label{tab:performance_results_insects}}
+% 	\centering
+% 	\begin{tabular}{llrr}
+% 		\toprule
+% 		\multicolumn{2}{c}{\textbf{Subject}} &
+% 		\textbf{PD [\si{\percent}]}          &
+% 		\textbf{PFN [\si{\percent}]}                                      \\
+% 		\midrule
+% 		\textit{C. maculatus}                & Cowpea beetle         &  & \\
+% 		\textit{T. confusum}                 & Confused flour beetle &  & \\
+% 		\textit{T. molitor}                  & Darkling beetle       &  & \\
+% 		\textit{T. molitor} larva            & Mealworm              &  & \\
+% 		\bottomrule
+% 	\end{tabular}
+% \end{table}
+
+% \begin{table}[!htbp]
+% 	\caption{Performance for each material with all subjects at optimized one-minute duration parameters\label{tab:performance_results_material}}
+% 	\centering
+% 	\begin{tabular}{llrr}
+% 		\toprule
+% 		\multicolumn{2}{c}{\textbf{Material}} &
+% 		\textbf{PD [\si{\percent}]}           &
+% 		\textbf{PFN [\si{\percent}]}                              \\
+% 		\midrule
+% 		\textit{A. sativa}                    & Oatmeal      &  & \\
+% 		\textit{O. sativa}                    & Rice         &  & \\
+% 		\textit{T. aestivum}                  & Flour        &  & \\
+% 		\textit{T. aestivum}                  & Wheat Groats &  & \\
+% 		\textit{Z. mays}                      & Corn Flakes  &  & \\
+% 		\bottomrule
+% 	\end{tabular}
+% \end{table}
+
+% \begin{table}[!htbp]
+% 	\caption{Performance for insect-material pairings at optimized one-minute duration parameters\label{tab:performance_results_insect-material}}
+% 	\centering
+% 	\begin{tabular}{rlllll}
+% 		\toprule
+% 		\textbf{ }                                             &
+% 		\textbf{$\it{A.}$ $\it{sativa}$}                       &
+% 		\textbf{$\it{O.}$ $\it{sativa}$}                       &
+% 		\multicolumn{2}{c}{\textbf{$\it{T.}$ $\it{aestivum}$}} &
+% 		\textbf{$\it{Z.}$ $\it{mays}$}                                                                               \\
+% 		                                                       & Oatmeal & Rice & Flour & Wheat Groats & Corn Flakes \\
+% 		\midrule
+% 		\textit{C. maculatus}                                  &         &      &       &              &             \\
+% 		\textit{T. confusum}                                   &         &      &       &              &             \\
+% 		\textit{T. molitor}                                    &         &      &       &              &             \\
+% 		\textit{T. molitor} larva                              &         &      &       &              &             \\
+% 		\bottomrule
+% 	\end{tabular}
+% \end{table}
+
+% \begin{table}[!htbp]
+% 	\caption{Performance for silence and noise at one-minute duration parameters\label{tab:performance_results_silence-noise}}
+% 	\centering
+% 	\begin{tabular}{lrrr}
+% 		\toprule
+% 		\textbf{}                    &
+% 		\textbf{PD [\si{\percent}]}  &
+% 		\textbf{PFP [\si{\percent}]} &
+% 		\textbf{PFN [\si{\percent}]}          \\
+% 		\midrule
+% 		Silence                      &   &  & \\
+% 		External Noise               &   &  & \\
+% 		\bottomrule
+% 	\end{tabular}
+% \end{table}
 
 \newpage
 \section{Back Matter}
@@ -940,17 +1282,25 @@ where $x$ is the number of occurrences, $\lambda_{\text{detection}}$ is the aver
 	\item \textbf{March 2022} Ph.D. Qualification Exam
 	\item \textbf{May 2022} ASA Conference, Denver, CO, USA - Improvements to the Stevens Drone Acoustic Detection System
 	\item \textbf{February-December 2023} Development of the Acoustic Stored Product Insect Detection System (A-SPIDS) and collection of vibro-acoustic signatures of various insects in stored products.
-	\item \textbf{January 2024} Literature review and analysis of vibro-acoustic signatures of various insects in stored products. Preparation for publication of \textit{Vibro-Acoustic Signatures of Various Insects in Stored Products}.
+	\item \textbf{January 2024} Literature review and analysis of vibro-acoustic signatures of various insects in stored products. Preparation for publication of ``Vibro-Acoustic Signatures of Various Insects in Stored Products''.
 	\item \textbf{March 2024} AIMS Conference, New York, NY, USA - Perspectives of Machine Learning for Acoustic Methods of Stored Product Insect Detection
-	\item \textbf{October 2024} Publication of \textit{Vibro-Acoustic Signatures of Various Insects in Stored Products} in MDPI Sensors
-	\item \textbf{January-August 2025} Development and validation of stored product insect detection algorithm in preperation for \textit{Acoustic Detection of Stored-Product Insects Under High Ambient Noise Conditions} publication.
+	\item \textbf{May 2024} Publication of the ``Stored Product Insect Dataset'' on Kaggle and \textit{Stored Product Insect Database} on GitHub.
+	% \item \textbf{May-September 2024} Work with NYU AI for Scientific Research (AIfSR) group on developing machine learning models for insect detection using spectrograms. Attempted publication in NeurIPS but ultimate rejection.
+	\item \textbf{October 2024} Publication of ``Vibro-Acoustic Signatures of Various Insects in Stored Products'' in MDPI Sensors
+	\item \textbf{January-August 2025} Work on ``Acoustic detection of insects in stored products in the presence of strong ambient noise''
+	\begin{itemize}
+		\item Research and review of existing literature on acoustic detection methods
+		\item Understanding the infiltration of external noise into the A-SPIDS 
+		\item Optimizing the frequency range using normalization metrics to minimize external noise influence
+	\end{itemize}
 	\item \textbf{August 2025} DHS RDTE Conference, Washington, D.C., USA - Stored Product Insect Detection System (SPIDS)
 \end{itemize}
 
 \textbf{Current Tasks}
 \begin{itemize}
-	\item \textbf{August 2025} Dissertation Proposal Defense
-	\item \textbf{September 2025} Finish writing \textit{Acoustic Detection of Stored-Product Insects Under High Ambient Noise Conditions} for MDPI Sensors
+	\item \textbf{September 2025} Dissertation Proposal Defense
+	\item \textbf{September 2025} Detection Algorithm
+	\item \textbf{October 2025} Finish writing ``Acoustic Detection of Stored-Product Insects Under High Ambient Noise Conditions'' for MDPI Sensors
 \end{itemize}
 
 \textbf{Planned Tasks}
@@ -971,6 +1321,13 @@ where $x$ is the number of occurrences, $\lambda_{\text{detection}}$ is the aver
 
 	      D. Kadyrov, A. Sutin, N. Sedunov, A. Sedunov, and H. Salloum, ``Vibro-Acoustic Signatures of Various Insects in Stored Products,'' Sensors, vol. 24, no. 20, Art. no. 20, Jan. 2024, doi: 10.3390/s24206736.
 
+	\item \textbf{Stored Product Insect Dataset (SPID)}
+	
+		  Daniel Kadyrov, Alexander Sutin, Alexander Sedunov, Nikolay Sedunov, and Hady Salloum, “Stored Product Insect Dataset (SPID) - ASPIDS.” Kaggle. doi: 10.34740/KAGGLE/DS/4982480.
+	\item \textbf{Stored Product Insect Database (SPIDB)}
+
+		  Daniel Kadyrov, dkadyrov/spidb: SPIDB 1.0.0-beta. (May 29, 2024). Zenodo. doi: 10.5281/ZENODO.11390472.
+
 \end{itemize}
 % \textbf{Vibro-Acoustic Signatures of Various Insects in Stored Products}
 
@@ -982,7 +1339,6 @@ where $x$ is the number of occurrences, $\lambda_{\text{detection}}$ is the aver
 
 \begin{itemize}
 	\item Acoustic Detection of Stored-Product Insects Under High Ambient Noise Conditions
-	\item The Drone Acoustic Database: A Rich Multi-Sensor Dataset for Acoustic UAV Detection, Tracking, and Classification
 \end{itemize}
 
 
@@ -1012,9 +1368,9 @@ The research and products developed as part of the stored product insect detecti
 
 Daniel Kadyrov is currently a full-time employee of the National Urban Security Technology Laboratory (NUSTL), within the Science and Technology Directorate, a part of the Department of Homeland Security (DHS). Publications and work products need to be reviewed and approved by the DHS Science and Technology ethics office and the NUSTL leadership prior to public release.
 
-\subsection{Motivation}
+% \subsection{Motivation}
 
-The motivation behind this research is to enhance the detection and monitoring of insects in stored products mainly to assist and speed up inspections performed by Custom and Border Patrol (CBP) at United States Ports of Entry. Although the sensors and associated algorithms were designed for this usage, the platforms can be adapted for monitoring stored product insects at other locations in the supply chain. The underlying technology and methods can also be expanded to service other materials. Beyond ensuring food safety and quality, effective monitoring can secure national agricultural, environmental, and ecological security from invasive species.
+% The motivation behind this research is to enhance the detection and monitoring of insects in stored products mainly to assist and speed up inspections performed by Custom and Border Patrol (CBP) at United States Ports of Entry. Although the sensors and associated algorithms were designed for this usage, the platforms can be adapted for monitoring stored product insects at other locations in the supply chain. The underlying technology and methods can also be expanded to service other materials. Beyond ensuring food safety and quality, effective monitoring can secure national agricultural, environmental, and ecological security from invasive species. This project continues to show that passive acoustic sensing is an effective and low-cost alternative to other detection methods. Furthermore, this work shows that signal-processing techniques are effective even before the introduction of machine learning and artificial intelligence models. 
 
 % The sensor developed for this research could be extended for usage at other points in the supply chain including farms, storage facilities, and retail locations. The underlying technology could be adapted to service other materials including fruits and vegetables. The analysis and algorithms can be adapted for wood boring insects.
 

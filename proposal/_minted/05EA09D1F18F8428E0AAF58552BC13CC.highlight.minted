@@ -1,0 +1,7 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} Retrieve the Event entity for which audio is to be extracted}
+\PYG{n}{event} \PYG{o}{=} \PYG{n}{db}\PYG{o}{.}\PYG{n}{session}\PYG{o}{.}\PYG{n}{query}\PYG{p}{(}\PYG{n}{spidb}\PYG{o}{.}\PYG{n}{Event}\PYG{p}{)}\PYG{o}{.}\PYG{n}{one}\PYG{p}{()} \PYG{c+c1}{\PYGZsh{} \PYGZlt{}Event id\PYGZgt{}}
+
+\PYG{c+c1}{\PYGZsh{} Retrieve audio from channel 2 for the duration of the event}
+\PYG{n}{audio} \PYG{o}{=} \PYG{n}{db}\PYG{o}{.}\PYG{n}{get\PYGZus{}audio}\PYG{p}{(}\PYG{n}{event}\PYG{o}{.}\PYG{n}{start}\PYG{p}{,} \PYG{n}{event}\PYG{o}{.}\PYG{n}{end}\PYG{p}{,} \PYG{n}{sensor}\PYG{o}{=}\PYG{n}{event}\PYG{o}{.}\PYG{n}{sensor}\PYG{p}{,} \PYG{n}{channel\PYGZus{}number}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} \PYGZlt{}Audio id\PYGZgt{}}
+\end{MintedVerbatim}
