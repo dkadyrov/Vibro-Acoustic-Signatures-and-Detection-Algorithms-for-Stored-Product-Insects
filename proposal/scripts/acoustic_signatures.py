@@ -1,4 +1,5 @@
 # %%
+from archive import lookup
 import pandas as pd
 import numpy as np
 import matplotlib
@@ -7,7 +8,7 @@ from scipy import signal
 
 from dankpy import color, dt
 
-from spidb import spidb, visualizer, lookup, detection
+from spidb import spidb, visualizer, detection
 import matplotlib.pyplot as plt
 
 pd.options.mode.chained_assignment = None
@@ -97,7 +98,7 @@ for target in targets:
     sensor = record.sensor,
     time_format="seconds", 
     section="minimal", 
-    size=(6,3)
+    size=(6,4)
     )
     for x in ax:
         x.set_ylim(0, 12000)
@@ -107,22 +108,23 @@ for target in targets:
 
     fig.savefig("projects/Dissertation/proposal/figures/acoustic_signatures/complete_{}_{}_spectrogram_display.pdf".format(target["target"], target["material"]), dpi=300)
 
+    audios = db.get_audios(start=record.start, end=record.end, sensor=record.sensor, channels=[0, 1, 2, 3])
 
 
-#%%
-fig, ax = visualizer.spectra_display(db, start=record.start, end=record.end, sensor=record.sensor, section=[0, 1, 2, 3])
-for i, line in enumerate(ax.lines):
-    line.set_color(color.colors[i])
-    line.set_label(f"Ch. {i}")
-ax.plot(noise["frequency"], noise["average_db"], color="black", linestyle="solid", label="Reference", zorder=10)
-ax.set_xlim(0, 12000)
-# make the lines different colors and make the labels match
-ax.legend(loc="upper right", ncols=5)
-# make the ylabel smaller
-ax.set_ylabel("Spectral Power [dB]", fontsize=8)
-ax.set_ylim(-125, -25)
-ax.set_yticks([-125, -75, -25])
-fig.savefig("projects/Dissertation/proposal/figures/acoustic_signatures/{}_{}_spectra_display.pdf".format(targets[0]["target"], targets[0]["material"]), dpi=300)
+    fig, ax = visualizer.spectra_display(audios)
+    for i, line in enumerate(ax.lines):
+        line.set_color(color.colors[i])
+        line.set_label(f"Ch. {i}")
+    ax.plot(noise["frequency"], noise["average_db"], color="black", linestyle="solid", label="Reference", zorder=10)
+    ax.set_xlim(0, 12000)
+    # make the lines different colors and make the labels match
+    ax.legend(loc="upper right", ncols=5)
+    # make the ylabel smaller
+    ax.set_ylabel("Spectral Power [dB]", fontsize=8)
+    ax.set_ylim(-125, -25)
+    ax.set_yticks([-125, -75, -25])
+
+    fig.savefig("projects/Dissertation/proposal/figures/acoustic_signatures/{}_{}_spectra_display.pdf".format(target["target"], target["material"]), dpi=300)
 #%%
 
 
@@ -131,7 +133,7 @@ for i, t in enumerate([targets[0], targets[2], targets[3]]):
     record = db.session.get(spidb.Record, t["record"])
     audio = db.get_audio(start=record.start, end=record.end, sensor=record.sensor, channel_number=t["channel"])
 
-    fig, ax = audio.plot_spectrogram(window_size=1024, nperseg=1024, nfft=1024, noverlap=512, zmin=-140, zmax=-80, time_format="seconds", showscale="right")
+    fig, ax = audio.plot_spectrogram(window_size=1024, nperseg=1024, nfft=1024, noverlap=512, zmin=-140, zmax=-80, time_format="seconds", showscale="right", cmap="jet")
 
     ax.set_ylim(0, 8000)
     ax.set_yticks([0, 4000, 8000])
@@ -141,7 +143,7 @@ for i, t in enumerate([targets[0], targets[2], targets[3]]):
 
     fig.savefig("projects/Dissertation/proposal/figures/acoustic_signatures/{}_{}_spectrogram.pdf".format(t["target"], t["material"]), dpi=300)
 #%%
-fig, ax = plt.subplots(figsize=(6, 1.75))
+fig, ax = plt.subplots(figsize=(6, 1.5))
 for i, t in enumerate([targets[0], targets[2], targets[3]]):
     record = db.session.get(spidb.Record, t["record"])
 
@@ -160,8 +162,8 @@ ax.set_ylabel("Spectral Power [dB]")
 ax.legend(bbox_to_anchor=(0., 1.10, 1, 0), loc="lower center", ncol=4, columnspacing=1, markerscale=0.5, fontsize=8)
 fig.savefig("projects/Dissertation/proposal/figures/acoustic_signatures/spectra.pdf", dpi=300)
 #%%
-fig, ax = plt.subplots(figsize=(6, 2))
-for i, t in enumerate(targets):
+fig, ax = plt.subplots(figsize=(6, 1.75))
+for i, t in enumerate(targets[:4]):
     record = db.session.get(spidb.Record, t["record"])
 
     audio = db.get_audio(start=record.start, end=record.end, sensor=record.sensor, channel_number=t["channel"])
@@ -180,7 +182,7 @@ ax.legend(bbox_to_anchor=(0., 1.10, 1, 0), loc="lower center", ncol=2, columnspa
 fig.savefig("projects/Dissertation/proposal/figures/acoustic_signatures/snr.pdf", dpi=300)
 #%%
 for i, t in enumerate(targets):
-    fig, ax = plt.subplots(figsize=(6, 1.5))
+    fig, ax = plt.subplots(figsize=(6, 1.25))
     record = db.session.get(spidb.Record, t["record"])
 
     audio = db.get_audio(start=record.start, end=record.end, sensor=record.sensor, channel_number=t["channel"])
@@ -200,7 +202,7 @@ for i, t in enumerate(targets):
     fig.savefig("projects/Dissertation/proposal/figures/acoustic_signatures/{}_{}_waveform_filtered.pdf".format(t["target"], t["material"]), dpi=300)
 
     audio.envelope(overwrite=True)
-    fig, ax = plt.subplots(figsize=(6, 1.5))
+    fig, ax = plt.subplots(figsize=(6, 1.25))
     ax.plot(audio.data.seconds, audio.data.signal, label=f"Piezoelectric - Ch. {t['channel']}")
     ax.set_xlim(0, 60)
     ax.set_ylim(0, 0.05)

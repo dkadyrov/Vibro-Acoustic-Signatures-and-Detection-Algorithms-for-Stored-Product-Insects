@@ -13,73 +13,176 @@ plt.style.use("dankpy.styles.latex")
 noise = pd.read_pickle(r"data/noise_500-6000.pkl")
 
 db = spidb.Database(r"data/spi.db")
+# %%
+events = [35, 36, 37, 38, 39, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+events = [db.session.get(spidb.Event, e) for e in events]
+events = pd.DataFrame([e.__dict__ for e in events])
+events["type"] = events["description"].str.split("-").str[0].str.strip()
 #%%
-events = [35, 36, 37, 38, 39, 41, 42, 43, 44, 45, 46, 47, 48, 49] 
+records = [
+    {"start": "2023-12-18 19:57:00", "end": "2023-12-18 19:57:30", "measured": 60.0},
+    {"start": "2023-12-18 19:57:30", "end": "2023-12-18 19:58:00", "measured": 60.0},
+    {"start": "2023-12-18 19:58:00", "end": "2023-12-18 19:58:30", "measured": 70.0},
+    {"start": "2023-12-18 19:58:30", "end": "2023-12-18 19:59:00", "measured": 70.0},
+    # {"start": "2023-12-18 19:59:00", "end": "2023-12-18 20:59:30", "measured": 80.0},
+    {"start": "2023-12-18 19:59:30", "end": "2023-12-18 20:00:00", "measured": 80.0},
+    {"start": "2023-12-18 20:00:00", "end": "2023-12-18 20:00:30", "measured": 90.0},
+    {"start": "2023-12-18 20:00:30", "end": "2023-12-18 20:01:00", "measured": 90.0},
+    {"start": "2023-12-18 20:01:30", "end": "2023-12-18 20:02:00", "measured": 100.0},
+    {"start": "2023-12-18 20:08:00", "end": "2023-12-18 20:08:30", "measured": 70.0},
+    {"start": "2023-12-18 20:08:30", "end": "2023-12-18 20:09:00", "measured": 70.0},
+    {"start": "2023-12-18 20:09:30", "end": "2023-12-18 20:10:00", "measured": 80.0},
+    {"start": "2023-12-18 20:10:20", "end": "2023-12-18 20:11:00", "measured": 90.0},
+    {"start": "2023-12-18 20:11:00", "end": "2023-12-18 20:11:30", "measured": 100.0},
+    {"start": "2023-12-18 20:11:30", "end": "2023-12-18 20:12:00", "measured": 100.0},
+]
 
-
-events = pd.DataFrame([db.session.get(spidb.Event, event).__dict__ for event in events])
+records = pd.DataFrame(records)
+records["start"] = pd.to_datetime(records["start"])
+records["end"] = pd.to_datetime(records["end"])
+# have record["description"] match events["description"] based on the time overlap
+records["type"] = ""
+for i, row in records.iterrows():
+    overlap = events[
+        (events["start"] < row["end"]) & (events["end"] > row["start"])
+    ]
+    if len(overlap) > 0:
+        records.at[i, "type"] = overlap.iloc[0]["type"]
+#%%
 
 sensor = db.session.get(spidb.Sensor, 1)
 
-# get the number out of event["description"]
-events["measured"] = events["description"].str.extract(r"(\d+\.?\d*)").astype(float)
 # %%
+rmss = []
+logs = []
+
 spls = []
-spls2 = [] 
+nsels = []
 
-for e, group in events.groupby("measured"):
-    for i, row in group.iterrows():
-        audio = db.get_audio(row["start"], row["end"], sensor=sensor, channel_number=7)
+# fig, ax = plt.subplots()
+# for e, group in events.groupby("measured"):
+    # for i, row in group.iterrows():
+for i, row in records.iterrows():
+    audio = db.get_audio(row["start"], row["end"], sensor=sensor, channel_number=7)
 
-        # fig, ax = audio.plot_spectrogram(window_size=1024, nperseg=1024, nfft=1024, noverlap=512, time_format="seconds", zmin=-125, zmax=-80)
-        # ax.set_ylim(0, 8000)
-        # ax.set_title(f"{row['description']}")
+    # fig, ax = audio.plot_spectrogram(window="hann", window_size=1024, nfft=1024, noverlap=512, nperseg=1024, zmax=-80, zmin=-140, time_format="seconds", cmap="jet", showscale="right")
+    # ax.set_ylim(0, 8000)
+    # ax.set_title(f"{row['type']} - {row['measured']} dBA")
 
-        fs = audio.sample_rate
+    # f, p = signal.welch(
+    #     audio.data.signal,
+    #     fs=audio.sample_rate,
+    #     nperseg=1024,
+    #     window="blackmanharris",
+    #     average="mean",
+    # )
 
-        f_b = 20.598997
-        f_c = 12194.217
-        num1, den1 = bilinear([1, 0, 0], [1, 2 * np.pi * (f_b + f_c), (2 * np.pi)**2 * f_b * f_c], fs)
+    # p = 10 * np.log10(p)
 
-        # Section 2: High-frequency filter
-        f_a = 107.65265
-        f_d = 737.86223
-        num2, den2 = bilinear([1, 0, (2 * np.pi * f_a)**2], [1, 2 * np.pi * (f_a + f_d), (2 * np.pi)**2 * f_a * f_d], fs)
-        
-        # A-weighting filter gain at 1000 Hz should be 0 dB. The ideal transfer function
-        # has a gain of approximately -2.0 dB at 1000 Hz, so we apply a correction factor.
-        gain_correction = 10**(2.0/20.0)
+    # fig, ax = plt.subplots()
+    # ax.plot(f, p)
+    # ax.set_xlim(0, 12000)
+    # ax.set_ylim(-150, -50)
+    # ax.set_xlabel("Frequency [Hz]")
+    # ax.set_ylabel("Spectral Power [dB]", fontsize=7)
+    # ax.set_title(f"{row['type']} - {row['measured']} dBA")
 
-        # Apply the two filter sections in series.
-        weighted_signal = lfilter(num1, den1, audio.data.signal)
-        weighted_signal = lfilter(num2, den2, weighted_signal)
-        
-        # Apply the gain correction to achieve 0 dB at 1000 Hz.
-        weighted_signal *= gain_correction
+    spl = acoustics.calculate_spl_dba(audio.data.signal, audio.sample_rate)
+    spls.append(spl)
 
-        # Calculate the RMS value of the A-weighted signal.
-        rms = np.sqrt(np.mean(weighted_signal**2))
-        
-        # Define the reference pressure for SPL calculation.
-        p_ref = 20e-6
+    rms = np.sqrt(np.mean(audio.data.signal**2))
+    log = 20 * np.log10(rms)
 
-        # Calculate SPL in dB.
-        spl = 20 * np.log10(rms / p_ref)
+    rmss.append(rms)
+    logs.append(log)
 
+        # f, p = signal.welch(
+        #     audio.data.signal,
+        #     fs=audio.sample_rate,
+        #     nperseg=1024,
+        #     window="blackmanharris",
+        #     average="mean",
+        # )
 
+        # p = 10 * np.log10(p)
 
+        # ax.plot(f, p, alpha=0.5)
 
-        # spl = acoustics.calculate_spl_dba(audio.data.signal, audio.sample_rate)
+        # spl = 10 * np.log10(np.sum(10 ** (p / 10)))
 
-        # spl2 = acoustics.a_weighting_spl(audio.data.signal, audio.sample_rate)
+        # spls.append(spl)
 
-        spls.append(spl)
-        # spls2.append(spl2)
+        # nsel = normalization.calculate_nsel(
+        #     audio,
+        #     filter="bandpass",
+        #     low=2000,
+        #     high=10000,
+        #     channel=sensor.channels[-1],
+        #     db=db,
+        # )
+        # nsels.append(nsel)
+records["rms"] = rmss
+records["db"] = logs
+records["spl"] = spls
+records["difference"] = records["measured"] - records["db"]
+# %%
+fig, ax = plt.subplots()
+for i, group in records.groupby("type"):
+    ax.scatter(group["db"], group["difference"], label=f"{i}")
+ax.set_xlabel("SPL Meter Measurement [dBA]")
+ax.set_ylabel("Difference [dB]")
+ax.legend(loc="upper left")
+ax.set_ylim(80, 160)
+ax.set_yticks([80, 120, 160])
+# %%
+fig, ax = plt.subplots()
+for i, group in records.groupby("type"):
+    ax.scatter(group["measured"], group["db"], label=f"{i}")
+ax.set_xlabel("SPL Meter Measurement [dBA]")
+ax.set_ylabel("SPL [dBFS]")
+ax.legend(loc="upper left")
+# %%
+# curve fit the difference using linear regression
+model = LinearRegression()
+X = records["db"].values.reshape(-1, 1)
+y = records["measured"].values
+model.fit(X, y)
+print(f"Slope: {model.coef_[0]:.2f}, Intercept: {model.intercept_:.2f}")
+# %%
+model = LinearRegression()
+X = records["difference"].values.reshape(-1, 1)
+y = records["measured"].values
+model.fit(X, y)
+print(f"Slope: {model.coef_[0]:.2f}, Intercept: {model.intercept_:.2f}")
 
-events["spl"] = spls
-# events["spl2"] = spls2
+#%%
+def correction(x):
+    # difference = x * 2.2 + 176.41
+    # measured = 1.39*difference - 73.85
+    measured = 1.39*x - 73.85
+
+    return measured
+
 #%%
 fig, ax = plt.subplots()
-ax.scatter(events["measured"], events["spl"], label="SPL")
-ax.scatter(events["measured"], events["spl2"], label="SPL2")
+for i, group in records.groupby("type"):
+    ax.scatter(group["measured"], group["db"], label=f"{i}")
+ax.set_xlabel("SPL Meter Measurement [dBA]")
+ax.set_ylabel("Channel 7 Measurement [dB]")
+ax.legend(loc="upper left")
+# ax.set_ylim(80, 160)
+# ax.set_yticks([80, 120, 160])
+
+
+#%%
+fig, ax = plt.subplots()
+for i, group in records.groupby("type"):
+    ax.scatter(group["measured"], group["db"], label=f"{i}")
+ax.plot(np.linspace(50, 110, 100), correction(np.linspace(-40, 20, 100)), color="gray", linestyle="--", label="Linear Fit")
+ax.set_xlabel("SPL Meter Measurement [dBA]")
+ax.set_ylabel("Difference [dB]")
+ax.legend(loc="upper left", ncols=3)
+# ax.set_ylim(80, 160)
+ax.set_xlim(50, 110)
+# ax.set_yticks([80, 120, 160])
 # %%

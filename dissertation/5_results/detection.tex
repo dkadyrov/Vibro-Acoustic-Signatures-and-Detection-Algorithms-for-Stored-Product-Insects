@@ -1,0 +1,39 @@
+\chapter{Developing a Detection Algorithm}
+
+\newpage
+\section{Detection Algorithm Metrics}
+
+A successful detection algorithm requires maximizing the ability to successfully detect the presence of an insect in the store product material sample while minimizing the possibility of falsly identifying a pest in a clean sample and failing to detect an insect in an infested sample. The algorithm should be able to process the data in real-time, providing the conclusion within an efficient duration. The binary form of the detection algorithm is defined as a decision, $D$, where $D=1$ indicates the presence of an insect and $D=0$ indicates the absence of an insect. Equation \ref{detection} shows the binary detection algorithm:
+
+\begin{equation}
+	\label{detection}
+	D = \begin{cases}
+		1 & \text{Insect Detected}    \\
+		0 & \text{No Insect Detected}
+	\end{cases}
+\end{equation}
+
+The probability of detection for an algorithm is measured by the number of times the algorithm correctly identified the presense of an insect in the stored product material sample divided by the total number of opportunities where an insect was present in the tested material. Equation \ref{pd} shows the calculation of the probability of detection:
+
+\begin{equation}
+	\label{pd}
+	\text{PD} = \frac{N(D=1, I=1)}{N(I=1)}
+\end{equation}
+
+where $N(D=1, I=1)$ is the number of records where the algorithm correctly identified the presence of an insect and $N(I=1)$ is the total number of records available with insects present in the tested material. 
+
+The probability of false positive is the number of times the algorithm incorrectly identified the presence of an insect in a clean stored product material sample divided by the total number of opportunities where no insects were present in the tested material. Equation \ref{pfa} shows the calculation of the probability of false positive:
+
+\begin{equation}
+	\label{pfa}
+	\text{PFP} = \frac{N(D=1, I=0)}{N(I=0)}
+\end{equation}
+
+where $N(D=1, I=0)$ is the number of records where the algorithm incorrectly identified the presence of an insect and $N(I=0)$ is the total number of records available with no insects present in the tested material. 
+
+The probability of false negative is the number of times the algorithm incorrectly identified the absence of an insect in an infested stored product material sample divided by the total number of opportunities where an insect was present in the tested material. Equation \ref{pfn} shows the calculation of the probability of false negative:
+
+\begin{equation}
+	\label{pfn}
+	\text{PFN} = \frac{N(D=0, I=1)}{N(I=1)}
+\end{equation}

@@ -1,0 +1,273 @@
+\documentclass[11pt]{report}
+
+\usepackage{geometry}
+\geometry{letterpaper, portrait, left=1.5in, right=1in, top=1.5in, bottom=1in}
+
+\usepackage{lmodern}
+
+\usepackage{etoolbox}
+\usepackage[style=ieee, citestyle=numeric-comp, sortcites, backend=biber, defernumbers=true]{biblatex}
+\addbibresource{references.bib}
+
+% Prevent page breaks within bibliography entries
+\patchcmd{\bibsetup}{\interlinepenalty=5000}{\interlinepenalty=10000}{}{}
+\setcounter{biburlnumpenalty}{100}
+\setcounter{biburlucpenalty}{100}
+\setcounter{biburllcpenalty}{100}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5\baselineskip}
+\usepackage{titlesec}
+% Set consistent spacing before and after section headers
+\titleformat{\chapter}[display]
+  {\normalfont\large\bfseries\centering}{\chaptertitlename\ \thechapter}{-0.5em}{\large\centering}
+\titleformat{\section}
+  {\normalfont\normalsize\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}
+  {\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+\titlespacing*{\chapter}{0pt}{0.25\baselineskip}{0.25\baselineskip}
+\titlespacing*{\section}{0pt}{0.25\baselineskip}{0.25\baselineskip}
+\titlespacing*{\subsection}{0pt}{0.25\baselineskip}{0.25\baselineskip}
+\titlespacing*{\subsubsection}{0pt}{0.25\baselineskip}{0.25\baselineskip}
+
+\usepackage[separate-uncertainty=true, multi-part-units=single]{siunitx}
+\sisetup{
+	exponent-to-prefix = true,
+	range-independent-prefix = true, 
+  group-separator = {,}
+}
+
+\usepackage{minted}
+\usemintedstyle{friendly}
+\setminted{
+  frame=single,
+  framesep=2mm,
+  baselinestretch=1.0,
+  fontsize=\footnotesize,
+}
+
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{xurl}
+% \usepackage{subfig} % REMOVE this line to avoid conflict with subcaption
+\usepackage{subcaption}
+\usepackage{caption}
+\usepackage{amsmath} % Added for equation* environment
+\usepackage{hyperref}
+\usepackage{todonotes}
+\usepackage{setspace}
+\usepackage{calc}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+% this prints a line under the header
+\renewcommand{\headrulewidth}{0 pt}
+%this prints a line under the footer
+\renewcommand{\footrulewidth}{0 pt}
+\fancyhead[RO]{}
+\fancyhead[LO]{}
+\fancyfoot[C]{}
+\rhead{\thepage}
+
+\fancypagestyle{plain}{%
+	\fancyhf{}
+	\rhead{\thepage}
+}
+
+\usepackage{pdfpages}    % For including PDF files
+\usepackage[toc,page]{appendix}  % For structured appendices
+
+
+\title{VIBRO-ACOUSTIC SIGNATURES AND DETECTION ALGORITHMS FOR STORED PRODUCT INSECTS}
+\author{Daniel Kadyrov, Ph.D. Candidate}
+\date{\today}
+
+\newcommand{\thesistitle}{VIBRO-ACOUSTIC SIGNATURES AND DETECTION ALGORITHMS FOR STORED PRODUCT INSECTS}
+\newcommand{\thesisauthor}{Daniel Kadyrov}
+\newcommand{\thesisadvisor}{Alexander Sutin}
+\newcommand{\thesisyear}{2025}
+\newcommand{\thesisname}{Daniel Kadyrov}
+\newcommand{\thesischairadvisor}{Dr. Alexander Sutin}    % this name prints on the title page as chairman and the abstract page as advisor
+\newcommand{\committeenameA}{Dr. Raju Datla, Chairman}
+\newcommand{\committeenameB}{Dr. Muhammad R. Hajj}
+\newcommand{\committeenameC}{Dr. Richard Mankin}
+\newcommand{\thesisdepartment}{Department of Civil, Environmental and Ocean Engineering}
+\newcommand{\thesisdate}{November, 2025}
+\newcommand{\thesistype}{dissertation}
+\newcommand{\thesisdegree}{Doctor of Philosophy}
+\newcommand{\graddate}{\the\year} % like 2020, 2019, no month or day 
+
+\makeatletter
+\renewcommand{\maketitle}{
+\begin{center}
+  {\thesistitle}
+  \vspace{.15in}
+  
+    by
+    
+  \vspace{.15in}
+  \thesisauthor
+  
+  \vspace{.15in}
+  
+ {A DISSERTATION}\\
+  \vspace{.2in}
+  \begin{spacing}{1}
+    {Submitted to the Faculty of the Stevens Institute of Technology\\
+    in partial fulfillment of the requirements for the degree of}
+    \end{spacing}
+  \vspace{.2in}
+  
+  {DOCTOR OF PHILOSOPHY}\\
+  \vspace{1.0in}
+  % for master thesis, change Chairman to Advisor
+    \hfill 
+    \begin{minipage}{80mm}
+    \begin{spacing}{ }\noindent \rule{3.2in}{0.1mm}
+        \thesisname, Candidate\\[3mm]
+        \underline{ADVISORY COMMITTEE}\\[3mm]
+        \noindent \rule{3.2in}{0.1mm}\\[-1.3mm]
+        % for master thesis, change Chairman to Advisor
+        {\thesischairadvisor}, Chair  \hfill{Date}\\[2mm]
+        {\noindent \rule{3.2in}{0.1mm}}\\[-1.3mm]
+        {\committeenameA}        \hfill{Date}\\[2mm]
+        {\noindent \rule{3.2in}{0.1mm}}\\[-1.3mm]
+        {\committeenameB}        \hfill{Date}\\[2mm]
+        {\noindent \rule{3.2in}{0.1mm}}\\[-1.3mm]
+        {\committeenameC}        \hfill{Date}\\[2mm]
+    \end{spacing}
+  \end{minipage}
+  \vfill
+  
+  {
+	STEVENS INSTITUTE OF TECHNOLOGY\\
+  	Castle Point on Hudson\\
+  	Hoboken, NJ 07030
+  }
+  % \vfill
+
+  {\graddate}
+\end{center}
+}
+\makeatother
+
+\begin{document}
+
+% \vspace*{-2\baselineskip}
+\maketitle
+\pagenumbering{roman}
+\thispagestyle{empty}
+
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+
+Stored products, such as grains and processed foods, are a staple in global diets and one of the most internationally traded commodities but are susceptible to infestation by various pests, most notably insects. The early detection of insects throughout moments of the supply chain is crucial to mitigate against qualitative and quantitative losses, ensure food safety, and prevent introducing invasive species to new environments resulting in disproportionate ecological harm. 
+
+The Acoustic Stored Product Insect Detection System (A-SPIDS) was designed as a low-cost, non-destructive, alternative detection method that uses piezoelectric sensors to detect insect sounds and vibrations within an infested material. The system was used to record and analyze the vibro-acoustic signatures of various insects, including the \textit{Callosobruchus maculatus}, \textit{Tribolium confusum}, and \textit{Tenebrio molitor}, in different materials. These recordings were annotated and organized into a dataset accessible through a developed database software package.  
+
+A normalization method was implemented using the ambient noise of the sensors as a reference to accommodate for proprietary, non-calibrated sensors and enable relative detection thresholds for unknown sensitives. The normalized envelope of the filtered signals was used to characterize and compare the insect signals by measuring the Normalized Signal Pulse Amplitude (NSPA) and Normalized Signal Energy Level (NSEL), parameters that apply the signal noise ratio (SNR) for pulse-based detection and averaged energy-based detection, respectively. The NSPA metric demonstrated an effective method for a threshold-based detection algorithm.
+
+Although the physical insulation in the platform provides up to 50 dB of noise attenuation, external noise still penetrates to the internal piezoelectric sensors appearing as insect-like signals that could lead to false positives. The NSPA algorithm was parametrized to determine a filter range that would limit the effects of external noise up to 80 dB. External microphones were also included in the design to identify high peak-to-RMS signals outside the sensor and eliminate them from the internal piezoelectric sensor waveforms. This leads to a \SI{100}{\percent} detection rate for the available recordings. 
+
+\chapter*{Dedication}
+\addcontentsline{toc}{chapter}{Dedication}
+
+To my best friend and pup, Marx, and the 100,000+ insects that preceeded him as pets and research subjects.
+
+\chapter*{Acknowledgments}
+\addcontentsline{toc}{chapter}{Acknowledgments}
+
+First and foremost I would like to express my deepest gratitude to my advisor, Dr. Alexander Sutin, for his unwavering support, guidance, and encouragement throughout my Ph.D. journey. His expertise and wisdom in acoustics, signal processing, and the traversal of academic publications has been invaluable to my research, and his mentorship has helped me grow both academically and professionally.
+
+I would like to thank my other committee members. Dr. Raju Datla for serving as the committee chair and guiding me throughout the Ph.D. process. Dr. Muhammad Hajj for his feedback that elevated the qualtify of my research. Dr. Richard Mankin for serving as an external member and the lengthy, extensive, and high quality research he has conducted in the field of insect detection that served as a foundation for this work. 
+
+I would have never started this journey if not for the initial motivation of my love, Gabriela Sanchez, and her unwavering support. 
+
+Unquestionable support came from my former coworkers at the Sensor Technology and Applied Research (STAR) Center laboratory and Maritime Security Center (MSC) at Stevens Institute of Technology including Dr. Hady Salloum, Dr. Alexander Sedunov, Nikolay Sedunov, Christopher ``Kip'' Francis, Sergey T., Aleksandr M., Cameron Ruddy, Anthony Rusignioli, Beth DeFares, and Dr. Barry Bunin. Besides providing support with the development and deployment of systems and sensors, expanding my Russian lexicon to the dismay of my mother, and improving my chess game they all contributed to my growth as a researcher and engineering, instiling lifelong skills and passions as well as a strong importance and appreciation of engineering to national and global wellbeing. 
+
+
+% Unquestionable support came from my former coworkers at the Sensor Technology and Applied Research (STAR) Center laboratory and Maritime Security Center (MSC) at Stevens Institute of Technology. Dr. Hady Salloum provided the intial opportunity to work at the STAR Center, where I was exposed to a variety of research topics and projects that guided my academic and professional journey. Dr. Alexander Sedunov and Nikolay Sedunov are two of the most brilliant minds I have ever met, and my research would not have been possible without their tireless hard work and expertise. My Russian lexicon was greatly expanded thanks to the colorful vocabulary of Sergey Tsur and Aleksandr Mershevsky. Christopher ''Kip`` Francis taught a curriculum never available in any university, how to correctly 
+
+
+% Christopher ''Kip`` Francis
+
+% The teachings and pedagogy of Dr. Barry Bunin extend far from the two courses I had the pleasure of spending with him. Along with Beth DeFares, Barry instilled the importance and appreciation of engineering to national and global wellbeing. 
+
+% The teachings of Dr. Barry Bunin extend far from the two coursers 
+
+% Dr. Barry Bunin 
+
+
+% including Dr. Hady Salloum, Dr. Alexander Sedunov, Nikolay Sedunov, Christopher Francis, Sergey T., Aleksandr M., Cameron Ruddy, and Anthony Rusignioli. 
+
+
+
+% \textbf{Committee Members}
+% \begin{itemize}
+% 	\item Dr. Alexander Sutin, Stevens Institute of Technology
+% 	\item Dr. Muhammad Hajj, Stevens Institute of Technology
+% 	\item Dr. Raju Datla, Stevens Institute of Technology
+% 	\item Dr. Richard Mankin, USDA Agricultural Research Service
+% \end{itemize}
+
+% \newpage
+% This research originated from a project funded by the Cross-Border Threat Screening and Supply Chain Defense (CBTS) to extend earlier work conducted by the Stevens Institute of Technology on the use of passive acoustic sensing for the detection of insects in stored products. The presentation and subsequent conference paper at the Acoustic Society of America Conference in 2022 on the topic of \citetitle{kadyrovImprovementsStevensDrone2022} showed promising results on the capabilities of the lab to accommodate detection of various targets using acoustics and signal-processing techniques. The preliminary work of research and development of alternative low-cost sensors to assist Custom and Border Protection Agricultural Specialists at United States Ports of Entry expanded into deeper analysis of utilizing the recordings made of live insect specimen in various materials using the sensor to study their acoustic characteristics, explore normalization methods, investigate reducing the influence of background noise, and eventually implement a detection algorithm.
+
+% In \citetitle{kadyrovVibroAcousticSignaturesVarious2024}, we introduced the Acoustic Stored Product Insect Detection System (A-SPIDS) and published a comprehensive analysis of the signatures of various stored product insects in different materials based on the recordings. Highlighting their unique spectral and temporal characteristics, we developed normalization methods that used the sensor's self-noise to standardize the recordings between different, non-calibrated, piezoelectric discs deployed in the sensor. This normalization method was extended to use the median of the signal and shown that it could be used when a sensor's self-noise data is not available, like in the case of the publicly available BugBytes dataset. 
+
+% These findings were presented as a poster ``Perspectives of Machine Learning for Acoustic Methods of Stored Product Insect Detection''  at the Artificial Intelligence Meets Science (AIMS) Conference in 2024. After publishing the underlying data and software from the recordings as the Acoustic Stored Product Insect Dataset and Acoustic Stored Product Insect Database on Kaggle and GitHub, respectively, we received interest from the NYU AI for Scientific Research (AIfSR) group to explore applying machine learning techniques on the data. Although there were interesting findings, we were not able to publish in NeurIPS because the recording subjects were not sufficiently diverse. A presentation was also made at the DHS RDT\&E summit.
+
+% In the upcoming publication, titled ``Acoustic Detection of Insects in Stored Products in the Presence of Strong Ambient Noise", we will focus on how we could use the spectral and temporal characteristics, normalization, and metrics we found in the earlier publication to contrive a robust detection algorithm. The article begins by showing that although the insulation of the A-SPIDS sensor provides some protection against ambient noise, it is not entirely effective and often appears as similar signals to those produced by insects. At this moment, we have made significant progress in showing how the normalization metrics could be used in order to optimize the examination frequency range to avoid this interference. The next steps are to implement the detection algorithm and evaluate its performance.
+
+% table of contents 
+\newpage
+\setcounter{tocdepth}{2}
+\begingroup
+\setlength{\parskip}{0pt}
+\setstretch{1}
+\small
+\tableofcontents
+\endgroup
+\newpage
+\begingroup
+\setlength{\parskip}{0pt}
+\setstretch{1}
+\small
+\listoftables
+\endgroup
+\newpage
+\begingroup
+\setlength{\parskip}{0pt}
+\setstretch{1}
+\small
+\listoffigures
+\endgroup
+
+
+\newpage
+\pagenumbering{arabic}
+% \onehalfspacing
+% \setstretch{1.125}
+
+
+\include{1_introduction/introduction}
+\include{2_literaturereview/literature_review}
+\include{3_methodology/methodology}
+\include{4_characteristics/characteristics}
+\include{5_results/results}
+\include{5_results/detection}
+
+\newpage
+{\small\singlespacing
+	\printbibliography[heading=bibintoc]
+}
+
+\newpage
+\input{cv/cv}
+
+\end{document}
