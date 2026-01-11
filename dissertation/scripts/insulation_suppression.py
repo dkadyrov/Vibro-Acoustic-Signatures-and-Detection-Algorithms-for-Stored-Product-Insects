@@ -62,35 +62,35 @@ difference = (results["Ch. 7"] - results["Average"])
 print(f"The maximum difference is {difference.max()}")
 print(f"The average difference is {difference.mean()}")
 # %%
-reference = normalization.reference_signal(db, record.sensor, channels=[4,5,7])
+# reference = normalization.reference_signal(db, record.sensor, channels=[4,5,7])
 
-fig, ax = plt.subplots()
-for i, audio in enumerate(audios):
-    audio.fade_in(fade_time=1, overwrite=True)
-    audio.fade_out(fade_time=1, overwrite=True)
+# fig, ax = plt.subplots()
+# for i, audio in enumerate(audios):
+#     audio.fade_in(fade_time=1, overwrite=True)
+#     audio.fade_out(fade_time=1, overwrite=True)
 
-    f, p = signal.welch(
-        audio.data.signal,
-        fs=audio.sample_rate,
-        nperseg=1024,
-        nfft=1024,
-        noverlap=512,
-        window="blackmanharris",
-        average="mean",
-        scaling="spectrum",
-    )
+#     f, p = signal.welch(
+#         audio.data.signal,
+#         fs=audio.sample_rate,
+#         nperseg=1024,
+#         nfft=1024,
+#         noverlap=512,
+#         window="blackmanharris",
+#         average="mean",
+#         scaling="spectrum",
+#     )
 
-    p = 10 * np.log10(p)
-    snr = p - reference[f"Ch. {audio.channel_number}"]
+#     p = 10 * np.log10(p)
+#     snr = p - reference[f"Ch. {audio.channel_number}"]
 
-    ax.plot(f, snr, label=f"Ch. {audio.channel_number}", color=color.colors[i])
+#     ax.plot(f, snr, label=f"Ch. {audio.channel_number}", color=color.colors[i])
 
-ax.legend(loc="upper right", ncols=4)
-ax.set_xlim(0, 12000)
-ax.set_ylim(0, 70)
-ax.set_yticks([0, 35, 70])
-ax.set_xlabel("Frequency [Hz]")
-ax.set_ylabel("SNR [dB]")
+# ax.legend(loc="upper right", ncols=4)
+# ax.set_xlim(0, 12000)
+# ax.set_ylim(0, 70)
+# ax.set_yticks([0, 35, 70])
+# ax.set_xlabel("Frequency [Hz]")
+# ax.set_ylabel("SNR [dB]")
 
-fig.savefig(f"projects/Dissertation/proposal/figures/insulation_suppression/snr_{record.external_spl:.2f}.pdf", dpi=300)
-# %%
+# fig.savefig(f"projects/Dissertation/proposal/figures/insulation_suppression/snr_{record.external_spl:.2f}.pdf", dpi=300)
+# # %%

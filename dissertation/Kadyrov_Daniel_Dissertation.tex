@@ -36,7 +36,9 @@
 \sisetup{
 	exponent-to-prefix = true,
 	range-independent-prefix = true, 
-  group-separator = {,}
+  group-separator = {,},
+  display-per-mode = fraction, 
+  inline-per-mode = symbol
 }
 
 \usepackage{minted}
@@ -56,11 +58,14 @@
 % \usepackage{subfig} % REMOVE this line to avoid conflict with subcaption
 \usepackage{subcaption}
 \usepackage{caption}
+\captionsetup{font=footnotesize, margin=30pt, skip=5pt} % Set caption font to 8pt with smaller margins
 \usepackage{amsmath} % Added for equation* environment
 \usepackage{hyperref}
 \usepackage{todonotes}
 \usepackage{setspace}
 \usepackage{calc}
+
+\usepackage{showframe} % Shows page layout boxes - REMOVE when done
 
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -177,7 +182,7 @@ Although the physical insulation in the platform provides up to 50 dB of noise a
 \chapter*{Dedication}
 \addcontentsline{toc}{chapter}{Dedication}
 
-To my best friend and pup, Marx, and the 100,000+ insects that preceeded him as pets and research subjects.
+To my best friend and pup, Marx, and the thousands of insects that preceded him as pets and research subjects.
 
 \chapter*{Acknowledgments}
 \addcontentsline{toc}{chapter}{Acknowledgments}
@@ -259,8 +264,9 @@ Unquestionable support came from my former coworkers at the Sensor Technology an
 \include{2_literaturereview/literature_review}
 \include{3_methodology/methodology}
 \include{4_characteristics/characteristics}
-\include{5_results/results}
+% \include{5_results/results}
 \include{5_results/detection}
+\include{6_conclusion/conclusion}
 
 \newpage
 {\small\singlespacing

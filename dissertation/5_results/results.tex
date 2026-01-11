@@ -1,31 +1,24 @@
 \chapter{Reducing Influence of External Noise}
+\section{Generation of Insect-like Signals by External Noise}
+
+
+
+\newpage
 
 \section{Efficacy of Physical Noise Reduction}
 
-One of the challenges of acoustic sensing is the interference of external noise obscuring the signals of interest. In addition to physical insulation to suppress external noise and vibration, acoustic microphones were included in the design of the A-SPIDS platform to assist the detection algorithm in identifying noise as anomalies. The microphones recording over channel four and five were mounted coaxially with the piezoelectric channels zero and one, respectively, while microphones labeled as channel six and seven were placed within the insulation and externally on the system, respectively. Figure \ref{fig:external_microphones_noise} compares the spectra and signal-noise ratio of the acoustic microphones during presence of external white noise at \SI{90}{\deci\bel A} without insects present measured against a reference signal when no insect or noise were present:
+The developed vibro-acoustic insect detection system provided sufficient physical soundproofing that enabled measurement of insect signatures with high SNR by the integrated piezoelectric sensors without interference from external noise. Strong external noise with impulse characteristics, however, could still penerate inside the enclosure and generate signals similar to those produced by insects and mask their presence.
 
-\begin{figure}[!htbp]
+Although different types of external noise were simulated during recordings through loudspeakers, recordings of solo male speech demonstrated the most significant interference and was selected for the subset. The speech was played at varying sound levels from \SIrange{60}{100}{\deci\bel A} at \SI{10}{\deci\bel} increments and controlled using the calibrated Extech 407730 Digital Sound Level Meter from Teledyne FLIR \cite{Extech407730Digitala}. Spectrograms of the speech signal at \SI{90}{\deci\bel A} measured by the piezoelectric sensors, channels zero and one, the collocated microphones, channels four and five, and the external microphone, channel seven, are presented in Figure \ref{fig: spectrogram insect-like noise}. The scales of the piezoelectric and microphone spectrograms are adjusted and differentiated to highlight the impulses.
+
+\begin{figure}[H]%
 	\centering
-
-	\begin{subfigure}{\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{figures/insulation_suppression/spectra_89.88.pdf}
-		\caption{Spectra}
-		\label{fig:insulation_spectra}
-	\end{subfigure}
-
-	\begin{subfigure}{\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{figures/insulation_suppression/snr_89.88.pdf}
-		\caption{SNR}
-		\label{fig:insulation_snr}
-	\end{subfigure}
-
-	\caption{SNR of microphones during exposure to \SI{90}{\deci\bel A} external white noise}
-	\label{fig:external_microphones_noise}
+	\includegraphics[width=\textwidth]{figures/5_1_insect_like_noise.pdf}%
+	\caption{Spectrogram from piezoelectric and acoustic microphones during external noise, amplified speech at \SI{90}{\deci\bel A}. Insect like pulses are visible in all channels}%
+	\label{fig: spectrogram insect-like noise}%
 \end{figure}
 
-The difference in strength between the microphones demonstrate the effectiveness of the insulation in muffling external noise especially at frequencies above \SI{2000}{\hertz}. The insulation alone is shown to provide an average of \SI{35}{\deci\bel} and a maximum of \SI{43}{\deci\bel} noise reduction. Although \citeauthor{mankinNoiseShieldingAcoustic1996} was able to achieve a higher level of attenuation, their solution was significantly larger and heavier compared to the compact and portable A-SPIDS \cite{mankinNoiseShieldingAcoustic1996}. The channel seven microphone was chosen as the external noise reference for the detection algorithm.
+The spectrograms show the variation of the external signal as it propogates through the system. The impulses are similar to the insect signals presented in Figure 5 of the previous publication \cite{kadyrovVibroAcousticSignaturesVarious2024}. The NSPA values calculated from the noise recordings range from \SIrange{39.34}{69.41}{\deci\bel} at noise levels from \SIrange{60}{100}{\deci\bel A}, respectively, which are comparable or exceed those of the insect signals. This demonstrates a challenge in setting a detection threshold, $T$, that can distinguish between insect signals and external noise without incurring false positives or negatives.
 
 % \subsection{Calibration of External Microphone}
 
@@ -42,16 +35,18 @@ The difference in strength between the microphones demonstrate the effectiveness
 
 \subsection{Influence of Ambient Noise}
 
-The high sensitivity of the piezoelectric discs make them vulnerable to external noise even through the physical insulation. Figure \ref{fig:90_spectrogram} shows the spectrograms from the four internal piezoelectric sensors and the external microphone, channel seven, during a recording with no insect and \SI{90}{\deci\bel A} of external noise: 
+The developed vibro-acoustic insect detection system provided sufficient physical soundproofing that enabled measurement of insect signatures with high SNR by the integrated piezoelectric sensors without interference from external noise. Strong external noise with impulse characteristics, however, could still penerate inside the enclosure and generate signals similar to those produced by insects and mask their presence.
 
-\begin{figure}[!htbp]
+Although different types of external noise were simulated during recordings through loudspeakers, recordings of solo male speech demonstrated the most significant interference and was selected for the subset. The speech was played at varying sound levels from \SIrange{60}{100}{\deci\bel A} at \SI{10}{\deci\bel} increments and controlled using the calibrated Extech 407730 Digital Sound Level Meter from Teledyne FLIR \cite{Extech407730Digitala}. Spectrograms of the speech signal at \SI{90}{\deci\bel A} measured by the piezoelectric sensors, channels zero and one, the collocated microphones, channels four and five, and the external microphone, channel seven, are presented in Figure \ref{fig: spectrogram insect-like noise}. The scales of the piezoelectric and microphone spectrograms are adjusted and differentiated to highlight the impulses.
+
+\begin{figure}[H]%
 	\centering
-	\includegraphics[width=\textwidth]{figures/acoustic_signatures/complete_Noise_90 dBA_spectrogram_display.pdf}
-	\caption{Spectrograms from internal and external sensors during \SI{90}{\deci\bel A} external noise}
-	\label{fig:90_spectrogram}
+	\includegraphics[width=\textwidth]{figures/5_1_insect_like_noise.pdf}%
+	\caption{Spectrogram from piezoelectric and acoustic microphones during external noise, amplified speech at \SI{90}{\deci\bel A}. Insect like pulses are visible in all channels}%
+	\label{fig: spectrogram insect-like noise}%
 \end{figure}
 
-The spectrograms show the infiltration of the impulses from the noise, distinct in channel seven, manifest synchronously in the internal piezoelectric channels and match the impulses observed in recordings of a single insect. After applying the bandpass filtering from \SIrange{500}{6000}{\hertz}, the enveloping, and self-noise normalization, the impulses generated by the external noise signals are indistinguishable from those produced by insects. 
+The spectrograms show the variation of the external signal as it propogates through the system. The impulses are similar to the insect signals presented in Figure 5 of the previous publication \cite{kadyrovVibroAcousticSignaturesVarious2024}. The NSPA values calculated from the noise recordings range from \SIrange{39.34}{69.41}{\deci\bel} at noise levels from \SIrange{60}{100}{\deci\bel A}, respectively, which are comparable or exceed those of the insect signals. This demonstrates a challenge in setting a detection threshold, $T$, that can distinguish between insect signals and external noise without incurring false positives or negatives.
 
 \newpage
 Figure \ref{fig:waveform_comparison} juxtaposes the filtered, enveloped, and normalized waveforms for the \textit{T. confusum} in flour and the \textit{C. maculatus} in oatmeal with the \SI{60}{\decibel A} and \SI{90}{\deci\bel A} external noise. 

@@ -97,5 +97,5 @@ ax.legend(
     markerscale=0.5,
     fontsize=8,
 )
-fig.savefig("projects/Dissertation/proposal/figures/2_spectra_comparison.pdf", dpi=300)
+fig.savefig("projects/Dissertation/dissertation/figures/4_spectra_comparison.pdf", dpi=300)
 # %%

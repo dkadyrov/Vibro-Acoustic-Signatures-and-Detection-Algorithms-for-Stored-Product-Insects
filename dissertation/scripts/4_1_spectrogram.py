@@ -1,17 +1,8 @@
-# %%
-from archive import lookup
-import pandas as pd
-import numpy as np
-import matplotlib
+import cblind as cb
+from aspids_tools import visualizer
 from matplotlib import pyplot as plt
-from scipy import signal
-
-from dankpy import color, dt
 
 from spidb import spidb
-from aspids_tools import visualizer
-
-import cblind as cb
 
 db = spidb.Database(r"data/spi.db")
 
@@ -38,5 +29,5 @@ for a in ax:
     a.set_ylim(0, 12000)
     a.set_yticks([0, 6000, 12000])
 # change figure size to 6x3 inches
-fig.set_size_inches(6, 3)
+fig.set_size_inches(6, 4)
 fig.savefig(r"projects/Dissertation/dissertation/figures/1_spectrogram.pdf", dpi=300)
