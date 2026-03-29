@@ -1,14 +1,13 @@
 # %%
 import pandas as pd
 import numpy as np
+import matplotlib
 from matplotlib import pyplot as plt
 
 from scipy import signal
 from dankpy import color, audio  # type: ignore
 
-import cblind as cb
-
-pd.options.mode.chained_assignment = None
+import cblind
 
 plt.style.use("dankpy.styles.latex")
 # %%
@@ -155,7 +154,8 @@ for i, t in enumerate(figure_targets):
         zmin=t["low-amp"],
         zmax=t["high-amp"],
         showscale="right",
-        cmap=cb.cbmap("cb.solstice"),
+        cmap=matplotlib.colormaps.get_cmap("cb.solstice"),
+        # cmap=cb.cbmap("cb.solstice"),
     )
     ax.set_ylim(0, t["top-freq"])
     ax.set_yticks([0, round(t["top-freq"] / 2), t["top-freq"]])
@@ -251,7 +251,7 @@ for i, t in enumerate(figure_targets):
         round(a.data["time [s]"].max()),
         color="red",
         linestyle="dashed",
-        label="NSPA ({:.2f} dB)".format(20 * np.log10(rms)),
+        label="NSPA ({:.0f} dB)".format(20 * np.log10(rms)),
     )
     # plot rectange at cutoffs
     ax.fill_between(

@@ -87,7 +87,7 @@ for i, t in enumerate(targets):
 
     # make a dashed red line at the RMS value, round it to 2 decimal places
     ax.axhline(
-        rms, color="red", linestyle="--", label=f"NSPA ({amp:.2f} dB)", zorder=10
+        rms, color="red", linestyle="--", label=f"NSPA ({amp:.0f} dB)", zorder=10
     )
 
     # make a red box between min_threshold and max threshold

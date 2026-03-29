@@ -1,6 +1,7 @@
-import cblind as cb
+import cblind
 from aspids_tools import visualizer
 from matplotlib import pyplot as plt
+import matplotlib
 
 from spidb import spidb
 
@@ -23,7 +24,7 @@ fig, ax = visualizer.spectrogram_display(
     showscale="right",
     zmin=-140,
     zmax=-80,
-    color_map=cb.cbmap("cb.solstice"),
+    color_map=matplotlib.colormaps.get_cmap("cb.solstice"),
 )
 for a in ax:
     a.set_ylim(0, 12000)

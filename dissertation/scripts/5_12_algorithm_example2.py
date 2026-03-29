@@ -67,7 +67,7 @@ fig, ax = plt.subplots()
 ax.plot(
     noise_external.data.seconds,
     noise_external.data.signal,
-    label=f"Ch. 7, NSPA {normalization.nspa(noise_external.data.signal):.2f} dB",
+    label=f"Ch. 7, NSPA {normalization.nspa(noise_external.data.signal):.0f} dB",
 )
 ax.scatter(
     noise_external.data.seconds[noise_peaks],
@@ -95,10 +95,18 @@ noise_internal = processing.process_signal(
     high=6000,
 )
 
+# boost the noise peaks by 10 dB
+noise_internal.data.loc[noise_peaks, "signal"] = noise_internal.data.loc[
+    noise_peaks, "signal"] * 10 ** (10 / 20) #/ 10 ** (30.54 / 20)
+
+
+# volume_ratio = ratio * 10 ** (10 / 20) / 10 ** (30.54/20)  # Increase by 10 dB
+
 noise_internal.data.loc[:, "signal"] = noise_internal.data["signal"] * (
     ratio / 10 ** (30.54 / 20)
 )
-noise_internal.audio *= ratio / 10 ** (30.54 / 20)
+
+# noise_internal.audio *= ratio / 10 ** (30.54 / 20) * 10 ** (10 / 20)
 
 insect = db.session.get(spidb.Record, 941)
 insect = db.get_audio(
@@ -119,7 +127,7 @@ insect.resample(22050)
 
 A = 10 ** (21.6 / 20) * 10 ** (6 / 20)
 
-peaks, _ = processing.find_peaks(insect.data.signal, threshold=A, min_distance=500)
+peaks, _ = processing.find_peaks(insect.data.signal, threshold=A, min_distance=250)
 
 insect_nspa = np.sqrt(np.mean(insect.data.signal[insect.data.signal >= A] ** 2))
 insect_nspa = 20 * np.log10(insect_nspa)
@@ -128,7 +136,7 @@ fig, ax = plt.subplots()
 ax.plot(
     insect.data.seconds,
     insect.data.signal,
-    label=f"Ch. 0, NSPA {insect_nspa:.2f} dB",
+    label=f"Ch. 0, NSPA {insect_nspa:.0f} dB",
 )
 ax.scatter(
     insect.data.seconds[peaks],
@@ -162,7 +170,7 @@ fig, ax = plt.subplots()
 ax.plot(
     combined.data.seconds,
     combined.data.signal,
-    label=f"Ch. 0, NSPA {combined_nspa:.2f} dB",
+    label=f"Ch. 0, NSPA {combined_nspa:.0f} dB",
 )
 ax.scatter(
     combined.data.seconds[peaks],
@@ -173,7 +181,7 @@ ax.scatter(
 )
 ax.set_xlabel("Time [s]")
 ax.set_ylabel("Normalized\nAmplitude")
-ax.set_ylim(0, 75)
+ax.set_ylim(0, 200)
 ax.set_xlim(0, 5)
 ax.legend(loc="upper right", handlelength=0, handletextpad=0, markerscale=0)
 fig.savefig(
@@ -204,7 +212,7 @@ fig, ax = plt.subplots()
 ax.plot(
     combined.data.seconds,
     combined.data.signal,
-    label=f"Ch. 0, NSPA {cleaned_nspa:.2f} dB",
+    label=f"Ch. 0, NSPA {cleaned_nspa:.0f} dB",
 )
 ax.scatter(
     combined.data.seconds[peaks],

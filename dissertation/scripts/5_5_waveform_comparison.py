@@ -56,7 +56,7 @@ targets = [
     },
     {
         "target": "Noise",
-        "material": "80 dBA",
+        "material": "90 dBA",
         "channel": 3,
         "record": 463,
         "amplitude": 2800,
@@ -109,7 +109,7 @@ for i, t in enumerate(targets):
     )
 
     fig, ax = plt.subplots(figsize=(3, 1.5))
-    ax.plot(audio.data.seconds, audio.data.signal, label=f"NSPA {nspa:.2f} dB")
+    ax.plot(audio.data.seconds, audio.data.signal, label=f"NSPA {nspa:.0f} dB")
     ax.set_xlabel("Time [s]")
     ax.set_ylabel("Normalized\nAmplitude")
     ax.set_xlim(0, 60)

@@ -1,8 +1,6 @@
-# %%
-from archive import lookup
+from . import lookup
 import pandas as pd
 import numpy as np
-import matplotlib
 from matplotlib import pyplot as plt
 from scipy import signal
 
@@ -11,16 +9,13 @@ from dankpy import color
 from spidb import spidb
 import matplotlib.pyplot as plt
 
-import cblind as cb
 
-pd.options.mode.chained_assignment = None
 
 db = spidb.Database(r"data/spi.db")
 
 plt.style.use("dankpy.styles.latex")
 
 noise = pd.read_pickle(r"data/noise_500-6000.pkl")
-# %%
 targets = [
     {
         "target": "Darkling beetle",

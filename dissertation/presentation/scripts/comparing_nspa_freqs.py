@@ -5,7 +5,7 @@ from email.mime import audio
 import time
 import os
 
-from archive import lookup
+from . import lookup
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd

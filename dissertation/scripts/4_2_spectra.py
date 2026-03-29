@@ -1,16 +1,9 @@
-# %%
-from archive import lookup
+import matplotlib.pyplot as plt
 import pandas as pd
-import numpy as np
-import matplotlib
-from matplotlib import pyplot as plt
-from scipy import signal
-
-from dankpy import color, dt
+from aspids_tools import visualizer
+from dankpy import color
 
 from spidb import spidb
-from aspids_tools import visualizer
-import matplotlib.pyplot as plt
 
 pd.options.mode.chained_assignment = None
 
@@ -19,7 +12,6 @@ db = spidb.Database(r"data/spi.db")
 plt.style.use("dankpy.styles.latex")
 
 noise = pd.read_pickle(r"data/noise_500-6000.pkl")
-
 
 record = db.session.get(spidb.Record, 950)
 
@@ -40,9 +32,7 @@ ax.plot(
     zorder=10,
 )
 ax.set_xlim(0, 12000)
-# make the lines different colors and make the labels match
 ax.legend(loc="upper right", ncols=5)
-# make the ylabel smaller
 ax.set_ylabel("Spectral Power [dB]", fontsize=8)
 ax.set_ylim(-125, -25)
 ax.set_yticks([-125, -75, -25])
@@ -51,4 +41,3 @@ fig.savefig(
     r"projects\Dissertation\dissertation\figures\2_spectra.pdf",
     dpi=300,
 )
-# %%

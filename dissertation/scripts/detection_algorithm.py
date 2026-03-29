@@ -1,7 +1,7 @@
 # %%
 from datetime import timedelta
 
-from archive import lookup
+from . import lookup
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd

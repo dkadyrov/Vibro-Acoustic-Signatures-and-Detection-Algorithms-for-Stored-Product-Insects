@@ -56,19 +56,22 @@ combined = deepcopy(insect)
 
 T = 21.6
 K = 30.54
-KT = 10 ** (T / 20) * 10 ** (K / 20) / 10 ** (6 / 20)
 A = 10 ** (T / 20) * 10 ** (6 / 20)
+KT = 10 ** (T / 20) * 10 ** (K / 20) / 10 ** (6 / 20)
+# KT = A / (2 * 10 ** (K / 20))
 
 peaks, _ = processing.find_peaks(insect.data.signal, threshold=A, min_distance=1000)
 
-insect_nspa = np.sqrt(np.mean(insect.data.signal[insect.data.signal >= A] ** 2))
-insect_nspa = 20 * np.log10(insect_nspa)
+# insect_nspa = np.sqrt(np.mean(insect.data.signal[insect.data.signal >= A] ** 2))
+# insect_nspa = 20 * np.log10(insect_nspa)
+
+insect_nspa = normalization.nspa(insect.data.signal)
 
 fig, ax = plt.subplots()
 ax.plot(
     insect.data.seconds,
     insect.data.signal,
-    label=f"Ch. 0, NSPA {insect_nspa:.2f} dB",
+    label=f"Ch. 0, NSPA {insect_nspa:.0f} dB",
 )
 ax.scatter(
     insect.data.seconds[peaks],
@@ -81,11 +84,13 @@ ax.set_ylim(0, 100)
 ax.legend(loc="upper right", handlelength=0, handletextpad=0, markerscale=0)
 ax.set_ylabel("Normalized\nAmplitude")
 ax.set_xlabel("Time [s]")
+
 fig.savefig(
     r"projects\Dissertation\dissertation\figures\5_11a_external_noise_algorithm_90_insect.pdf",
     bbox_inches="tight",
     dpi=300,
 )
+#%%
 
 noise_internal = processing.process_signal(
     db, noise_internal, channel=noise_record.sensor.channels[0]
@@ -97,15 +102,15 @@ noise_internal = processing.process_signal(
 combined.data.loc[:, "signal"] = combined.data["signal"] + noise_internal.data["signal"]
 combined.audio += noise_internal.audio
 
-# combined_nspa = normalization.nspa(combined.data.signal)
+combined_nspa = normalization.nspa(combined.data.signal)
 # combined = processing.process_signal(
 # db, combined, channel=insect_record.sensor.channels[0]
 # )
 
 # A = 0.5 * np.max(combined.data.signal)
-combined_nspa = np.sqrt(np.mean(combined.data.signal[combined.data.signal >= A] ** 2))
-combined_nspa = 20 * np.log10(combined_nspa)
-
+# combined_nspa = np.sqrt(np.mean(combined.data.signal[combined.data.signal >= A] ** 2))
+# combined_nspa = 20 * np.log10(combined_nspa)
+# combined_nspa = norma
 
 peaks, _ = processing.find_peaks(combined.data.signal, threshold=A, min_distance=1000)
 
@@ -113,7 +118,7 @@ fig, ax = plt.subplots()
 ax.plot(
     combined.data.seconds,
     combined.data.signal,
-    label=f"Ch. 0, NSPA {combined_nspa:.2f} dB",
+    label=f"Ch. 0, NSPA {combined_nspa:.0f} dB",
 )
 ax.scatter(
     combined.data.seconds[peaks],
@@ -151,8 +156,10 @@ for peak in noise_peaks:
     combined.data.loc[start_idx:end_idx, "signal"] = 0
 
 # A = 10 ** (T / 20) * 10 ** (6 / 20)
-cleaned_nspa = np.sqrt(np.mean(combined.data.signal[combined.data.signal >= A] ** 2))
-cleaned_nspa = 20 * np.log10(cleaned_nspa)
+# cleaned_nspa = np.sqrt(np.mean(combined.data.signal[combined.data.signal >= A] ** 2))
+# cleaned_nspa = 20 * np.log10(cleaned_nspa)
+
+cleaned_nspa = normalization.nspa(combined.data.signal)
 
 peaks, _ = processing.find_peaks(combined.data.signal, threshold=A, min_distance=1000)
 
@@ -160,7 +167,7 @@ fig, ax = plt.subplots()
 ax.plot(
     combined.data.seconds,
     combined.data.signal,
-    label=f"Ch. 0, NSPA {cleaned_nspa:.2f} dB",
+    label=f"Ch. 0, NSPA {cleaned_nspa:.0f} dB",
 )
 ax.scatter(
     combined.data.seconds[peaks],

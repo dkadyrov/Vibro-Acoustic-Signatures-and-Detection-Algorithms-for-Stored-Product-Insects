@@ -1,3 +1,6 @@
+\documentclass[../Kadyrov_Daniel_Dissertation]{subfiles}
+\begin{document}
+
 \chapter{Acoustic Characteristics of Stored Product Insects in Different Materials}
 
 \section{Spectral Content of Insect Signals}
@@ -7,7 +10,7 @@ Spectrograms visualize the acoustic signal as frequency magnitude over time. The
 \begin{figure}[!htbp]%
 	\centering
 	\includegraphics[width=\textwidth]{figures/1_spectrogram.pdf}
-	\caption{Spectrograms from the recordings made by the internal piezoelectric channels of a darkling beetle, \textit{T. molitor}, in rice.}%
+	\caption[Spectrogram of \textit{T. molitor} in rice]{Spectrograms from the recordings made by the internal piezoelectric channels of a darkling beetle, \textit{T. molitor}, in rice.}%
 	\label{fig:darkling_beetle_spectrogram}%
 \end{figure}
 
@@ -19,7 +22,7 @@ The signal magnitude difference across the channels is verified through spectral
 \begin{figure}[!htbp]%
 	\centering
 	\includegraphics[width=\textwidth]{figures/2_spectra.pdf}
-	\caption{Spectra from the recordings made by the internal piezoelectric channels of a darkling beetle, \textit{T. molitor}, in rice.}%
+	\caption[Spectra of \textit{T. molitor} in rice]{Spectra from the recordings made by the internal piezoelectric channels of a darkling beetle, \textit{T. molitor}, in rice.}%
 	\label{fig:darkling_beetle_spectra}%
 \end{figure}
 
@@ -41,8 +44,7 @@ Figure \ref{fig:cfb_flour_bb_oatmeal} shows the spectrograms of the confused flo
 		\label{fig:cfb_flour}
 	\end{subfigure}%
 
-	% \qquad
-	\caption{Spectrograms from recordings by internal piezoelectric channels with the highest signal strength of (a) \textit{C. maculatus} in oatmeal and (b) \textit{T. confusum} in flour}%
+	\caption[Spectrograms of \textit{C. maculatus} in oatmeal and \textit{T. confusum} in flour]{Spectrograms from recordings by internal piezoelectric channels with the highest signal strength of (a) \textit{C. maculatus} in oatmeal and (b) \textit{T. confusum} in flour}%
 	\label{fig:cfb_flour_bb_oatmeal}
 \end{figure}
 
@@ -69,7 +71,7 @@ Visualizing the signal as a waveform, or amplitude over time, enables the analys
 \begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=\textwidth]{figures/5_rawwaveform.pdf}
-	\caption{Waveform from a recording by an internal piezoelectric sensor of \textit{T. molitor} larva in wheat groats}
+	\caption[Waveform of \textit{T. molitor} larva in wheat groats]{Waveform of \textit{T. molitor} larva in wheat groats recorded by an internal piezoelectric sensor}
 	\label{fig:raw_waveform}
 \end{figure}
 
@@ -83,25 +85,25 @@ Visualizing the signal as a waveform, or amplitude over time, enables the analys
 % \end{figure}
 
 % The SNR in the presented examples is above zero in the frequency band from \SIrange{500}{6000}{\hertz}. This bandwidth was chosen for the signal analysis in the time domain during statistical comparison of the insect signal amplitude and energy for the various insects and materials when no external noise is present.
-Filtering the signal in the frequency band of interest helps to isolate the insect impulses from environmental and sensor noise. A Butterworth bandpass filter is able to provide a flat frequency response in the passband while attenuating frequencies outside of the desired range \cite{parksDigitalFilterDesign1987}. Equation \ref{eq:bandpass} describes the magnitude response function of this filter:
+Filtering the signal in the frequency band of interest helps to isolate the insect impulses from environmental and sensor noise. A Butterworth band-pass filter is able to provide a flat frequency response in the passband while attenuating frequencies outside of the desired range \cite{parksDigitalFilterDesign1987}. Equation \ref{eq:band-pass} describes the magnitude response function of this filter:
 
 \begin{equation}
-	\label{eq:bandpass}
-	M(\omega) = \frac{1}{\sqrt{1+(\frac{\omega_c^2-\omega^2}{\omega \cdot \omega_\Delta})^{2n}}}
+	\label{eq:band-pass}
+	M(f) = \frac{1}{\sqrt{1+(\frac{f_c^2-f^2}{f \cdot f_\Delta})^{2n}}}
 \end{equation}
 
 \begin{equation*}
-	\omega_c = \sqrt{\omega_1 \cdot \omega_2} \qquad \omega_\Delta = \omega_2 - \omega_1
+	f_c = \sqrt{f_1 \cdot f_2} \qquad f_\Delta = f_2 - f_1
 \end{equation*}
 
-where $\omega_c$ is the center frequency, $\omega_1$ and $\omega_2$ are the lower and higher angular frequencies, respectively, and $n$ is the order of the filter \cite{vanvalkenburgAnalogFilterDesign1982}. 
+where $f_c$ is the center frequency, $f_1$ and $f_2$ are the lower and higher angular frequencies, respectively, and $n$ is the order of the filter \cite{vanvalkenburgAnalogFilterDesign1982}. 
 
-Figure \ref{fig:butterworth} shows the waveform of the signal for \textit{T. molitor} larva in wheat groats with a \SIrange{500}{6000}{\hertz} Butterworth 10th order bandpass filter applied.
+Figure \ref{fig:butterworth} shows the waveform of the signal for \textit{T. molitor} larva in wheat groats with a \SIrange{500}{6000}{\hertz} Butterworth 10th order band-pass filter applied.
 
 \begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=\textwidth]{figures/6_waveform_filtered.pdf}
-	\caption{Filtered waveform from a recording by an internal piezoelectric sensor of \textit{T. molitor} larva in wheat groats}
+	\caption[Filtered waveform of \textit{T. molitor} larva in wheat groats]{Filtered waveform of \textit{T. molitor} larva in wheat groats recorded by an internal piezoelectric sensor}
 	\label{fig:butterworth}
 \end{figure}
 
@@ -131,7 +133,7 @@ where $S_E$ is the envelope of the signal \cite{ulrichEnvelopeCalculationHilbert
 \begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=\textwidth]{figures/7_waveform_envelope.pdf}
-	\caption{Waveform of the filtered signal for \textit{T. molitor} larva in wheat groats}
+	\caption[Filtered envelope of \textit{T. molitor} larva in wheat groats]{Filtered envelope of \textit{T. molitor} larva in wheat groats}
 	\label{fig:envelope}
 \end{figure}
 
@@ -142,7 +144,11 @@ The piezoelectric discs used in the A-SPIDS sensor are highly sensitive with rel
 
 Normalization is a common practice in signal processing to adjust the amplitude of the signal to a common scale, which allows for better comparison and analysis of the signals across different sensors. The normalization process is especially important when dealing with non-calibrated sensors, as it helps to mitigate the effects of varying sensor sensitivities and external noise \cite{mainettiAcousticIdentificationWoodBoring}.
 
-Although various publications normalize the insect amplitude for analysis, the methods are not always described in detail \todo{citations}. \citeauthor{mainettiAcousticIdentificationWoodBoring} used Z-score normalization, which standardizes every value in the collection of data so that the mean of all the values is zero and the standard deviation is one. They then applied rolling and hopping windows in order to smooth short term fluctuations and highlight trends while maintaining an improved resolution and reduce information loss at window boundaries \cite{mainettiAcousticIdentificationWoodBoring}.
+A common normalization technique is to divide the signal by the maximum value of the magnitude \cite{le-qingInsectSoundRecognition2011}. Although this method is simple and effective for comparing signals from the same sensor, it does not account for differences in sensor sensitivity or external noise levels across different sensors. In the case of the A-SPIDS system, a single sensor would experience a range of amplitudes throughout the recordings, whether during silence, insect impulses, or external noise events, that when normalized within the respective duration, would result in a loss of information about the relative strength of the signal across different recordings and sensors. 
+
+Another method is through Adjustable Gain Control (AGC) which scales the signal to a range between a minimum and maximum value, often using a logarithmic scale to compress the dynamic range of the signal \cite{potamitisAutomaticBioacousticDetection2009}. An extension of the AGC algorithm is the Per-Channel Energy Normalization (PCEN) method which applies the logarithmic scale to every subband in the mel-frequency spectrogram \cite{lostanlenRobustSoundEvent2019}. These method can be effective for comparing signals from different sensors, but it may not be suitable for the A-SPIDS system due to the presence of external noise events that can cause significant fluctuations in the signal amplitude, leading to inaccurate normalization and potential misclassification of insect signals.
+
+Z-score normalization standardizes every value in the collection of data so that the mean of all the values is zero and the standard deviation is one. Rolling and hopping windows are then applied in order to smooth short term fluctuations and highlight trends while maintaining an improved resolution and reduce information loss at window boundaries \cite{mainettiAcousticIdentificationWoodBoring}. This method proved to be unsuitable for the A-SPIDS system during deployment in the field due to the presence of external noise events that can cause significant fluctuations in the mean and standard deviation of the signal, leading to inaccurate normalization and potential misclassification of insect signals.
 
 Two normalization methods were implemented to accommodate for the proprietary, non-calibrated sensors. The first method uses the self-noise of the sensors as a reference. The second method was developed when self-noise records were not available and as a effective way to accommodate for influences from external noise.
 
@@ -160,14 +166,14 @@ where $S_i$ is the $i$-th sample of the signal $S$ and $n$ is the total number o
 
 \begin{equation}
 	\label{eq:normalization}
-	S_N = \frac{S_{E, \text{BPF}(\omega_1, \omega_2)}}{\text{RMS}(N_{E,\text{BPF}(\omega_1, \omega_2)})}
+	V = \frac{S_{E, \text{BPF}(f_1, f_2)}}{\text{RMS}(N_{E,\text{BPF}(f_1, f_2)})}
 \end{equation}
 
-where the normalized signal amplitude $S_N$ is the envelope of thee bandpass filtered signal $S_{E, \text{BPF}}$ divided by the root-mean-square of the enveloped bandpass filtered reference self-noise $N_{E,\text{BPF}}$ in the frequency band from $\omega_1$ to $\omega_2$. Figure \ref{fig:normalization_diagram} shows a diagram of the signal normalization chain:
+where the normalized signal amplitude $V$ is the envelope of the band-pass filtered signal $S_{E, \text{BPF}}$ divided by the root-mean-square of the enveloped band-pass filtered reference self-noise $N_{E,\text{BPF}}$ in the frequency band from $f_1$ to $f_2$. Figure \ref{fig:normalization_diagram} shows a diagram of the signal normalization chain:
 
 \begin{figure}[!htbp]
 	\centering
-	\includegraphics[width=\textwidth]{figures/normalization/normalization_process.pdf}
+	\includegraphics[width=\textwidth]{figures/4_8_self-noise_diagram.pdf}
 	\caption{Diagram of self-noise normalization process}
 	\label{fig:normalization_diagram}
 \end{figure}
@@ -177,7 +183,7 @@ Figure \ref{fig:normalized} shows the normalized envelope of the filtered signal
 \begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=\textwidth]{figures/9_waveform_normalized.pdf}
-	\caption{Normalized envelope of the filtered signal for a recording of \textit{T. molitor} larva in wheat groats}
+	\caption[Normalized filtered envelope of \textit{T. molitor} larva in wheat groats]{Normalized envelope of the filtered signal for a recording of \textit{T. molitor} larva in wheat groats}
 	\label{fig:normalized}
 \end{figure}
 
@@ -188,10 +194,10 @@ The self-noise reference signal is an effective normalization method but require
 
 \begin{equation}
 	\label{eq:median}
-	S_n = \frac{S_{E,\text{BPF}(\omega_1, \omega_2)}}{\text{RMS}(N_s)} \text{ where } N_s < \text{median}(S_{E,\text{BPF}(\omega_1, \omega_2)})
+	V = \frac{S_{E,\text{BPF}(f_1, f_2)}}{\text{RMS}(N_s)} \text{ where } N_s < \text{median}(S_{E,\text{BPF}(f_1, f_2)})
 \end{equation}
 
-where the normalized signal amplitude $S_n$ is the envelope of the bandpass filtered signal $S_{E, \text{BPF}}$ divided by the root-mean-square of the noise signal $N_s$ which is any portion of the signal below the median value of the envelope in the frequency band from $\omega_1$ to $\omega_2$.
+where the normalized signal amplitude $V$ is the envelope of the band-pass filtered signal $S_{E, \text{BPF}}$ divided by the root-mean-square of the noise signal $N_s$ which is any portion of the signal below the median value of the envelope in the frequency band from $f_1$ to $f_2$.
 
 Figure \ref{fig:normalization_comparison} compares the reference signal extraction using self-noise and median noise method using the \textit{T. molitor} larva in wheat groats example.
 
@@ -207,34 +213,14 @@ The median reference extraction was effective at matching the self-noise signal,
 \newpage
 \section{Metrics for Signal Comparison}
 
-In order to compare the normalized insect signals across the four piezoelectric sensors and different insects-materials pairings, two metrics were derived utilizing the amplitude and spectral energy components of the respective signals. The Normalized Signal Pulse Amplitude (NSPA) uses the signal-noise ratio (SNR) for impulses generated by insects above the system noise level. The Normalized Spectral Energy Level (NSEL) characterizes the averaged energy of the insect signal compared to the system noise level. 
-
-A subset of the Stored Product Insect Dataset was extracted for the analysis. The portion features \SI{1}{\minute} recordings of different insect-material pairings, in silence, when an insect was present and observed moving with at least five impulses in visualization figures. This resulted in a total of 1329 recordings, corresponding to \SI{1329}{\minute}, including five control recordings without insects but with ambient noise. Table \ref{tab:subset} details the number of \SI{1}{\minute} recordings for each insect-material pairing used for analysis: 
-
-\begin{table}[!htbp]
-	\caption[Description of subset used for analysis]{Number of 1 min records for each insect-material pairing used for analysis. \label{tab:subset}}
-	\centering
-	\footnotesize
-	\begin{tabular}{@{}l*{7}{r}@{}}
-		\toprule
-		& \textbf{\textit{A. sativa}} & \textbf{\textit{O. sativa}} & \multicolumn{2}{c}{\textbf{\textit{T. aestivum}}} & \textbf{\textit{Z. mays}} & \multirow{2}{*}{\textbf{Total}}        \\
-		& Oatmeal                     & Rice                        & Wheat Groats                                      & Flour                     & Corn Flakes                     &      \\
-\midrule
-\textit{C. maculatus}     & 8                           & 201                         & 11                                                & 16                        & 16                              & 252  \\
-\textit{T. confusum}      & 33                          & 235                         & 177                                               & 42                        & 15                              & 502  \\
-\textit{T. molitor}       & 54                          & 11                          & 8                                                 & 8                         & 11                              & 92   \\
-\textit{T. molitor} larva & 40                          & 239                         & 41                                                & 123                       & 35                              & 478  \\
-\midrule
-No Insect                 &                             & 5                           &                                                   &                           &                                 & 5    \\
-\midrule
-Total                     & 135                         & 691                         & 237                                               & 189                       & 77                              & 1329 \\ \bottomrule
-	\end{tabular}
-\end{table}
+In order to compare the normalized insect signals across the four piezoelectric sensors and different insects-materials pairings, two metrics were derived utilizing the amplitude and spectral energy components of the respective signals. 
+% The Normalized Signal Pulse Amplitude (NSPA) uses the signal-noise ratio (SNR) for impulses generated by insects above the system noise level. The Normalized Spectral Energy Level (NSEL) characterizes the averaged energy of the insect signal compared to the system noise level. 
 
 
 
 
-\newpage
+
+% \newpage
 \subsection{Normalized Signal Pulse Amplitude (NSPA)}
 
 
@@ -242,10 +228,10 @@ The Normalized Strong Pulse Amplitude (NSPA) was calculated by taking the root-m
 
 \begin{equation}
 	\label{eq:nspa}
-	\text{NSPA} = 20 \log_{10}(\text{RMS}(S_c)) \text{ where } 0.5 S_{c,\text{max}} \leq S_{c} \leq 0.9 S_{c,\text{max}}
+	\text{NSPA}(V) = 20 \log_{10}(\text{RMS}(V)) \text{ where } 0.5 V_{\text{max}} \leq V \leq 0.9 V_{\text{max}}
 \end{equation}
 
-where $S_c$ is the envelope amplitude from channel $c$, RMS is the root-mean-square function, and $S_{\text{max}}$ is the maximum envelope amplitude during the analyzed record. 
+where $V$ is the normalized envelope amplitude, RMS is the root-mean-square function, and $V_{\text{max}}$ is the maximum of the normalized envelope amplitude during the analyzed record. 
 
 % Figure \ref{fig:nspa_diagram} shows the normalized envelopes of the insect signals and highlights the analysis region of the NSPA calculation in red as well as distinguishes the calculated NSPA value.
 
@@ -275,7 +261,7 @@ Figure \ref{fig:nspa_graphs} shows the normalized envelopes of the insect signal
 		\label{fig:nspa_bb_oatmeal}
 	\end{subfigure}
 
-	\caption{Normalized envelope of the filtered signal for a recording of (a) \textit{T. molitor} in rice and (b) \textit{C. maculatus} in oatmeal with analysis region for the Normalized Signal Pulse Amplitude (NSPA)}%
+	\caption[Normalized filtered envelope of \textit{T. molitor} in rice and \textit{C. maculatus} in oatmeal]{Normalized envelope of the filtered signal for a recording of (a) \textit{T. molitor} in rice and (b) \textit{C. maculatus} in oatmeal with analysis region for the Normalized Signal Pulse Amplitude (NSPA)}%
 	\label{fig:nspa_graphs}
 \end{figure}
 
@@ -286,11 +272,12 @@ The second parameter used for comparison is the Normalized Signal Energy Level (
 
 \begin{equation}
 	\label{eq:nsel}
-	\text{NSEL} = \text{SPL}(\omega_1,\omega_2) - \text{SPL}_{\text{noise}}(\omega_1,\omega_2)
+	\text{NSEL} = \text{SPL}(f_1,f_2) - \text{SPL}_{\text{noise}}(f_1,f_2)
 \end{equation}
 
-where $\text{SPL}(\omega_1,\omega_2)$ is the sound pressure level in the frequency band from $\omega_1$ to $\omega_2$, and $\text{SPL}_{\text{noise}}(\omega_1,\omega_2)$ is the sound pressure level of the noise in the same frequency band.
+where $\text{SPL}(f_1,f_2)$ is the sound pressure level in the frequency band from $f_1$ to $f_2$, and $\text{SPL}_{\text{noise}}(f_1,f_2)$ is the sound pressure level of the noise in the same frequency band.
 
+% \newpage
 \subsection{Comparison of NSPA and NSEL}
 
 Figure \ref{fig:nspa_nsel} shows the distribution the NSPA and NSEL for the different insect and material pairings in a box plot. The box plot centers on the median value of the insect pulses in the respective material and the extents are the 25th and 75th percentiles.
@@ -311,7 +298,7 @@ Figure \ref{fig:nspa_nsel} shows the distribution the NSPA and NSEL for the diff
 		\label{fig:nsel_box}
 	\end{subfigure}
 
-	\caption{Normalized Signal Pulse Amplitude (NSPA) and Normalized Spectral Energy Level (NSEL) for different insect species in various materials}%
+	\caption[NSPA and NSEL insect-material distribution]{Normalized Signal Pulse Amplitude (NSPA) and Normalized Spectral Energy Level (NSEL) for different insect species in various materials}%
 	\label{fig:nspa_nsel}
 \end{figure}
 
@@ -327,15 +314,15 @@ Table \ref{tab:nspa_nsel_comparison} details the averaged values of the NSPA and
 		                    &                           & \textbf{\textit{A. sativa}} & \textbf{\textit{O. sativa}} & \multicolumn{2}{c}{\textbf{\textit{T. aestivum}}} & \textbf{\textit{Z. mays}}               \\
 		                    &                           & Oatmeal                        & Rice                           & Flour                                                   & Wheat Groats               & Corn Flakes \\
 		\midrule
-		\multirow{4}*{NSPA} & \textit{C. maculatus}     & 39.7                           & 46.2                           & 42.6                                                    & 58.4                       & 49.3        \\
-		                    & \textit{T. confusum}      & 35.4                           & 45.9                           & 39.5                                                    & 43.9                       & 53.9        \\
-		                    & \textit{T. molitor}       & 45.6                           & 62.7                           & 42.5                                                    & 60.1                       & 70.3        \\
-		                    & \textit{T. molitor} larva & 56.8                           & 56.8                           & 39.6                                                    & 61.0                       & 70.5        \\
+		\multirow{4}*{NSPA} & \textit{C. maculatus}     & 40                           & 46                           & 43                                                    & 58                       & 49        \\
+		                    & \textit{T. confusum}      & 35                           & 46                           & 40                                                    & 44                       & 54        \\
+		                    & \textit{T. molitor}       & 46                           & 63                           & 43                                                    & 60                       & 70        \\
+		                    & \textit{T. molitor} larva & 57                           & 57                           & 40                                                    & 61                       & 71        \\
 		\midrule
-		\multirow{4}*{NSEL} & \textit{C. maculatus}     & 9.9                            & 17.3                           & 12.4                                                    & 24.2                       & 14.4        \\
-		                    & \textit{T. confusum}      & 7.4                            & 18.2                           & 12.8                                                    & 13.0                       & 17.3        \\
-		                    & \textit{T. molitor}       & 16.5                           & 32.8                           & 15.5                                                    & 28.3                       & 38.4        \\
-		                    & \textit{T. molitor} larva & 23.1                           & 25.9                           & 11.2                                                    & 29.5                       & 34.8        \\ \bottomrule
+		\multirow{4}*{NSEL} & \textit{C. maculatus}     & 10                            & 17                           & 12                                                    & 24                       & 14        \\
+		                    & \textit{T. confusum}      & 7                            & 18                           & 13                                                    & 13                       & 17        \\
+		                    & \textit{T. molitor}       & 17                           & 33                           & 16                                                    & 28                       & 38        \\
+		                    & \textit{T. molitor} larva & 23                          & 26                           & 11                                                    & 30                       & 35        \\ \bottomrule
 	\end{tabularx}
 	\caption{Comparison of NSPA and NSEL for different insect species}
 	\label{tab:nspa_nsel_comparison}
@@ -373,7 +360,7 @@ feeding within the grain. The larvae are \SIrange{1}{4}{\milli\meter} in length 
 		\caption{Spectra}
 		\label{fig:sitophilus spectra}
 	\end{subfigure}
-	\caption{\textit{S. oryzae} larvae in wheat groats recorded by the piezoelectric sensor from the BugBytes dataset}%
+	\caption[Spectrogram and spectra of \textit{S. oryzae} larvae in wheat groats]{(a) Spectrogram and (b) spectra of \textit{S. oryzae} larvae in wheat groats recorded by the piezoelectric sensor from the BugBytes dataset}%
 	\label{fig:sitophilus characteristics}
 \end{figure}
 
@@ -397,33 +384,33 @@ feeding within the grain. The larvae are \SIrange{1}{4}{\milli\meter} in length 
 % \end{figure}
 
 \newpage
-The BugBytes recording also features the impulses generated by the insect presence. The frequency range of \SIrange{500}{8000}{\hertz} was chosen for the median normalization method as well as NSPA and NSEL calculations. Figure \ref{fig:sitophilus envelope} shows the normalized envelope of the \textit{S. oryzae}, the rice weevil, larvae in wheat groats with the highlighted NSPA analysis region and calculated value. The NSPA measurement of the \textit{S. oryzae} larvae in wheat groats was calculated to be \SI{37.49}{\decibel} and the NSEL measurement was \SI{19.43}{\deci\bel}. These values are comparable to the smaller insects in the same material from the A-SPIDS data. Table \ref{tab:bubytes} presents the NSPA values calculated for the other recordings in the BugBytes dataset.
+The BugBytes recording also features the impulses generated by the insect presence. The frequency range of \SIrange{500}{8000}{\hertz} was chosen for the median normalization method as well as NSPA and NSEL calculations. Figure \ref{fig:sitophilus envelope} shows the normalized envelope of the \textit{S. oryzae}, the rice weevil, larvae in wheat groats with the highlighted NSPA analysis region and calculated value. The NSPA measurement of the \textit{S. oryzae} larvae in wheat groats was calculated to be \SI{37}{\decibel} and the NSEL measurement was \SI{19}{\deci\bel}. These values are comparable to the smaller insects in the same material from the A-SPIDS data. Table \ref{tab:bugbytes} presents the NSPA values calculated for the other recordings in the BugBytes dataset.
 
 \begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=\textwidth]{figures/14_envelope.pdf}
-	\caption{Normalized filtered envelope of \textit{S. oryzae} larvae in wheat groats recorded by the piezoelectric sensor from the BugBytes dataset}
+	\caption[Normalized filtered envelope of \textit{S. oryzae} larvae in wheat groats]{Normalized filtered envelope of \textit{S. oryzae} larvae in wheat groats recorded by the piezoelectric sensor from the BugBytes dataset}
 	\label{fig:sitophilus envelope}
 \end{figure}
 
 \begin{table}[!htbp]
-	\caption{NSPA of the stored product insect-material pairing recordings available in the BugBytes dataset \label{tab:bugbytes}}
+	\caption[NSPA of BugBytes dataset recordings]{Normalized Signal Pulse Amplitude (NSPA) of the stored product insect-material pairing recordings available in the BugBytes dataset \label{tab:bugbytes}}
 	\centering
-    \footnotesize
+    \small
 	\begin{tabular}{llllrr}
 		\toprule
 		\textbf{Subject}           & \textbf{Stage} & \textbf{Material} & \textbf{Sensor}                 & \textbf{Band} [\si{\hertz}] & \textbf{NSPA} [\si{\deci\bel}] \\ \midrule
-		\textit{P. interpunctella} & Larvae         & Dog Food          & Accelerometer                   & 2000-3000                   & 32.97                          \\
-		\textit{P. interpunctella} & Larva          & Dog Food          & Piezoelectric                   & 400-1200                    & 30.79                          \\
-		\textit{S. oryzae}         & Larvae         & Wheat Groats      & PVDF film                       & 4000-11000                  & 38.15                          \\
-		\textit{S. oryzae}         & Larvae         & Wheat Groats      & Accelerometer                   & 2500-10000                  & 42.57                          \\
-		\textit{S. oryzae}         & Larvae         & Wheat Groats      & \SI{30}{\kilo\hertz} Ultrasonic & 2000-6000                   & 11.74                          \\
-		\textit{S. oryzae}         & Larvae         & Wheat Groats      & \SI{40}{\kilo\hertz} Ultrasonic & 6000-9000                   & 24.70                          \\
-		\textit{S. oryzae}         & Larvae         & Wheat Groats      & Piezoelectric                   & 500-8000                    & 37.49                          \\
-		\textit{S. zeamais}        & Larvae         & Maize             & Microphone                      & 1000-4000                   & 22.35                          \\
-		\textit{S. zeamais}        & Adults         & Maize             & Microphone                      & 1000-6000                   & 38.21                          \\
-		\textit{P. trancatus}      & Larvae         & Maize             & Microphone                      & 1000-8000                   & 36.72                          \\
-		\textit{P. trancatus}      & Adults         & Maize             & Microphone                      & 1000-8000                   & 29.67                          \\ \bottomrule
+		\textit{P. interpunctella} & Larvae         & Dog Food          & Accelerometer                   & 2000-3000                   & 33                          \\
+		\textit{P. interpunctella} & Larva          & Dog Food          & Piezoelectric                   & 400-1200                    & 31                          \\
+		\textit{S. oryzae}         & Larvae         & Wheat Groats      & PVDF film                       & 4000-11000                  & 38                          \\
+		\textit{S. oryzae}         & Larvae         & Wheat Groats      & Accelerometer                   & 2500-10000                  & 43                          \\
+		\textit{S. oryzae}         & Larvae         & Wheat Groats      & \SI{30}{\kilo\hertz} Ultrasonic & 2000-6000                   & 12                          \\
+		\textit{S. oryzae}         & Larvae         & Wheat Groats      & \SI{40}{\kilo\hertz} Ultrasonic & 6000-9000                   & 25                          \\
+		\textit{S. oryzae}         & Larvae         & Wheat Groats      & Piezoelectric                   & 500-8000                    & 37                          \\
+		\textit{S. zeamais}        & Larvae         & Maize             & Microphone                      & 1000-4000                   & 22                          \\
+		\textit{S. zeamais}        & Adults         & Maize             & Microphone                      & 1000-6000                   & 38                          \\
+		\textit{P. trancatus}      & Larvae         & Maize             & Microphone                      & 1000-8000                   & 37                          \\
+		\textit{P. trancatus}      & Adults         & Maize             & Microphone                      & 1000-8000                   & 30                          \\ \bottomrule
 	\end{tabular}
 \end{table}
 
@@ -431,3 +418,5 @@ The results of the NSPA analysis demonstrated the effectivity of using the media
 % The little amount of recorded data in the BugBytes dataset does not allow for greater statistical comparison of the sensors or further generalization of acoustic insect signatures, but the results are consistent with other publications \cite{mankinAcousticIndicatorsTargeted2010}.
 
 \newpage
+
+\end{document}

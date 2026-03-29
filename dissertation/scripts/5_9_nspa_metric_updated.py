@@ -1,5 +1,5 @@
 # %%
-from archive import lookup
+from spidb import lookup
 import numpy as np
 import pandas as pd
 from dankpy import color  # type: ignore
