@@ -26,7 +26,7 @@ The signal magnitude difference across the channels is verified through spectral
 	\label{fig:darkling_beetle_spectra}%
 \end{figure}
 
-Figure \ref{fig:cfb_flour_bb_oatmeal} shows the spectrograms of the confused flour beetle, \textit{T. confusum}, in flour and the bean beetle, \textit{C. maculatus}, in oatmeal as examples of a medium and low strength signal, respectively. Only the spectrograms of the piezoelectric channels with the highest signal strength are visualized.
+Figure \ref{fig:cfb_flour_bb_oatmeal} shows the spectrograms of the bean beetle, \textit{C. maculatus}, in oatmeal and the confused flour beetle, \textit{T. confusum}, in flour as examples of a low and medium strength signal, respectively. Only the spectrograms of the piezoelectric channels with the highest signal strength are visualized.
 
 \begin{figure}[!htbp]
 	\centering
@@ -85,7 +85,7 @@ Visualizing the signal as a waveform, or amplitude over time, enables the analys
 % \end{figure}
 
 % The SNR in the presented examples is above zero in the frequency band from \SIrange{500}{6000}{\hertz}. This bandwidth was chosen for the signal analysis in the time domain during statistical comparison of the insect signal amplitude and energy for the various insects and materials when no external noise is present.
-Filtering the signal in the frequency band of interest helps to isolate the insect impulses from environmental and sensor noise. A Butterworth band-pass filter is able to provide a flat frequency response in the passband while attenuating frequencies outside of the desired range \cite{parksDigitalFilterDesign1987}. Equation \ref{eq:band-pass} describes the magnitude response function of this filter:
+Filtering the signal in the frequency band of interest helps to isolate the insect impulses from environmental and sensor noise. A Butterworth band-pass filter is able to provide a flat frequency response in the pass band while attenuating frequencies outside the desired range \cite{parksDigitalFilterDesign1987}. Equation \ref{eq:band-pass} describes the magnitude response function of this filter:
 
 \begin{equation}
 	\label{eq:band-pass}
@@ -137,7 +137,7 @@ where $S_E$ is the envelope of the signal \cite{ulrichEnvelopeCalculationHilbert
 	\label{fig:envelope}
 \end{figure}
 
-The piezoelectric discs used in the A-SPIDS sensor are highly sensitive with relatively low noise levels but they are not calibrated and the recorded signals cannot be referenced with standard measurement units such as \si{\micro\pascal}, \si{\deci\bel} 20re \si{\micro\pascal}, or for acceleration in vibration measurement \si{\meter\per\second\squared}.
+The piezoelectric discs used in the A-SPIDS sensor are highly sensitive with relatively low noise levels, but they are not calibrated, and the recorded signals cannot be referenced with standard measurement units such as \si{\micro\pascal}, \si{\deci\bel} 20re \si{\micro\pascal}, or for acceleration in vibration measurement \si{\meter\per\second\squared}.
 
 \newpage
 \section{Normalization of Signal Amplitude}
@@ -146,11 +146,11 @@ Normalization is a common practice in signal processing to adjust the amplitude 
 
 A common normalization technique is to divide the signal by the maximum value of the magnitude \cite{le-qingInsectSoundRecognition2011}. Although this method is simple and effective for comparing signals from the same sensor, it does not account for differences in sensor sensitivity or external noise levels across different sensors. In the case of the A-SPIDS system, a single sensor would experience a range of amplitudes throughout the recordings, whether during silence, insect impulses, or external noise events, that when normalized within the respective duration, would result in a loss of information about the relative strength of the signal across different recordings and sensors. 
 
-Another method is through Adjustable Gain Control (AGC) which scales the signal to a range between a minimum and maximum value, often using a logarithmic scale to compress the dynamic range of the signal \cite{potamitisAutomaticBioacousticDetection2009}. An extension of the AGC algorithm is the Per-Channel Energy Normalization (PCEN) method which applies the logarithmic scale to every subband in the mel-frequency spectrogram \cite{lostanlenRobustSoundEvent2019}. These method can be effective for comparing signals from different sensors, but it may not be suitable for the A-SPIDS system due to the presence of external noise events that can cause significant fluctuations in the signal amplitude, leading to inaccurate normalization and potential misclassification of insect signals.
+Another method is through Adjustable Gain Control (AGC) which scales the signal to a range between a minimum and maximum value, often using a logarithmic scale to compress the dynamic range of the signal \cite{potamitisAutomaticBioacousticDetection2009}. An extension of the AGC algorithm is the Per-Channel Energy Normalization (PCEN) method which applies the logarithmic scale to every sub-band in the mel-frequency spectrogram \cite{lostanlenRobustSoundEvent2019}. These methods can be effective for comparing signals from different sensors, but it may not be suitable for the A-SPIDS system due to the presence of external noise events that can cause significant fluctuations in the signal amplitude, leading to inaccurate normalization and potential misclassification of insect signals.
 
 Z-score normalization standardizes every value in the collection of data so that the mean of all the values is zero and the standard deviation is one. Rolling and hopping windows are then applied in order to smooth short term fluctuations and highlight trends while maintaining an improved resolution and reduce information loss at window boundaries \cite{mainettiAcousticIdentificationWoodBoring}. This method proved to be unsuitable for the A-SPIDS system during deployment in the field due to the presence of external noise events that can cause significant fluctuations in the mean and standard deviation of the signal, leading to inaccurate normalization and potential misclassification of insect signals.
 
-Two normalization methods were implemented to accommodate for the proprietary, non-calibrated sensors. The first method uses the self-noise of the sensors as a reference. The second method was developed when self-noise records were not available and as a effective way to accommodate for influences from external noise.
+Two normalization methods were implemented to accommodate for the proprietary, non-calibrated sensors. The first method uses the self-noise of the sensors as a reference. The second method was developed when self-noise records were not available and as an effective way to accommodate for influences from external noise.
 
 \newpage
 \subsection{Self-noise Normalization Method}
@@ -338,9 +338,9 @@ Figure \ref{fig:nspa_nsel} shows that in the majority of the tested commodities,
 \newpage
 \section{Extending Analysis to BugBytes Dataset}
 
-The derived approach can be extended to stored product insect data collected from other sensors including the BugBytes dataset which contains recordings from a piezoelectric disc sensor of a single \textit{Plodia interpunctella} larva in dry dog food and multiple \textit{S. oryzae} larvae in wheat groats. The recording system is not described in the dataset documentation but previous publications by the authors suggest that during recordings insects were placed directly on the piezoelectric disc sensor so the distance could not exceed \SI{1}{\milli\meter} \cite{mankinAcousticIndicatorsTargeted2010}.
+The derived approach can be extended to stored product insect data collected from other sensors including the BugBytes dataset which contains recordings from a piezoelectric disc sensor of a single \textit{Plodia interpunctella} larva in dry dog food and multiple \textit{S. oryzae} larvae in wheat groats. The recording system is not described in the dataset documentation, but previous publications by the authors suggest that during recording insects were placed directly on the piezoelectric disc sensor, so the distance could not exceed \SI{1}{\milli\meter} \cite{mankinAcousticIndicatorsTargeted2010}.
 
-The median normalization method was applied to the recordings from the ``Stored Product Insect movement and feeding sounds recorded for insect detection and monitoring studies'' portion of the BugBytes dataset to accommodate for the absense of any recordings without an insect to use as a reference self-noise signal. The recordings include single larva and multiple larvae of the \textit{Plodia interpunctella} in dry dog food, multiple larvae of the \textit{Sitophilus oryzae} larvae in wheat groats, multiple \textit{Sitophilus zeamais} adults and larvae in maize, and multiple \textit{Prostephanus truncatus} adults and larvae in maize. The sensors featured accelerometers, piezoelectric discs, Polyvinylidene difluoride (PVDF) sensors, ultrasonic sensors, and microphones.
+The median normalization method was applied to the recordings from the ``Stored Product Insect movement and feeding sounds recorded for insect detection and monitoring studies'' portion of the BugBytes dataset to accommodate for the absence of any recordings without an insect to use as a reference self-noise signal. The recordings include single larva and multiple larvae of the \textit{Plodia interpunctella} in dry dog food, multiple larvae of the \textit{Sitophilus oryzae} larvae in wheat groats, multiple \textit{Sitophilus zeamais} adults and larvae in maize, and multiple \textit{Prostephanus truncatus} adults and larvae in maize. The sensors featured accelerometers, piezoelectric discs, Polyvinylidene difluoride (PVDF) sensors, ultrasonic sensors, and microphones.
 
 The \textit{Sitophilus oryzae}, lesser grain borer or rice weevil, larvae are internal feeders and develop while
 feeding within the grain. The larvae are \SIrange{1}{4}{\milli\meter} in length and are similar in size to the smaller insects recorded with the A-SPIDS \cite{cabiSitophilusOryzaeLesser2021}. Figure \ref{fig:sitophilus characteristics} shows a spectrogram and spectra recorded by a piezoelectric disc sensor of the \textit{Sitophilus oryzae}, the rice weevil, larvae in wheat groats from the BugBytes dataset. 

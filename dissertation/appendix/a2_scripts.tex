@@ -5,28 +5,147 @@
 
 \chapter{Code Scripts}
 \label{app:scripts}
-\todo{finish completing the appendix with the rest of the scripts}
 
-\begin{listing}[htbp]
-  \caption{Generation of Figure \ref{fig:darkling_beetle_spectrogram}}
-  \label{lst:figure4.1}
-  \inputminted{python}{scripts/4_1_spectrogram.py}
-\end{listing}
+In lieu of including the full code scripts in the paper appendix, the code used to generate the data and figures in this report is available in the repository available on GitHub.
 
-\newpage
+% The repository is organized into directories for the paper dissertation, the defense presentation, the materials for the pro
 
-\begin{listing}[htbp]
-  \caption{Generation of Figure \ref{fig:darkling_beetle_spectra}}
-  \label{lst:figure4.2}
-  \inputminted{python}{scripts/4_2_spectra.py}
-\end{listing}
+% \begin{listing}[htbp]
+%   \caption{File organization of the Code Repository \label{lst:repo\_organization}}
 
-\newpage
+%   \begin{minted}{text}
+% \---admin
+% \---paper
+% ¦   scripts
+% ¦   figures
+% \---presentation
+% \---proposal
+% 	\end{minted}
+% \end{listing}
 
-\begin{listing}[htbp]
-  \caption{Generation of Figure \ref{fig:bb_oatmeal} and \ref{fig:cfb_flour}}
-  \label{lst:figure4.3}
-  \inputminted{python}{scripts/4_3_spectrograms.py}
-\end{listing}
+Table \ref{tab:files} details the functions of the different scripts available in the repository.
+
+\begin{table}[!htbp]
+  % \small
+  \caption{Code Scripts in the Repository\label{tab:files}}
+  \centering
+  \small
+  \begin{tabular}{@{}ll@{}}
+    \toprule
+    \textbf{Filename}                             & \textbf{Description}                                                                                         \\
+    \midrule
+    \texttt{4\_1\_spectrogram.py}                 & Generates Figure \ref{fig:darkling_beetle_spectrogram}                                                       \\
+    \texttt{4\_2\_spectra.py}                     & Generates Figure \ref{fig:darkling_beetle_spectra}                                                           \\
+    \texttt{4\_3\_spectrograms.py}                & Generates Figures \ref{fig:bb_oatmeal} and \ref{fig:cfb_flour}                                               \\
+    \texttt{4\_4\_spectra\_comparison.py}         & Generates Figure \ref{fig:spectra}                                                                           \\
+    \texttt{4\_5\_6\_7\_9\_waveforms.py}          & Generates Figure \ref{fig:raw_waveform}, \ref{fig:butterworth}, \ref{fig:envelope}, and \ref{fig:normalized} \\
+    \texttt{4\_10\_normalization.py}              & Generates Figure \ref{fig:normalization_comparison}                                                          \\
+    \texttt{4\_11\_nspa\_waveforms.py}            & Generates Figure \ref{fig:nspa_tm_rice} and \ref{fig:nspa_bb_oatmeal}                                        \\
+    \texttt{4\_12a\_nspa\_metric.py}              & Generates Figure \ref{fig:nspa_box}                                                                          \\
+    \texttt{4\_12b\_nsel\_metric.py}              & Generates Figure \ref{fig:nsel_box}                                                                          \\
+    \texttt{4\_13\_bug\_bytes.py}                 & Generates Figures \ref{fig:sitophilus characteristics} and \ref{fig:sitophilus envelope}                     \\
+    \texttt{5\_1\_insect\_like\_noise.py}         & Generates Figure \ref{fig: spectrogram insect-like noise}                                                    \\
+    \texttt{5\_2\_nspa\_metrics\_noise.py}        & Generates Figure \ref{fig:nspa_box_noise}                                                                    \\
+    \texttt{5\_3\_spectra.py}                     & Generates Figure \ref{fig: spectra insect-like noise}                                                        \\
+    \texttt{5\_4\_waveform\_comparison.py}        & Generates Figure \ref{fig:waveforms 500-6000}                                                                \\
+    \texttt{5\_5\_spectra\_comparison.py}         & Generates Figure \ref{fig:spectra_insect_noise}                                                              \\
+    \texttt{5\_6\_nspa\_optimization.py}          & Generates Figure \ref{fig:nspa_optimization}                                                                 \\
+    \texttt{5\_7\_waveform\_comparison\_newhz.py} & Generates Figure \ref{fig:waveforms 1565-6000}                                                               \\
+    \texttt{5\_8\_nspa\_metric\_updated.py}       & Generates Figure \ref{fig:nspa_distribution}                                                                 \\
+    \texttt{5\_9\_algorithm\_example1.py}         & Generates Figure \ref{fig:90dB_algorithm}                                                                    \\
+    \texttt{5\_10\_algorithm\_example2.py}        & Generates Figure \ref{fig:chainsaw_example}                                                                  \\
+    \texttt{a1\_noise\_spectrograms.py}           & Generates figures in Appendix \ref{app:noise-spectrograms}                                                                \\
+
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+
+
+
+
+
+
+
+
+
+
+% \label{app:scripts}
+% \todo{finish completing the appendix with the rest of the scripts}
+
+% \captionsetup{type=listing}
+% \captionof{listing}{Generation of Figure \ref{fig:darkling\_beetle\_spectrogram}}
+% \label{lst:figure4.1}
+% \inputminted[
+%   breaklines,
+%   breakanywhere,
+%   samepage=false
+% ]{python}{scripts/4\_1\_spectrogram.py}
+
+% \newpage
+
+% \captionsetup{type=listing}
+% \captionof{listing}{Generation of Figure \ref{fig:darkling\_beetle\_spectra}}
+% \label{lst:figure4.2}
+% \inputminted[
+%   breaklines,
+%   breakanywhere,
+%   samepage=false
+% ]{python}{scripts/4\_2\_spectra.py}
+
+% \newpage
+
+% \captionsetup{type=listing}
+% \captionof{listing}{Generation of Figure \ref{fig:bb\_oatmeal} and \ref{fig:cfb\_flour}}
+% \label{lst:figure4.3}
+% \inputminted[
+%   breaklines,
+%   breakanywhere,
+%   samepage=false
+% ]{python}{scripts/4\_3\_spectrograms.py}
+
+% \newpage
+
+% \captionsetup{type=listing}
+% \captionof{listing}{Generation of Figure \ref{fig:spectra}}
+% \label{lst:figure4.4}
+% \inputminted[
+%   breaklines,
+%   breakanywhere,
+%   samepage=false
+% ]{python}{scripts/4\_4\_spectra\_comparison.py}
+
+% \newpage
+
+% \captionsetup{type=listing}
+% \captionof{listing}{Generation of Figure \ref{fig:raw\_waveform}, Figure, Figure, Figure}
+% \label{lst:figure4.5}
+% \inputminted[
+%   breaklines,
+%   breakanywhere,
+%   samepage=false
+% ]{python}{scripts/4\_5\_6\_7\_9\_waveforms.py}
+
+% \newpage
+
+% \captionsetup{type=listing}
+% \captionof{listing}{Generation of Figure \ref{fig:normalized} and Figure \ref{fig:normalization\_comparison}}
+% \label{lst:figure4.9}
+% \inputminted[
+%   breaklines,
+%   breakanywhere,
+%   samepage=false
+% ]{python}{scripts/4\_10\_normalization.py}
+
+% \newpage
+
+% \captionsetup{type=listing}
+% \captionof{listing}{Generation of Figure \ref{fig:nspa\_tm\_rice} and Figure \ref{fig:nspa\_bb\_oatmeal}}
+% \label{lst:figure4.11}
+% \inputminted[
+%   breaklines,
+%   breakanywhere,
+%   samepage=false
+% ]{python}{scripts/4\_11\_nspa\_waveforms.py}
 
 \end{document}

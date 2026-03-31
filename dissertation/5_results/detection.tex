@@ -5,7 +5,7 @@
 
 \section{Detection Algorithm Metrics}
 
-A successful detection algorithm requires maximizing the ability to successfully detect the presence of an insect in the store product material sample while minimizing the possibility of falsly identifying a pest in a clean sample and failing to detect an insect in an infested sample. The binary form of the detection algorithm is defined as a decision, $D$, where $D=1$ indicates the presence of an insect and $D=0$ indicates the absence of an insect. 
+A successful detection algorithm requires maximizing the ability to successfully detect the presence of an insect in the store product material sample while minimizing the possibility of falsely identifying a pest in a clean sample and failing to detect an insect in an infested sample. The binary form of the detection algorithm is defined as a decision, $D$, where $D=1$ indicates the presence of an insect and $D=0$ indicates the absence of an insect. 
 
 % Equation \ref{detection} shows the binary detection algorithm:
 
@@ -19,7 +19,7 @@ A successful detection algorithm requires maximizing the ability to successfully
 % 	\end{cases}
 % \end{equation}
 
-The probability of detection for an algorithm is measured by the number of times the algorithm correctly identified the presense of an insect in the stored product material sample divided by the total number of opportunities where an insect was present in the tested material. Equation \ref{pd} shows the calculation of the probability of detection:
+The probability of detection for an algorithm is measured by the number of times the algorithm correctly identified the presence of an insect in the stored product material sample divided by the total number of opportunities where an insect was present in the tested material. Equation \ref{pd} shows the calculation of the probability of detection:
 
 \begin{equation}
 	\label{pd}
@@ -45,7 +45,7 @@ The probability of false positive is the number of times the algorithm incorrect
 % \newpage
 \section{Normalized Signal Pulse Amplitude as a Criteria for Insect Detection}
 
-The NSPA metric demonstrated a greater range of values across the different insect-material pairings compared to the NSEL metric. This suggests that the NSPA may be more sensitive to variations in insect size and activity level, making it a potentially more effective parameter for insect detection applications. A statistical variable, $V$, can be used as a detection criteria when it exceeds a definite threshold, $T$. If $V > T$, then an insect is detected, otherwise no insect is detected.
+The NSPA metric demonstrated a greater range of values across the different insect-material pairings compared to the NSEL metric. This suggests that the NSPA may be more sensitive to variations in insect size and activity level, making it a potentially more effective parameter for insect detection applications. A statistical variable, $V$, can be used as a detection criterion when it exceeds a definite threshold, $T$. If $V > T$, then an insect is detected, otherwise no insect is detected.
 
 The NSPA measurements, $V$, from the different insect-material pairings ranged from \SIrange{26.5}{74.8}{\deci\bel} when using the frequency range \SIrange{500}{6000}{\hertz} for filtering and normalization. This means that all insects are detected when $T$ is set to the standard \SI{6}{\deci\bel} popular in other SNR based detection methods, such as the SONAR equation \cite{rudmoseCaseMissing61982, walreeUUVCOVERTACOUSTIC,peyvandiSONARSystemsUnderwater2011}.
 
@@ -92,7 +92,7 @@ In Figure \ref{fig: spectrogram insect-like noise}, pulses observed by the inter
 \begin{figure}[H]%
 	\centering
 	\includegraphics[width=\textwidth]{figures/5_3_noise_impulse_zoom_spectra.pdf}
-	\caption[Spectra of strong pulses during \SI{90}{\deci\bel A} external noise]{Spectra of strong pulses recorded by internal microphone, channel four and five, and external microphone, channel seven,during \SI{90}{\deci\bel A} external noise}%
+	\caption[Spectra of strong pulses during \SI{90}{\deci\bel A} external noise]{Spectra of strong pulses recorded by internal microphone, channel four and five, and external microphone, channel seven, during \SI{90}{\deci\bel A} external noise}%
 	\label{fig: spectra insect-like noise}%
 \end{figure}
 
@@ -151,7 +151,7 @@ Figure \ref{fig:spectra_insect_noise} compares the spectra, averaged over \SI{1}
 	\label{fig:spectra_insect_noise}%
 \end{figure}
 
-These spectra show that noise highly exceeds insect signal in the frequencies below \SI{1500}{\hertz} but insect signals have higher energy content at higher frequencies. Adjusting the frequency band of the system could decrease the influence of external noise on the piezoelectric sensors. This adjustment was made based on the frequency dependence of the NSPA algorithm.
+These spectra show that noise highly exceeds insect signal in the frequencies below \SI{1500}{\hertz}, but insect signals have higher energy content at higher frequencies. Adjusting the frequency band of the system could decrease the influence of external noise on the piezoelectric sensors. This adjustment was made based on the frequency dependence of the NSPA algorithm.
 
 The lower and upper frequency limits of the NSPA algorithm were parametrized in order to optimize the differentiation between insect and noise signals. Twenty samples of the insect signals representative of the median strength for each respective insect-material pairing were selected for analysis. The frequency bands were systematically varied and the respective NSPA values were calculated and compared to the NSPA values of the external noise at \SI{90}{\deci\bel A} to maximize the difference.
 
@@ -163,7 +163,7 @@ The NSPA difference significantly increased when the lower frequency of the band
 \begin{figure}[H]%
 	\centering
 	\includegraphics[width=\textwidth]{figures/5_7_nspa_optimization.pdf}
-	\caption[NSPA difference between insect and external noise signals]{Dependence of NSPA difference between insect and external noise signals to the lower frequency of the band-pass filter}%
+	\caption[NSPA difference between insect and external noise signals]{Dependence of NSPA difference between insect and external noise signals to the lower frequency of the band-pass filter. The optimal low frequency, \SI{1565}{\hertz} is highlighted in red.}%
 	\label{fig:nspa_optimization}%
 \end{figure}
 
@@ -204,7 +204,7 @@ Figure \ref{fig:waveforms 1565-6000} shows the filtered and normalized waveforms
 		\label{fig:noise80_1565}
 	\end{subfigure}
 
-	\caption[Comparison of filtered normalized envelopes (\SIrange{1565}{6000}{\hertz})]{Normalized envelope of signal filtered in band \SIrange{1565}{6000} {\hertz} recorded by the internal piezoelectric of (a) weak strength \textit{T. confusum} in flour, (b) medium strength \textit{C. maculatus} in wheat groats, (c) 60 dBA external speech noise, and (d) 90 dBA external speech noise}%
+	\caption[Comparison of filtered normalized envelopes (\SIrange{1565}{6000}{\hertz})]{Normalized envelope of signal filtered in band \SIrange{1565}{6000} {\hertz} recorded by the internal piezoelectric of (a) weak strength \textit{T. confusum} in flour, (b) medium strength \textit{C. maculatus} in wheat groats, (c) 60 dBA external speech noise, and (d) 90 dBA external speech noise.}%
 	\label{fig:waveforms 1565-6000}%
 \end{figure}
 
@@ -216,7 +216,7 @@ The NSPA values of the different insect-material pairings and external noise rec
 \begin{figure}[H]%
 	\centering
 	\includegraphics[width=\textwidth]{figures/5_9_nspa_box_noise.pdf}
-	\caption[Distribution of NSPA values with external noise (\SIrange{1565}{6000}{\hertz})]{Distribution of NSPA values using \SIrange{1565}{6000}{\hertz} for different insect-material pairings and external noise}%
+	\caption[Distribution of NSPA values with external noise (\SIrange{1565}{6000}{\hertz})]{Distribution of NSPA values using \SIrange{1565}{6000}{\hertz} for different insect-material pairings and external noise.}%
 	\label{fig:nspa_distribution}%
 \end{figure}
 
@@ -240,7 +240,7 @@ Peaks in the microphone signal with an amplitude, $V$, that exceed $A_T/2K$ are 
 
 \newpage
 
-Figure \ref{fig:90dB_algorithm} demonstrates the application of the algorithm with the \SI{90}{\deci\bel A} external speech noise shown in the previous figures combined with a recording of a relatively weaker insect signal of \textit{T. confusum} in rice. Figure \ref{fig:combined_vs_cleaned_insect} shows the insect waveform, before adding noise, with an NSPA of \SI{30}{\deci\bel} and six identified impulse peaks. If an NSPA threshold, $T$, higher than this value would have been chosen to accommodate for the external noise, the insect signal would not have been detected, resulting in a false negative. Figure \ref{fig:combined_vs_cleaned_combined} shows the combined waveform of the external noise and insect signal, with a higher NSPA and 25 impulse peaks. Figure \ref{fig:combined_vs_cleaned_cleaned} shows the cleaned waveform after applying the noise removal algorithm. The NSPA of the cleaned waveform is \SI{30}{\deci\bel} with the six original insect peaks preserved while the 19 additional noise generated peaks have been removed. \todo{update figures}
+Figure \ref{fig:90dB_algorithm} demonstrates the application of the algorithm with the \SI{90}{\deci\bel A} external speech noise shown in the previous figures combined with a recording of a relatively weaker insect signal of \textit{T. confusum} in rice. Figure \ref{fig:combined_vs_cleaned_insect} shows the insect waveform, before adding noise, with an NSPA of \SI{30}{\deci\bel} and six identified impulse peaks. If an NSPA threshold, $T$, higher than this value would have been chosen to accommodate for the external noise, the insect signal would not have been detected, resulting in a false negative. Figure \ref{fig:combined_vs_cleaned_combined} shows the combined waveform of the external noise and insect signal, with a higher NSPA and 25 impulse peaks. Figure \ref{fig:combined_vs_cleaned_cleaned} shows the cleaned waveform after applying the noise removal algorithm. The NSPA of the cleaned waveform is \SI{30}{\deci\bel} with the six original insect peaks preserved while the 19 additional noise generated peaks have been removed.
 
 \begin{figure}[H]%
 	% \begin{adjustwidth}{-\extralength}{0cm}
@@ -270,7 +270,7 @@ Figure \ref{fig:90dB_algorithm} demonstrates the application of the algorithm wi
 \end{figure}
 
 \newpage
-The second example, shown in Figure \ref{fig:chainsaw_example}, illustrates the algorithm with a \SI{5}{\second} recording of a chainsaw, representing a high sound level scenario that would be encountered as machinery noise at inspection facilities, retrieved from the EC-50 Environmental Sound Classification Dataset \cite{piczakESCDatasetEnvironmental2015}. The recording was adjusted by a ratio of its RMS compared to the RMS of the \SI{90}{\deci\bel A} speech noise recording to represent acquisition by the external microphone, channel seven. A copy of the recording was suppressed by the penetration coefficient, $K$, to simulate the piezoelectric sensor, channel zero.
+The second example, shown in Figure \ref{fig:chainsaw_example}, illustrates the algorithm with a \SI{5}{\second} recording of a chainsaw, representing a high sound level scenario that would be encountered as machinery noise at inspection facilities, retrieved from the EC-50 Environmental Sound Classification Dataset \cite{piczakESCDatasetEnvironmental2015}. The recording was adjusted by a ratio of its RMS compared to the RMS of the \SI{100}{\deci\bel A} speech noise recording to represent acquisition by the external microphone, channel seven. A copy of the recording was suppressed by the penetration coefficient, $K$, to simulate the piezoelectric sensor, channel zero.
 
 % Figure \ref{fig:chainsaw_example_insect} shows the insect waveform, before adding noise, of a \textit{T. molitor} in oatmeal with an NSPA of \SI{28.50}{\deci\bel} and seven identified impulse peaks above the threshold. Figure \ref{fig:chainsaw_example_insect_combined} shows the combined waveform of the external noise and insect signal, with a higher NSPA and 32 impulse peaks. Figure \ref{fig:chainsaw_example_insect_combined_cleaned} shows the cleaned waveform after applying the noise removal algorithm. The NSPA of the cleaned waveform is \SI{28.78}{\deci\bel} with the seven original insect peaks preserved while the 26 additional noise generated peaks have been removed.
 
@@ -297,7 +297,7 @@ The second example, shown in Figure \ref{fig:chainsaw_example}, illustrates the 
 		\caption{Cleaned combined waveform after applying the noise removal algorithm}
 		\label{fig:chainsaw_example_insect_combined_cleaned}
 	\end{subfigure}
-	\caption[Simulation of external noise algorithm with chainsaw noise and \textit{T. molitor} in oatmeal]{Simulation of external noise algorithm with chainsaw noise from EC-50 Dataset and \textit{T. molitor} in oatmeal}
+	\caption[Simulation of external noise algorithm with chainsaw noise and \textit{T. molitor} in oatmeal]{Simulation of external noise algorithm with chainsaw noise from EC-50 Dataset and \textit{T. molitor} in oatmeal (a) insect signal, (b) combined insect signal and external noise, (c) combined signal after algorithm.}%
 	\label{fig:chainsaw_example}%
 \end{figure}
 
@@ -310,12 +310,12 @@ It is expected that the frequency band for filtering and normalization, $f_1$ an
 
 At the start of inspection operations, the system is calibrated by recording several minutes of ambient noise without insects present to establish the normalization baseline and the penetration coefficient, $K$, specific to the environment. 
 
-The operator places the sampled material into the container and after securing the lid, initiates the recording process. After a minute, during which the material settles, the recording session begins and continues for a predetermined duration, typically between one to five minutes, depending on the inspection requirements. The signals from the internal piezoelectric sensors, channels zero to three, and the external microphone, channel seven, are processed in real-time during which they are filtered, enveloped, and normalized from $f_1$ to $f_2$. If impulses in the external microphone exceed the threshold, $\frac{A_T}{2K}$, the noise removal algorithm is applied to the internal piezoelectric sensor recordings. At one minute segments, the NSPA is calculated. Figure \ref{fig:algorithm_flowchart} diagrams the signal processing up to the insect detection decision:
+The operator places the sampled material into the container and after securing the lid, initiates the recording process. After a minute, during which the material settles, the recording session begins and continues for a predetermined duration, typically between one and five minutes, depending on the inspection requirements. The signals from the internal piezoelectric sensors, channels zero to three, and the external microphone, channel seven, are processed in real-time during which they are filtered, enveloped, and normalized from $f_1$ to $f_2$. If impulses in the external microphone exceed the threshold, $\frac{A_T}{2K}$, the noise removal algorithm is applied to the internal piezoelectric sensor recordings. At one minute segments, the NSPA is calculated. Figure \ref{fig:algorithm_flowchart} diagrams the signal processing up to the insect detection decision:
 
 \begin{figure}[H]%
 	\centering
 	\includegraphics[width=\textwidth]{figures/5_11_flowchart_diagram.pdf}
-	\caption[Flowchart the external noise removal algorithm and insect detection procedure]{Flowchart of the signal processing including the external noise removal algorithm and insect detection procedure. The microphone signal procesing is marked in green.}%
+	\caption[Flowchart the external noise removal algorithm and insect detection process]{Flowchart of the signal processing including the external noise removal algorithm and insect detection procedure. The microphone signal processing is marked in green.}%
 	\label{fig:algorithm_flowchart}%
 \end{figure}
 
