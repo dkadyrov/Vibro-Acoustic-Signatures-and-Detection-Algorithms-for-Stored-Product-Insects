@@ -67,4 +67,7 @@ Thumbs.db
 *.temp
 *.synctex
 
-/archive
+archive/
+
+*.bkp
+.latexmkrc
