@@ -401,7 +401,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="d0JdTD7ek_lS2uEFamIt" name="external noise layout">
-    <mxGraphModel dx="796" dy="950" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="600" pageHeight="335" math="0" shadow="0">
+    <mxGraphModel dx="481" dy="394" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="600" pageHeight="335" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -444,7 +444,7 @@
         <mxCell id="uIKR4lGTtd18eDvnfaTk-13" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=NewComputerModernMath;fontSize=12;" parent="1" vertex="1">
           <mxGeometry x="208" y="120" width="10" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="uIKR4lGTtd18eDvnfaTk-14" value="&lt;div&gt;Microphone&lt;/div&gt;Channel 4" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=NewComputerModernMath;shadow=1;fontSize=12;" parent="1" vertex="1">
+        <mxCell id="uIKR4lGTtd18eDvnfaTk-14" value="&lt;div&gt;Microphone&lt;/div&gt;Channel 5" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=NewComputerModernMath;shadow=1;fontSize=12;" parent="1" vertex="1">
           <mxGeometry x="163" y="193" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="uIKR4lGTtd18eDvnfaTk-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=block;endFill=1;endSize=2;shadow=1;fontFamily=NewComputerModernMath;fontSize=12;" parent="1" edge="1">
@@ -567,7 +567,7 @@
         <mxCell id="uIKR4lGTtd18eDvnfaTk-52" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;flipH=1;fontFamily=NewComputerModernMath;fontSize=12;" parent="1" vertex="1">
           <mxGeometry x="113" y="160" width="20" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="uIKR4lGTtd18eDvnfaTk-53" value="&lt;div&gt;Microphone&lt;/div&gt;Channel 5" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=NewComputerModernMath;shadow=1;fontSize=12;" parent="1" vertex="1">
+        <mxCell id="uIKR4lGTtd18eDvnfaTk-53" value="&lt;div&gt;Microphone&lt;/div&gt;Channel 4" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=NewComputerModernMath;shadow=1;fontSize=12;" parent="1" vertex="1">
           <mxGeometry x="53" y="193" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="uIKR4lGTtd18eDvnfaTk-54" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=block;endFill=1;endSize=2;shadow=1;fontFamily=NewComputerModernMath;fontSize=12;" parent="1" source="uIKR4lGTtd18eDvnfaTk-53" target="uIKR4lGTtd18eDvnfaTk-45" edge="1">
@@ -643,7 +643,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="s4wyfW3-if7GNMqUFVbX" name="sensor layout">
-    <mxGraphModel dx="796" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="600" pageHeight="250" math="0" shadow="0">
+    <mxGraphModel dx="688" dy="313" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="600" pageHeight="250" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -686,7 +686,7 @@
         <mxCell id="DCWZwz9JaRMxg0BGppca-81" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=NewComputerModernMath;fontSize=12;" parent="1" vertex="1">
           <mxGeometry x="243" y="366" width="10" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="DCWZwz9JaRMxg0BGppca-82" value="&lt;div&gt;Microphone&lt;/div&gt;Channel 4" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=NewComputerModernMath;shadow=1;fontSize=12;" parent="1" vertex="1">
+        <mxCell id="DCWZwz9JaRMxg0BGppca-82" value="&lt;div&gt;Microphone&lt;/div&gt;Channel 5" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=NewComputerModernMath;shadow=1;fontSize=12;" parent="1" vertex="1">
           <mxGeometry x="198" y="439" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="DCWZwz9JaRMxg0BGppca-83" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=block;endFill=1;endSize=2;shadow=1;fontFamily=NewComputerModernMath;fontSize=12;" parent="1" edge="1">
@@ -809,7 +809,7 @@
         <mxCell id="DCWZwz9JaRMxg0BGppca-120" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;flipH=1;fontFamily=NewComputerModernMath;fontSize=12;" parent="1" vertex="1">
           <mxGeometry x="125" y="406" width="20" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="DCWZwz9JaRMxg0BGppca-121" value="&lt;div&gt;Microphone&lt;/div&gt;Channel 5" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=NewComputerModernMath;shadow=1;fontSize=12;" parent="1" vertex="1">
+        <mxCell id="DCWZwz9JaRMxg0BGppca-121" value="&lt;div&gt;Microphone&lt;/div&gt;Channel 4" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=NewComputerModernMath;shadow=1;fontSize=12;" parent="1" vertex="1">
           <mxGeometry x="65" y="439" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="DCWZwz9JaRMxg0BGppca-122" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=block;endFill=1;endSize=2;shadow=1;fontFamily=NewComputerModernMath;fontSize=12;" parent="1" source="DCWZwz9JaRMxg0BGppca-121" target="DCWZwz9JaRMxg0BGppca-113" edge="1">

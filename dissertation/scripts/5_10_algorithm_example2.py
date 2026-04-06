@@ -147,7 +147,8 @@ ax.scatter(
 )
 ax.set_xlabel("Time [s]")
 ax.set_ylabel("Normalized\nAmplitude")
-ax.set_ylim(0, 75)
+ax.set_ylim(0, 80)
+ax.set_yticks([0, 40, 80])
 ax.set_xlim(0, 5)
 ax.legend(loc="upper right", handlelength=0, handletextpad=0, markerscale=0)
 fig.savefig(
@@ -223,7 +224,8 @@ ax.scatter(
 )
 ax.set_xlabel("Time [s]")
 ax.set_ylabel("Normalized\nAmplitude")
-ax.set_ylim(0, 75)
+ax.set_ylim(0, 80)
+ax.set_yticks([0, 40, 80])
 ax.set_xlim(0, 5)
 ax.legend(loc="upper right", handlelength=0, handletextpad=0, markerscale=0)
 fig.savefig(
