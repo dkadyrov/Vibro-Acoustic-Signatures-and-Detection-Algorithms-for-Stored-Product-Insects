@@ -20,7 +20,7 @@ record = db.session.get(spidb.Record, 464)
 
 reference = normalization.reference_signal(db, record.sensor, channels=[4, 5])
 
-channels = [0, 1, 4, 5, 7]
+channels = [4, 5, 7]
 
 audios = db.get_audios(
     record.sensor,
@@ -39,11 +39,11 @@ for i, audio in enumerate(audios):
 # )
 
 labels = [
-    "Ch. 0 (Piezoelectric)",
-    "Ch. 1 (Piezoelectric)",
-    "Ch. 4 (Internal Microphone)",
-    "Ch. 5 (Internal Microphone)",
-    "Ch. 7 (External Microphone)",
+    # "Ch. 0",
+    # "Ch. 1",
+    "Ch. 4",
+    "Ch. 5",
+    "Ch. 7",
 ]
 
 z_int_pie = [-130, -90]
@@ -54,7 +54,7 @@ z_ext_mic = [-90, -50]
 # a.data = a.data.dropna().reset_index(drop=True) # Commented out to prevent whitespace in spectrogram
 # pass
 
-fig, axs = plt.subplots(nrows=len(audios), ncols=1, sharex=True, figsize=(6, 3.5))
+fig, axs = plt.subplots(nrows=len(audios), ncols=1, sharex=True, figsize=(6, 3))
 
 # Store image objects for colorbars
 img_objects = {}
@@ -64,10 +64,10 @@ for i, a in enumerate(audios):
 
     times, frequencies, spectrogram = a.spectrogram(
         window="hann",
-        window_size=128,
-        nperseg=128,
-        nfft=128,
-        noverlap=64,  # Increased overlap to reduce whitespace
+        window_size=256,
+        nperseg=256,
+        nfft=2048,
+        noverlap=224,  # Increased overlap to reduce whitespace
         time_format="seconds",
     )
 
@@ -93,10 +93,10 @@ for i, a in enumerate(audios):
         origin="lower",
     )
 
+    # if i in [0]:
+        # zmin, zmax = -130, -90
+        # img_objects["internal"] = axi
     if i in [0, 1]:
-        zmin, zmax = -130, -90
-        img_objects["internal"] = axi
-    elif i in [2, 3]:
         zmin, zmax = -125, -95
         img_objects["external"] = axi
     else:
@@ -137,38 +137,42 @@ fig.supylabel("Frequency [Hz]", fontsize=10)
 # Create separate colorbars for each group
 # Colorbar for internal mics (channels 0, 1)
 cbar1 = fig.colorbar(
-    img_objects["internal"],
-    ax=[axs[0], axs[1]],
-    orientation="vertical",
-    location="right",
-    aspect=25,
-    ticks=[-130, -110, -90],
-    pad=0.02,
-)
-
-# Colorbar for external mics (channels 2, 3)
-cbar2 = fig.colorbar(
     img_objects["external"],
-    ax=[axs[2], axs[3]],
+    ax=[axs[0], axs[1]],
     orientation="vertical",
     location="right",
     aspect=25,
     ticks=[-125, -110, -95],
     pad=0.02,
 )
-cbar2.ax.set_ylabel("Power [dB]", fontsize=10)
 
-# Colorbar for last external mic (channel 4)
-cbar3 = fig.colorbar(
+# Colorbar for external mics (channels 2, 3)
+cbar2 = fig.colorbar(
     img_objects["last"],
-    ax=axs[4],
+    ax=axs[2],
     orientation="vertical",
     location="right",
     aspect=12.5,
     ticks=[-90, -70, -50],
     pad=0.02,
 )
-# fig.savefig(r"projects\MDPI-Detection\paper\figures\noise_impulse_zoom.pdf", dpi=300)
+
+# make a ylabel on the right side for Power [dB] at the same height as the Frequency [Hz] label in between both colorbars
+fig.text(1.025, 0.5, "Power [dB]", va="center", ha="center", rotation="vertical", fontsize=10)
+
+# cbar2.ax.set_ylabel("Power [dB]", fontsize=10)
+
+# Colorbar for last external mic (channel 4)
+# cbar3 = fig.colorbar(
+#     img_objects["last"],
+#     ax=axs[3],
+#     orientation="vertical",
+#     location="right",
+#     aspect=12.5,
+#     ticks=[-90, -70, -50],
+#     pad=0.02,
+# )
+fig.savefig(r"projects\Dissertation\dissertation\figures\noise_impulse_zoom.pdf", dpi=300)
 # %%
 fig, ax = plt.subplots()
 psd_data = {}

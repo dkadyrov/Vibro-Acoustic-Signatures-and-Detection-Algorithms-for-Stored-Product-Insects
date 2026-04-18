@@ -140,5 +140,5 @@ cbar3 = fig.colorbar(
     ticks=[z_ext_mic[0], (z_ext_mic[0] + z_ext_mic[1]) / 2, z_ext_mic[1]],
     pad=0.02,
 )
-fig.suptitle("Noise 90 dBA")
+fig.suptitle("Male Speech Noise (90 dBA)")
 # %%

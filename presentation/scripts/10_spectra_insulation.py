@@ -39,11 +39,11 @@ for i, audio in enumerate(audios):
 # )
 
 labels = [
-    "Ch. 0 (Piezoelectric)",
-    "Ch. 1 (Piezoelectric)",
-    "Ch. 4 (Internal Microphone)",
-    "Ch. 5 (Internal Microphone)",
-    "Ch. 7 (External Microphone)",
+    "Ch. 0",
+    "Ch. 1",
+    "Ch. 4",
+    "Ch. 5",
+    "Ch. 7",
 ]
 
 z_int_pie = [-130, -90]
@@ -54,7 +54,7 @@ z_ext_mic = [-90, -50]
 # a.data = a.data.dropna().reset_index(drop=True) # Commented out to prevent whitespace in spectrogram
 # pass
 
-fig, axs = plt.subplots(nrows=len(audios), ncols=1, sharex=True, figsize=(11.71, 4.24))
+fig, axs = plt.subplots(nrows=len(audios), ncols=1, sharex=True, figsize=(5.67, 4.21))
 
 # Store image objects for colorbars
 img_objects = {}
@@ -64,10 +64,10 @@ for i, a in enumerate(audios):
 
     times, frequencies, spectrogram = a.spectrogram(
         window="hann",
-        window_size=128,
-        nperseg=128,
-        nfft=128,
-        noverlap=64,  # Increased overlap to reduce whitespace
+        window_size=256,
+        nperseg=256,
+        nfft=2048,
+        noverlap=224,  # Increased overlap to reduce whitespace
         time_format="seconds",
     )
 
@@ -107,9 +107,10 @@ for i, a in enumerate(audios):
     # add a blank line to the plot to add a label to the legend
     ax.plot([], [], "", label=f"{labels[i]}")  # this wasn't blank
     ax.legend(
-        loc="upper right",
+        loc="center right",
         handlelength=0,
         handletextpad=0,
+        fontsize=10
     )
 
     # change the x-axis tick labels to be 11.4 to 11.5
@@ -131,8 +132,8 @@ for i, a in enumerate(audios):
     ax.set_ylim(0, 8000)
     ax.set_yticks([0, 4000, 8000])
 
-fig.supxlabel("Time [s]", fontsize=10)
-fig.supylabel("Frequency [Hz]", fontsize=10)
+fig.supxlabel("Time [s]")
+fig.supylabel("Frequency [Hz]")
 
 # Create separate colorbars for each group
 # Colorbar for internal mics (channels 0, 1)
@@ -156,7 +157,7 @@ cbar2 = fig.colorbar(
     ticks=[-125, -110, -95],
     pad=0.02,
 )
-cbar2.ax.set_ylabel("Power [dB]", fontsize=10)
+cbar2.ax.set_ylabel("Power [dB]")
 
 # Colorbar for last external mic (channel 4)
 cbar3 = fig.colorbar(
@@ -168,9 +169,11 @@ cbar3 = fig.colorbar(
     ticks=[-90, -70, -50],
     pad=0.02,
 )
+
+fig.suptitle("Male Speech Impulse (90 dBA)")
 # fig.savefig(r"projects\MDPI-Detection\paper\figures\noise_impulse_zoom.pdf", dpi=300)
 # %%
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(figsize=(5.67, 4.21))
 psd_data = {}
 frequencies = None
 
@@ -218,7 +221,7 @@ ax.set_xlabel("Frequency [Hz]")
 ax.set_ylabel("Spectral Power [dB]")
 ax.set_ylim(-120, 0)
 ax.set_yticks([-120, -60, 0])
-ax.set_title("Noise 90 dBA")
+ax.set_title("Male Speech Impulse (90 dBA)")
 # fig.savefig(
 #     r"projects\Dissertation\dissertation\figures\5_2_noise_impulse_zoom_spectra.pdf",
 #     dpi=300,

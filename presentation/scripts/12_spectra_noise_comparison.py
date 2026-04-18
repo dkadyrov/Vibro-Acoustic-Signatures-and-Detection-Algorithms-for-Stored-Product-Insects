@@ -35,7 +35,7 @@ targets = [
     },
     {
         "target": "Noise",
-        "material": "80 dBA",
+        "material": "90 dBA",
         "channel": 0,
         "record": 463,
         "amplitude": 500,
@@ -90,7 +90,7 @@ ax.set_xlabel("Frequency [Hz]")
 ax.set_ylabel("Spectral Power [dB]")
 # put the legend on top
 ax.legend(loc="upper right")
-
+#%%
 # highlight the region below 1600 Hz in red
 ax.axvspan(0, 1600, color="red", alpha=0.25)
 

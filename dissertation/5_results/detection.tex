@@ -73,7 +73,7 @@ Various kinds of noise can produce different peak levels for the same averaged s
 
 \begin{equation}
 	\label{eq:crest_factor}
-	\text{Crest Factor} = 20 \log_{10}(\frac{V_\text{peak}}{V_\text{RMS}})
+	\text{CR} = 20 \log_{10}(\frac{V_\text{peak}}{V_\text{RMS}})
 \end{equation}
 
 The expected noises at U.S. Ports of Entry, such as machinery and vehicles, generate continuous signals with low crest factors ranging from \SIrange{1}{3}{\deci\bel} \cite{starckIndustrialImpulseNoise1987,bergerNoiseManual2003}, and impulsive noises such as hammering and pneumatic tools with higher crest factors ranging from \SIrange{5}{10}{\deci\bel} \cite{starckIndustrialImpulseNoise1987}. The majority of the industrial noise also has lower frequency content \cite{salomonsPracticalRangesLoudness2011} and the significant part of its energy would be suppressed through filtering in the developed algorithm. Analysis of the recorded signals, after normalized filtered envelope processing, of factory noise \cite{viertelnachvierFactory22014, inspectorjAmbienceMachineFactory2017} and male speech showed a crest factor of \SI{8}{\decibel} and \SI{13}{\deci\bel}, respectively. This demonstrated that the high crest factor speech recordings would be more disruptive to the insect detection algorithm than the industrial noise at the same sound level. If the developed algorithm allows insect detection at noise levels of \SI{100}{\deci\bel A} for the speech noise recording, it would be expected to perform well in the presence of industrial noise even at higher sound levels. 
@@ -87,14 +87,44 @@ The spectrograms show the variation of the external signal as it penetrates to t
 	\label{fig:nspa_box_noise}%
 \end{figure}
 
-In Figure \ref{fig: spectrogram insect-like noise}, pulses observed by the internal microphones, channels four and five, are approximately \SI{50}{\deci\bel} lower than those recorded by external microphone seven. This large drop in the acoustic signal magnitude within the soundproofed chamber demonstrates the effectiveness of the sound reduction of the system. Figure \ref{fig: spectra insect-like noise} presents the spectra of an impulse with the maximal amplitude calculated in the short time window of \SI{100}{\milli\second} for acoustic microphones four, five, and seven in the presence of the external speech noise with a level of \SI{90}{\deci\bel A}. The reference signal of the averaged self-noise from the internal microphones, channels four and five, is also shown.  
+In Figure \ref{fig: spectrogram insect-like noise}, pulses observed by the internal microphones, channels four and five, are approximately \SI{50}{\deci\bel} lower than those recorded by external microphone seven. This large drop in the acoustic signal magnitude within the soundproofed chamber demonstrates the effectiveness of the sound reduction of the system. Figure \ref{fig:zoom_impulse} presents the spectrogram and spectra of an impulse with the maximal amplitude calculated in the short time window of \SI{100}{\milli\second} for acoustic microphones four, five, and seven in the presence of the external speech noise with a level of \SI{90}{\deci\bel A}. The reference signal of the averaged self-noise from the internal microphones, channels four and five, is also shown in Figure \ref{fig:zoom_impulse_spectra}.  
+
+% \begin{figure}[H]%
+% 	\centering
+% 	\includegraphics[width=\textwidth]{figures/noise_impulse_zoom.pdf}%
+% 	\caption[Spectra of strong pulses during \SI{90}{\deci\bel A} external noise]{Spectra of strong pulses recorded by internal microphone, channel four and five, and external microphone, channel seven, during \SI{90}{\deci\bel A} external noise}%
+% 	\label{fig: spectra insect-like noise}%
+% \end{figure}
+
+
 
 \begin{figure}[H]%
+	% \begin{adjustwidth}{-\extralength}{0cm}
 	\centering
-	\includegraphics[width=\textwidth]{figures/5_3_noise_impulse_zoom_spectra.pdf}
-	\caption[Spectra of strong pulses during \SI{90}{\deci\bel A} external noise]{Spectra of strong pulses recorded by internal microphone, channel four and five, and external microphone, channel seven, during \SI{90}{\deci\bel A} external noise}%
-	\label{fig: spectra insect-like noise}%
+	\begin{subfigure}[b]{\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figures/noise_impulse_zoom.pdf}
+		\caption{Spectrogram}
+		\label{fig:zoom_impulse_spectrogram}
+	\end{subfigure}
+	\vspace{1em}
+	\begin{subfigure}[b]{\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figures/5_3_noise_impulse_zoom_spectra.pdf}
+		\caption{Spectra}
+		\label{fig:zoom_impulse_spectra}
+	\end{subfigure}
+
+	\caption[Spectrogram and spectra of strong pulses during \SI{90}{\deci\bel A} external noise]{(a) Spectrogram and (b) spectra of strong pulses recorded by internal microphone, channel four and five, and external microphone, channel seven, during \SI{90}{\deci\bel A} external noise}%
+	\label{fig:zoom_impulse}%
 \end{figure}
+
+% \begin{figure}[H]%
+% 	\centering
+% 	\includegraphics[width=\textwidth]{figures/5_3_noise_impulse_zoom_spectra.pdf}
+% 	\caption[Spectra of strong pulses during \SI{90}{\deci\bel A} external noise]{Spectra of strong pulses recorded by internal microphone, channel four and five, and external microphone, channel seven, during \SI{90}{\deci\bel A} external noise}%
+% 	\label{fig: spectra insect-like noise}%
+% \end{figure}
 
 The difference in the spectral power between the microphones demonstrates the effectiveness of the insulation in muffling external noise especially at frequencies above \SI{2000}{\hertz} where it was able to provide an average of \SI{45}{\deci\bel} and a maximum of \SI{59}{\deci\bel} noise reduction. This level of attenuation is comparable to the results achieved with the \SI{620}{\kilo\gram} chamber used for the InsectSound100 dataset but in a more compact and portable form factor \cite{brandingNoiseRobustAcoustic2023, brandingInsectSound1000InsectSound2024}.
 
@@ -118,7 +148,7 @@ The high sensitivity of the piezoelectric discs makes them vulnerable to externa
 		\label{fig:bb_500}
 	\end{subfigure}
 
-	\vspace{1em}
+	% \vspace{1em}
 
 	\begin{subfigure}[b]{0.45\textwidth}
 		\centering
@@ -142,6 +172,10 @@ The waveforms show that the generated pulses from the external noise reach simil
 
 \newpage 
 
+\section{Optimization of Frequency Band for NSPA Calculation}
+
+While the insect-like noise pulses generating NSPA values comparable to those of the insect signals pose a challenge in the form of false positives for an NSPA-based algorithm in its current form, the spectral content of the noise and insect signals can be leveraged to optimize the frequency band used for filtering and normalization in the NSPA calculation.
+
 Figure \ref{fig:spectra_insect_noise} compares the spectra, averaged over \SI{1}{\minute}, recorded by the internal piezoelectric sensor of the weak and medium signals with the speech noise at \SI{90}{\deci\bel A}. While external noise exhibits dominant spectral power below \SI{1600}{\hertz}, insect signals demonstrate higher energy content above this frequency.
 
 \begin{figure}[H]%
@@ -155,8 +189,8 @@ These spectra show that noise highly exceeds insect signal in the frequencies be
 
 The lower and upper frequency limits of the NSPA algorithm were parametrized in order to optimize the differentiation between insect and noise signals. Twenty samples of the insect signals representative of the median strength for each respective insect-material pairing were selected for analysis. The frequency bands were systematically varied and the respective NSPA values were calculated and compared to the NSPA values of the external noise at \SI{90}{\deci\bel A} to maximize the difference.
 
-% \newpage
-% \subsection{Optimization of Frequency Band for NSPA Calculation}
+\newpage
+
 
 The NSPA difference significantly increased when the lower frequency of the band-pass filter was above \SI{1500}{\hertz}. The upper frequency limit plays a less critical role. Focusing on the lower frequency range, Figure \ref{fig:nspa_optimization} shows the NSPA difference between the insect and noise signals as the lower frequency bound is varied from \SIrange{1000}{5000}{\hertz} while the upper frequency bound is held constant at \SI{6000}{\hertz}.
 
@@ -167,9 +201,7 @@ The NSPA difference significantly increased when the lower frequency of the band
 	\label{fig:nspa_optimization}%
 \end{figure}
 
-The optimal low frequency, when the difference between the insect and noise NSPA is maximized, converged to \SI{1565}{\hertz} before it started to decrease as a result of losing insect signal energy at higher frequencies. The frequency range for filtering and normalization was adjusted to \SIrange{1565}{6000}{\hertz}.
-
-Figure \ref{fig:waveforms 1565-6000} shows the filtered and normalized waveforms for the same recordings as Figure \ref{fig:waveforms 500-6000} but using the updated frequency range:
+The optimal low frequency, when the difference between the insect and noise NSPA is maximized, converged to \SI{1565}{\hertz} before it started to decrease as a result of losing insect signal energy at higher frequencies. The frequency range for filtering and normalization was adjusted to \SIrange{1565}{6000}{\hertz}. Figure \ref{fig:waveforms 1565-6000} shows the filtered and normalized waveforms for the same recordings as Figure \ref{fig:waveforms 500-6000} but using the updated frequency range, demonstrating the significant decrease in the NSPA produced by external noise. 
 
 \begin{figure}[H]%
 	% \begin{adjustwidth}{-\extralength}{0cm}
@@ -188,7 +220,7 @@ Figure \ref{fig:waveforms 1565-6000} shows the filtered and normalized waveforms
 		\label{fig:bb_1565}
 	\end{subfigure}
 
-	\vspace{1em}
+	% \vspace{1em}
 
 	\begin{subfigure}[b]{0.45\textwidth}
 		\centering
@@ -208,7 +240,7 @@ Figure \ref{fig:waveforms 1565-6000} shows the filtered and normalized waveforms
 	\label{fig:waveforms 1565-6000}%
 \end{figure}
 
-Comparison of Figures \ref{fig:waveforms 500-6000} and \ref{fig:waveforms 1565-6000} shows that adjustment of the low cutoff frequency significantly decreases the NSPA produced by external noise. 
+% Comparison of Figures \ref{fig:waveforms 500-6000} and \ref{fig:waveforms 1565-6000} shows that adjustment of the low cutoff frequency significantly decreases the NSPA produced by external noise. 
 
 \newpage
 The NSPA values of the different insect-material pairings and external noise recordings were calculated using the frequency range of \SIrange{1565}{6000}{\hertz}. Figure \ref{fig:nspa_distribution} shows the distribution of the NSPA values using the adjusted frequency range. Accompanying the box plot are horizontal lines representing the NSPA values measured by the piezoelectric sensors at different external noise levels from \SIrange{60}{100}{\deci\bel A}. 
@@ -222,12 +254,21 @@ The NSPA values of the different insect-material pairings and external noise rec
 
 The updated frequency range significantly improved the NSPA difference between the insect signals and the external noise. At a noise level of 80 dBA, nearly all measured NSPA values exceed those generated by external noise. The resulting NSPA range of the insect-material pairings now extends from \SIrange{21.6}{77.5}{\deci\bel}. If the threshold, $T$, is set to the maximum NSPA value of the external noise at \SI{80}{\deci\bel A}, \SI{22.4}{\deci\bel}, \SI{99.4}{\percent} of the insect-material pairings would be correctly identified as containing an insect. At this threshold, any external noise above \SI{80}{\deci\bel A} could generate false positive insect detections. Increasing the threshold to \SI{30.9}{\deci\bel}, the maximum NSPA value of the external noise at \SI{90}{\deci\bel A}, would result in \SI{90.2}{\percent} correct insect detections.
 
-\newpage
+% \newpage
 \section{Leveraging External Acoustic Microphone for Noise Control}
 
 The previous sections demonstrated that even single small insects can be detected by the developed system using the NSPA threshold algorithm under speech noise sound levels up to \SI{80}{\deci\bel A}. Additional level of noise protection can be achieved by using noise signal recording by external microphone. The suggested external microphone noise control can allow insect detection in noisy condition and can be used for insect detection in large volumes of products where the insect signals could be small due to longer propagation paths. 
 
 A coefficient, $K$, can be defined to describe the penetration of the external sound to the piezoelectric sensor, representing the ratio between the insect-like signals recorded by the internal piezoelectric sensors and the signal from the external microphone. The average value of the penetration coefficient, $K$, was found to be approximately 0.03, or \SI{-31}{\deci\bel}, across the four channels and five external noise levels from \SIrange{60}{90}{\deci\bel A}. The microphone signal can be scaled by this coefficient to estimate the signal on the internal piezoelectric sensors generated by the external noise, $V_{\text{noise}} = KV_{\text{mic}}$. When the measured $\text{NSPA}(V)$ is greater than both $\text{NSPA}(KV_{\text{mic}})$ and the threshold, $T$, external noise does not influence insect detection. But if the estimated noise signal exceeds the threshold, $\text{NSPA}(KV_{\text{mic}}) > T$, the ambient noise can generate a false positive detection even when no insect is present and a noise suppression algorithm can be applied.
+
+Figure \ref{fig:k_coefficient} shows the waveform and NSPA difference between the internal piezoelectric sensor, channel three, and the external microphone, channel seven, during the speech recordings at different sound levels. The difference between the NSPA values were averaged across the different noise levels to calculate the penetration coefficient, $K$. 
+
+\begin{figure}[H]%
+	\centering
+	\includegraphics[width=\textwidth]{figures/external_mic_ratio.pdf}
+	\caption[Waveforms and NSPA Differences between Ch. 3 and Ch. 7]{Normalized waveforms and NSPA calculations for channel three and channel seven during speech recordings at sound levels from \SIrange{60}{90}{\deci\bel A}}%
+	\label{fig:k_coefficient}%
+\end{figure}
 
 The noise suppression algorithm identifies short time windows where external noise generates signals with amplitudes that are close to or exceed the threshold amplitude and can affect the NSPA measurement. Equation \ref{eq:amplitude_threshold} describes the amplitude threshold limit: 
 
