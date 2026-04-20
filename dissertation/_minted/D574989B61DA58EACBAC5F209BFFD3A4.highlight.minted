@@ -1,5 +1,0 @@
-\begin{MintedVerbatim}[commandchars=\\\{\}]
-\PYG{k+kn}{from}\PYG{+w}{ }\PYG{n+nn}{spidb}\PYG{+w}{ }\PYG{k+kn}{import} \PYG{n}{spidb}
-
-\PYG{n}{db} \PYG{o}{=} \PYG{n}{spidb}\PYG{o}{.}\PYG{n}{Database}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}spi.db\PYGZdq{}}\PYG{p}{)}
-\end{MintedVerbatim}
