@@ -35,7 +35,7 @@ targets = [
     },
     {
         "target": "Noise",
-        "material": "80 dBA",
+        "material": "90 dBA",
         "channel": 0,
         "record": 463,
         "amplitude": 500,
@@ -52,8 +52,11 @@ for i, target in enumerate(targets):
         channel_number=target["channel"],
     )
 
+    # Convert to a NumPy array so SciPy does positional slicing reliably.
+    samples = audio.data.signal.to_numpy(copy=False)
+
     f, p = signal.welch(
-        audio.data.signal,
+        samples,
         fs=audio.sample_rate,
         nperseg=1024,
         noverlap=512,

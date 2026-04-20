@@ -71,3 +71,11 @@ archive/
 
 *.bkp
 .latexmkrc
+
+# Minted cache/output
+_minted-*/
+*.mintedcmd
+*.mintedmd5
+
+# Editor/emergency save artifacts
+SAVE-ERROR
