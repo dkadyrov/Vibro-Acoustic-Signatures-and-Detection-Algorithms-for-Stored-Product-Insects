@@ -79,3 +79,5 @@ _minted-*/
 
 # Editor/emergency save artifacts
 SAVE-ERROR
+
+*.minted
