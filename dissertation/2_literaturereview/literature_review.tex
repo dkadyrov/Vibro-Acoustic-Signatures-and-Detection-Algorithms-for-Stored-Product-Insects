@@ -53,13 +53,11 @@ The ISO 6639 standard describes several methods for detecting insects in stored 
 If the inspection process involves commodities packaged in sealed containers, a single package can be opened and examined. If the commodity is stored in bulk, a sample must be extracted from the mass. Grain triers are able to take samples stored in bins often transported by trucks and railcars. Pelican samplers are long, thin tubes with a pointed end that can be inserted into the grain as it is being moved in a grain stream or loaded and unloaded, often automated to perform at regular intervals \cite{serviceStoredProductManagement1995}.
 
 Ownership of the sample is important to consider as it can be a source of conflict between the importer and the inspector. Destructive inspection methods involve decimating the sample, which can lead to loss of product and revenue for the importer. Non-destructive methods, on the other hand, allow for the inspection of the sample without causing damage, preserving its value and integrity.
-% The choice between destructive and non-destructive methods depends on various factors including the type of commodity, the level of infestation, and the resources available for inspection.
 
 \newpage
 \subsubsection{Physical Methods}
 
 Physical inspection and detection methods rely on the direct capture and enumeration of insects through traps, sieves, and other mechanical means.
-%  Although they leverage primative technology, these methods are often low-cost and have been effectively scaled to process large volumes of product. 
 
 \textit{Trapping Mechanisms}
 
@@ -112,9 +110,7 @@ The insect fragment test, AACC method 28-41A, is a variation of the flotation me
 
 While flotation methods are fast and have a wider application for detecting foreign material beyond insects, they are destructive to the sample and require specialized calibration for the specific grain type.
 
-% Physical methods use probe traps and counters, such as the Berlese-Tullgren trap, the TNAU Insect Detection System, and the Electronic Grain Probe Insect Counter (EGPIC), to enumerate the captured insects and determine the level of infestation using extrapolation. Some probe traps can be placed at different grain depths for extensive amounts of time and periodically removed to evaluate the number, species, and density of the infestation. Although low-cost, passive, and effective at long-term storage facilities, this method is restricted to easily accessible locations within the container and the capture rate is influenced by the insect species, grain type, as well as temperature and humidity. Although visual lures and pheromones assist in attracting insects to the traps, these physical methods require a long time duration and cannot detect insects buried inside kernels \cite{neethirajanDetectionTechniquesStoredProduct2007, hoffmanStoredProductPestMonitoring2005}. Other physical methods include rolling machines that automate the sieving of products, systems that monitor for changes in electrical conductance between whole, damaged, and infested kernels, and the flotation method which separates possible insects from product by density, but these tend to damage the material in the process \cite{bonjourEvaluatingRemoteMonitoring2004, t.pearsonDetectionWheatKernels2007, thindDeterminationLowLevels2000}.
 
-% Rolling sieves automate the sifting process and can process large volumes of product at high speeds. The INSECTOMAT has the ability to remove insects from \SI{10}{\kilo\gram} of sample in less than \SI{2}{\minute} but is limited to only wheat and barley \cite{robinwilkinComparisonTwoApproaches1996}.
 
 \newpage
 \subsubsection{Chemical Methods}
@@ -126,17 +122,6 @@ Chemical sensors monitor changes in the material composition or in the surroundi
 An increase in carbon dioxide ($\text{CO}_2$) levels can indicate the existence of insects respire in the stored product. The gas level can be measured through chemical absorption, gas chromatography, and electronic sensors \cite{zhangSitedirectedCO2Detection2014}.
 
 The ISO 6639 standard describes measuring the production of $\text{CO}_2$ through the gasometric detector and the rate of $\text{CO}_2$ production through the infra-red based system. Both methods require incubation of the sample for \SI{24}{\hour} at \SI{25}{\degreeCelsius}. Results under a threshold indicate no infestation. As the $\text{CO}_2$ concentration increases, the level of infestation is categorized as low, medium, or high. At low levels, the grain is unsuitable for storage longer than two months without treatment. At medium levels, immediate fumigation is required and at high levels, the grain is considered to be heavily infested and should be treated immediately or destroyed \cite{ISO6639Cereals1986}.
-
-% In the gasometric method, the sample is sealed in an airtight container after incubation and the air from the headspace is drawn into a gas analysis apparatus through a syringe. The infra-red method directly 
-
-
-% If the $\text{CO}_2$ concentration is below \SI{0.2}{\percent} there is no infestation. A $\text{CO}_2$ concentration between \SIrange{0.3}{0.5}{\percent} indicates a low level of infestation and the grain is unsuitable for storage longer than two months without treatment and a concentration between \SIrange{0.6}{0.9}{\percent} requires immediate fumigation. Anything above \SI{}
-
-% The infra-red method
-
-% , where the sample is placed in a sealed container and the $\text{CO}_2$ concentration captured from the air 
-
-% is analyzed by a gas analysis apparatus after a set time, and the infra-red method, where the $\text{CO}_2$ concentration is measured through the absorption of infrared light. 
 
 $\text{CO}_2$ monitoring was implemented in Chinese grain storage facilities where aspiration pumps arranged across sampling points within the grain bulks distributed air samples to a dual-channel non-dispersive infrared (NDIR) sensor. The system was able to localize insect and mold infestations to a horizontal and vertical distance of \SI{2}{\meter} within \SI{4000}{\tonne}, \SI{30}{\meter} long and \SI{6}{\meter} high grain bulks \cite{zhangSitedirectedCO2Detection2014}. Although an increased $\text{CO}_2$ concentration above 500 parts per million (ppm) can indicate pest activity, it cannot differentiate the type of pest or level of infestation, but could instead be used as an early indicator of spoilage \cite{thiruppathiContinuousCarbonDioxide2024}.
 
@@ -156,10 +141,6 @@ Volatile components can be collected through headspace analysis, where the air a
 Electronic noses (E-nose) consist of an array of gas sensors with varying sensitivities to different VOCs and pattern recognition software to analyze the sensor responses. They have been used to detect insect infestations in stored products by identifying specific VOC patterns associated with different insect species and infestation levels. The E-nose was able to discriminate \textit{R. dominica} in rice using 18 metal oxide sensors at a rate of \SI{98}{\percent}  \cite{srivastavaFuzzyControllerBased2019, srivastavaProbabilisticArtificialNeural2019}.
 
 Overall, VOC-based detection can be rapid and sensitive especially when combined with advanced machine learning techniques to find early internal and external infestations but instrumentation cost, calibration requirements, and dependence on robust reference databases remain key limitations \cite{gongTechnologiesSystemsPest2026}.
-
-
-
-% Chemical sensors monitor the $\text{O}_2$ and $\text{CO}_2$ levels in the stored product to detect the respiration of the insects or by measuring for uric acid, the main element of insect excreta \cite{rajeshEfficacyTnauStackProbe2015, srivastavaFuzzyControllerBased2019, srivastavaProbabilisticArtificialNeural2019}. Even though it was not developed for insect detection, the electronic nose (E-nose), which consists of gas sensors with varying sensitivities and pattern recognition software, was able to detect the volatile compounds and react to the changing electrical properties to identify an infestation of the lesser grain borer, \textit{R. dominica} in wheat \cite{srivastavaFuzzyControllerBased2019,srivastavaProbabilisticArtificialNeural2019}.
 
 \newpage
 \subsubsection{Optical and Electromagnetic Methods}
@@ -209,20 +190,12 @@ Although HSI is rapid, non-destructive, and generates highly detailed images, it
 
 Insect respiration, at all life stages, and resulting heat production would result in higher temperature levels compared to their surrounding material. While grain respires at rate of \SI{0.01}{\watt\per\tonne}, heat produced by insects can range from \SIrange{13}{81}{\micro\watt} per insect \cite{manickavasaganThermalImagingDetect2008}.
 
-% Thermal and moisture monitoring can be conducted through sensors, such as thermocouples and thermistors, that are inserted into the material to measure the temperature at different depths and locations but they require physical contact with the material, limited to specific locations, and require a time duration to capture temperature changes \cite{a.manickavasaganThermalImagingStored2006}. 
-
-
 Thermal cameras capture the infrared radiation, or heat signature, ranging from near-infrared (NIR), from \SIrange{0.75}{1.4}{\micro\meter} wavelength, to far-infrared (FIR), above \SI{15}{\micro\meter} wavelength \cite{manickavasaganThermalImagingDetect2008}. The image, known as a thermograph, is generated as the infrared radiation from the material is captured as an electrical output and processed to create a visual representation of the temperature distribution across the surface of the material. The thermal anomalies, or hot spots, can indicate the presence of insect infestations as they generate more heat compared to their surroundings \cite{bangaTechniquesInsectDetection2018}.
 
 While thermal imaging was able to classify sound kernels from those infested by six different developmental stages of the \textit{Cryptolestes ferrugineus} within the germ of wheat kernels with a classification accuracy of \SI{77.7}{\percent} and \SI{83.5}{\percent}, respectively, it was not able to identify the specific developmental stage of the insect \cite{manickavasaganThermalImagingDetect2008}. When applied to galvanized steel silos, thermal imaging was limited to finding hot spots \SI{0.3}{\meter} from the silo wall and below the grain surface. It failed to detect hot spots with wind speeds above \SI{1}{\meter\per\second} \cite{a.manickavasaganThermalImagingStored2006}. Thermal imaging lens were used to examine the feasibility of rapid monitoring of maize, especially in large agricultural areas with UAVs, but was ineffective due to atmospheric conditions \cite{chenResearchPestImage2018}
 
 Thermal imaging, although non-invasive and capable of providing real-time results, is limited by its inability to detect infestations below the grain surface.
 
-% \todo{expand this section}
-
-% Advanced imaging technologies offer non-destructive solutions for pest detection. By using an X-ray source and imaging system, inspectors can visualize insects concealed within stored grains, fruits, and vegetables, as well as find damaged products \cite{XRayInspectionSystems2023, XRayDetectionFood2023}. Alternatively, near-infrared (NIR) spectroscopy leverages the unique light absorption properties of materials to detect insects and classify infested kernels, though its need for constant recalibration is a drawback \cite{neethirajanDetectionTechniquesStoredProduct2007, elizabethb.maghirangDetectingSingleWheat2002, keszthelyiNonDestructiveImagingSpectroscopic2020}. Thermal imaging detects the infrared energy emitted by objects, creating heat maps that expose infestations through temperature anomalies \cite{bangaTechniquesInsectDetection2018}. To boost precision, these systems are often paired with deep learning algorithms \cite{devipriyar.InsectPestDetection2022}.
-
-% \newpage
 \textit{Microwave}
 
 Microwaves operate within the \SIrange{1}{1000}{\milli\meter} wavelength range. Although irradiation of stored product proves to be an effective method for controlling insect infestations, lower energy microwave systems can be used to detect the movement of insects through a material without damaging the product \cite{shayestehMortalityBehaviourTwo1996}.
@@ -230,8 +203,6 @@ Microwaves operate within the \SIrange{1}{1000}{\milli\meter} wavelength range. 
 A \SI{24}{\giga\hertz} microwave Doppler radar, originally used for termite detection, can also find stored product pests. The insect movement is detected by radiating a microwave signal and observing the change in the frequency of the received reflection, which increases as the insects move slightly closer or decreases as they move further away from the sensor. The system was able to detect the cigarette beetle, \textit{Lasioderma serricorne}, the black carpet beetle, \textit{Attagenus unicolor}, \textit{Tribolium castaneum}, and \textit{Oryzaephilus surinamensis}, within a corn meal and flour mixture \cite{mankinMicrowaveRadarDetection2004}. Single adult \textit{T. castaneum} and \textit{C. ferrugineus} were also detected in wheat samples up to \SI{2.1}{\centi\meter} and \SI{1.2}{\centi\meter}, respectively, from an active microwave resonator operating in \SIrange{3}{4}{\giga\hertz} range with a quality factor of 21,600 \cite{reimerCompactMicrowaveDevice2018}.
 
 Microwave systems are potentially non-destructive but are in their infancy stage for applications towards stored product insect detection and are limited by the size of the insect, the distance between the insect and the sensor, and the material properties.
-
-% Acoustic sensors leverage traditional microphones, piezoelectric discs, and accelerometers to detect the sound waves and vibrations generated by the insects as they move, communicate, masticate, and procreate in the material \cite{mankinAcousticIndicatorsTargeted2010, mankinAutomatedApplicationsAcoustics2021,flynnAcousticMethodsInvasive2016,kadyrovVibroAcousticSignaturesVarious2024}. These systems are designed as standalone receptacles where product is placed momentarily during examination or as  probes and sensors that could be inserted into the product or mounted on the storage containers even for continuous monitoring. Microwave systems track the movement of insects through a material by detecting differences between emitted and reflected radar frequencies \cite{mankinMicrowaveRadarDetection2004}. Although both these methods are relatively low-cost and non-destructive, they are highly susceptible to external environmental noise and vibration.
 
 \newpage
 \section{Acoustic Methods for Detecting Insects in Stored Products}
@@ -250,19 +221,7 @@ Acoustic inspection systems have been developed for different applications, such
 
 Often the sensors, signal features, processing, and algorithms are common with the platforms, analysis, and detection methods for insect infestations in other materials such as plants, soil, and wood \cite{sutinAutomatedAcousticDetection2019}.
 
-
-
-
-
-
-
-% T
-
-
-
-
 \newpage
-% \newpage
 \subsection{Acoustic Signatures of Insects in Stored Products}
 
 \subsubsection{Spectral Features}
@@ -315,8 +274,6 @@ Thickness-Shear Mode (TSM) resonators consist of a piezoelectric disc positioned
 
 The piezoelectric sensors can be integrated into acoustic probes, such as the Early Warning Detector (EWD) \cite{fleurat-lessardAcousticDetectionAutomatic2006}, which can be inserted into the material \cite{eliopoulosDetectionAdultBeetles2015,changBioacousticDetectionFour2025}. Systems such as Acoustic Location Fingerprinting Insect Detector (ALFID) \cite{shumanQuantitativeAcousticalDetection1993} are designed as standalone receptacles with embedded piezoelectric sensors where the product is placed momentarily during examination. Polyvinylidene Fluoride (PVDF) use piezoelectric polymers which can be fabricated into thin films and are more flexible and adaptable for mounting \cite{mankinBugBytesSound2019}.
 
-% Early examples of acoustic sensing placed piezoelectric crystal pick-up heads from gramophones on top of individual wheat kernels to capture the vibrations of \textit{Sitophilus granarius} \cite{baileyDetectionImmatureStages1965}.
-
 \newpage
 \textit{Accelerometers}
 
@@ -353,9 +310,6 @@ The waveform envelope allows for threshold crossing algorithms to determine an i
 
 Advances in machine learning (ML) algorithms in recent years demonstrated new opportunities for insect detection, quantification, and classification. ML algorithms can analyze acoustic signals and identify patterns associated with insect activity as well as distinguish external noise, but they depend on large amounts of training data. The ML models can be trained on the raw audio signals or on extracted features, such as spectrograms, and the data can be provided in labeled or unlabeled forms \cite{faissAdaptiveRepresentationsSound2023, kohlbergBuzzesBytesSystematic2024}. These algorithms include various neural network classifiers such as convolution neural networks (CNN), probabilistic neural networks (PNN), perceptual learning prediction (PLP), decision trees and forests, hidden Markov models (HMM), support vector machines (SVM), and Bayesian classifiers \cite{mainettiAcousticIdentificationWoodBoring,potamitisAutomaticBioacousticDetection2009,mankinAutomatedApplicationsAcoustics2021, balingbingDeterminingSoundSignatures2024}. Deep learning combines multiple layers of neural networks to learn the features and patterns of the data. Since machine learning algorithms are data-driven, the performance of the model might not generalize to new species or materials, if the training data is not diverse enough.
 
-
-% The regularity and duration of the monitoring also has an effect on the performance of the sensor and its algorithm. The Angoumois grain moth, \textit{Sitotroga cerealella}, \textit{R. dominica}, and \textit{S. oryzae} produced sounds \SI{61}{\percent}, \SI{71}{\percent}, and \SI{90}{\percent} of the time in grain during sampling durations of \SI{180}{\second} \cite{vickSoundDetectionStoredProduct1988}. Short analysis durations can increase high rates of false negatives especially if the insects are not active during the sampling period. Longer sampling periods, such as \SIrange{10}{20}{\minute} allow for a more accurate detection as well as enable identification of background noise \cite{mankinPerspectivePromiseCentury2011}. 
-
 \subsubsection{Platform Design and Deployment}
 
 The platform of an acoustic system refers to the physical design and deployment of the sensor. There are a variety of platform styles for acoustic detection of stored product insects. Some systems are designed as probes that can be inserted into the material, which enables extended deployment in storage facilities for continuous monitoring and early detection of infestations \cite{hagstrumAcousticalMonitoringRhyzopertha1990, fleurat-lessardAcousticDetectionAutomatic2006,muller-blenkleMethodAcousticStorage2023}. A more common design features a standalone receptacle with embedded sensors where the product is placed momentarily during examination \cite{vickSoundDetectionStoredProduct1988,webbAcousticalSystemDetect1988, shumanQuantitativeAcousticalDetection1993, mankinAutomatedApplicationsAcoustics2021}. Sensors can also be mounted on the storage containers \cite{mankinPerspectivePromiseCentury2011}.
@@ -372,47 +326,12 @@ An initial step in limiting the effects of external noise is through the platfor
 Double chamber designs further isolate the sensor from external noise by enclosing the sensor in an inner chamber that is separated from an outer chamber by an air gap \cite{keerthanaAcousticDetectionCallosobruchus2025}. One such system described used a double wall chamber where a \SI{50}{\milli\meter} air gap separated an inner container lined with three different compressed density foams between two \SI{18}{\milli\meter} plywood walls vertically spring mounted from the outer container featuring a wall \SI{50}{\milli\meter} of acoustic foam and \SI{18}{\milli\meter} of plywood \cite{njorogeFrequencyTimePattern2016}. Another system design used a spring suspended double wall chamber to investigate low frequency band and external vibration isolation. It featured wood paneling and acoustic foam layers that weighed \SI{620}{\kilo\gram} and was capable of sound attenuation of \SI{50}{\deci\bel} above \SI{100}{\hertz}. The microphone array inside this chamber was utilized to develop the InsectSound 100 dataset \cite{brandingNoiseRobustAcoustic2023, brandingInsectSound1000InsectSound2024}.
 
 Additional microphones are also leveraged to capture ambient noise occurring outside the sensor. A Br\"{u}el \& Kj\ae r 4145 microphone was situated above the floor and outside the ALFID system during high noise levels from \SIrange{65}{85}{\deci\bel} to validate the sensor's noise masking triggers \cite{mankinShieldingNoiseInterfering1997}. In another study, a microphone was placed underneath a detection platform, but its usage in the algorithm was not published \cite{brandingNoiseRobustAcoustic2023}.
-% Alternatively, the authors utilized their internal sensor array in different areas of exposed greenhouses to capture ambient noise and combined the recordings acquired of insects in an anechoic environment to train their machine learning model \cite{brandingNoiseRobustAcoustic2023}.
-
-% The spectral and temporal differences between the insects and background noise can also be used to distinguish the two. A low-pass filter at \SI{200}{\hertz} was applied to reduce the ambient noise and accentuate the insect signals \cite{mankinAcousticCharacteristicsDynastid2009}. The bursts characteristic can also discern insect sounds from continuous or isolated impulses common in background noise \cite{mankinDetectionAnoplophoraGlabripennis2008}.
 
 \newpage
 \textit{Frequency and Duration of Monitoring}
 
 The regularity and duration of the monitoring also has an effect on the performance of the sensor and its algorithm. The \textit{R. dominica}, \textit{S. cerealella}, and \textit{S. oryzae} produced sounds \SI{61}{\percent}, \SI{71}{\percent}, and \SI{90}{\percent} of the time in grain during sampling durations of \SI{180}{\second} \cite{vickSoundDetectionStoredProduct1988}. Short analysis durations can increase rates of false negatives especially if the insects are not active during the sampling period. Longer sampling periods, such as \SIrange{10}{20}{\minute} allow for a more accurate detection as well as enable identification of background noise \cite{mankinPerspectivePromiseCentury2011}. Deployment of multiple sensors simultaneously could increase detection performance, determine locations of insects, level of infestation, and to offset the frequency and duration of monitoring \cite{mankinPerspectivePromiseCentury2011}. The ISO 6639 standard recommends monitoring for insect activity in five listening periods of \SI{1}{\minute} or one listening period of \SI{5}{\minute} \cite{ISO6639Cereals1986}.
 
-
-
-
-% Limiting the influence of external noise and vibration from the surrounding environment, such as factory machinery, vehicles, and other sources,  is critical to the success of these algorithms. External noise can mask the low-intensity sounds produced by insect feeding and movement, which typically range from \SIrange{20}{80}{\deci\bel} SPL (sound pressure level) at frequencies below \SI{10}{\kilo\hertz}. Often this background noise can be reduced physically through shielding, sound-proofing, and vibration isolation. \citeauthor{mankinNoiseShieldingAcoustic1996} was able to detect internally feeding larvae in grain samples at an inspection facility with high noise backgrounds by shielding the acoustic detectors using a \SI{81}{\kilo\gram}, \SI{26}{\centi\meter} thick, six layer muffle box that attenuated sound by \SIrange{70}{85}{\deci\bel} between \SIrange{1}{10}{\kilo\hertz} \cite{mankinNoiseShieldingAcoustic1996}. Other methods could be through box in a box design, anechoic chambers, employing Faraday cages, and shock mounts. Alternatively, reference sensors could be used to measure and identify peripheral noise and vibration \cite{mankinAcousticIndicatorsTargeted2010}.
-
-
-
-% Machine learning algorithms can analyze acoustic signals and identify patterns associated with insect activity as well as distinguish external noise however they depend on large amounts of training data. The ML models can be trained on the raw audio signals or on extracted features and the data can be provided labelled or unlabelled \cite{kohlbergBuzzesBytesSystematic2024}. These algorithms include various nueral network classifiers such as convolution neural networks (CNN), probabilistic neural networks (PNN), perceptual learning prediction (PLP), decision trees and forests, hidden Markov models (HMM), support vector machines (SVM), and bayesian classifiers \cite{mankinAutomatedApplicationsAcoustics2021}. Deep learning combines multiple layers of neural networks to learn the features and patterns of the data. Since machine learning algorithms are data-driven, the performance of the model might not generalize to new species or materials, if the training data is not diverse enough.
-
-% \citeauthor{phungAutomatedInsectDetection2017} used the BugBytes dataset to compare training a linear discriminant, fine kNN, linear SVN, and Bagged Tree model using low-level features such as the zero-crossing rate, short-time average energy, bandwidth, and cut-off frequency as well as the mel-frequency ceptstrum coefficients (MFCC). They concluded that the Bagged Tree model provided the best accuracy for species classification and insect classification with an accuracy of \SI{97.1}{\percent} and \SI{92.3}{\percent}, respectively while using both low-level and MFCC features. \citeauthor{montemayorDetectingRiceWeevils2024} used the mel-frequency cepstrum coefficients from the audio signals and their log-scaled representations as Time-Frequency Patches (TF-Patches) as inputs to a Convolutional Neural Network (CNN) \cite{montemayorDetectingRiceWeevils2024}. \citeauthor{faissAdaptiveRepresentationsSound2023} observed that training a LEAF model with raw waveform data from the diverse InsectSet32, InsectSet47, and InsectSet66 resulted in better performance than a CNN model with spectrograms, a graphical visualization of the frequency magnitude over time \cite{faissAdaptiveRepresentationsSound2023}.
-
-
-
-
-% \newpage
-% \subsection{Acoustic Signatures of Insects in Stored Products}
-
-% There is significant correlation between the number of insects present and the number of events detected by the acoustic sensors, which can be used to estimate the infestation level \cite{klaassenCharacterizationUltrasonicSignals1988}. 
-
-% Increase in lifespan, increase in number of events \cite{klaassenCharacterizationUltrasonicSignals1988}
-
-
-
-
-
-
-
-% The properties of the stored product material also affect the propogation of the sound waves generated by insects. 
-
-% Beans typically consists of two curved halves, mostly a homogeneous cotyledon in physical contact with an outer edge and a large air cavity in the center. Sound generated on one side of the bean must travel around the air cavity, resulting in a delay and attenuation of the signal between the opposite sides. The water content of the bean, influenced by the surrounding environment and weather, can also vary the material properties such as the density and modulus of elasticity, resulting in frequency and phase shifts \cite{klaassenCharacterizationUltrasonicSignals1988}.
-
-% \newpage
 \subsection{Automated Acoustic Systems for Insect Detection in Stored Products}
 
 The ISO 6639 standard describes the use of acoustic methods for detecting insects in stored products. The standard outlines using a box lined with high-performance sound insulated material, such as rock wool or high-density polyester foam with lead, that is placed on an elastic suspension system. The sample container is a thick plastic cylinder with a hermetic closure and a vibration sensor placed in the center. After applying an amplification of \SIrange{50}{100}{\deci\bel} and a band-pass filter from \SIrange{600}{4000}{\hertz}, the standard guides the operator to use headphones, loudspeaker, voltage or current threshold detections, or magnetic tape recordings to actively monitor for insect sounds. If the operator observes less than one insect sound per \SI{1}{\minute}, the sample is considered uninfested. If there is one noise per \SI{1}{\minute}, the sample is considered probably infested. Two noises determines that the sample is lightly infested and needs to be further examined. If there are more than five noises in the \SI{1}{\minute} interval, the sample is considered highly infested \cite{ISO6639Cereals1986}.
@@ -440,83 +359,6 @@ Another system used a piezoelectric sensor inserted through a \SI{5}{\centi\mete
 A \SI{100}{\percent} detection rate was achieved for \textit{Sitophilus oryzae} in rice using a system with a piezoelectric sensor described in \cite{potamitisAutomaticBioacousticDetection2009}. After applying a high-pass filter from \SI{2000}{\hertz}, the linear frequency cepstral coefficients (LFCC) and discrete wavelet packet features (DWPF) were extracted from the signals. A Gaussian Mixture Model (GMM) classifier was trained on the features to determine the presence of insects.
 
 Micro-electromechanical system (MEMS) microphones, the Adafruit I2S SPH0645, were used to measure the sounds of \textit{R. dominica}, \textit{S. oryzae}, and \textit{T. castaneum} in a \SI{16}{\centi\meter} by \SI{16}{\centi\meter} by \SI{8}{\centi\meter} container filled with \SI{500}{\gram} sample of rice. After applying a band-pass filter from \SIrange{93.75}{3000}{\hertz}, the authors found identifiable differences in peak frequencies between the species as well as in the root-mean-square (RMS) energy. A convolutional neural network (CNN) model was trained on generated spectrogram images of the signal and achieved an \SI{84.51}{\percent} classification accuracy  \cite{balingbingDeterminingSoundSignatures2024, balingbingApplicationMultilayerConvolutional2024}.
-
-% The regularity and duration of the monitoring also has an effect on the performance of the sensor and its algorithm. The \textit{R. dominica}, \textit{S. cerealella}, and \textit{S. oryzae} produced sounds \SI{61}{\percent}, \SI{71}{\percent}, and \SI{90}{\percent} of the time in grain during sampling durations of \SI{180}{\second} \cite{vickSoundDetectionStoredProduct1988}. Short analysis durations can increase rates of false negatives especially if the insects are not active during the sampling period. Longer sampling periods, such as \SIrange{10}{20}{\minute} allow for a more accurate detection as well as enable identification of background noise \cite{mankinPerspectivePromiseCentury2011}. Deployment of multiple sensors simultaneously could increase detection performance, determine locations of insects, level of infestation, and to offset the frequency and duration of monitoring \cite{mankinPerspectivePromiseCentury2011}.
-
-% \subsection{Acoustic Detection Systems}
-
-% The Acoustic Location Fixing Insect Detector (ALFID) system was designed to be vertically mounted with grains gravity loaded and unloaded. The system utilizes an array of sixteen linearly oriented piezoelectric sensors ranged to identify the number of feeding larvae and their location within the sample. After amplifying the signals from the sensors by \SI{80}{\deci\bel}, a bandpass filter from \SIrange{1000}{10,000}{\hertz} is applied. The arrival time of the signal is identified using amplitude threshold detection and the location is determined by a detection order algorithm.The system was able to detect the presence of up to three rice weevil, \textit{S. oryzae}, larvae in \SI{1}{\kilo\gram} of wheat with a detection probability of \SI{64}{\percent} and a false positive rate of \SI{8}{\percent} \cite{shumanQuantitativeAcousticalDetection1993,vickAcousticLocationFixing1996}.
-
-% The Beetle Sound Tube was developed to support semi-permanent monitoring of silos and flat stores of grain to detect low levels of infestation early and provide remote reports. The system comprises of perforated metal tubes that are installed into the grain mass. Each tube features an insect trap that can be inspected for species classification, an acoustic sensor, and a climate sensor to measure changes in temperature and humidity. The signal processing on the acoustic signals utilize $\frac{1}{3}$-octave analysis, calculating the energy level for 16 $\frac{1}{3}$-octave bands from \SIrange{250}{8000}{\hertz}. The algorithm determined an insect was present if the energy level exceeded a threshold of \SI{25}{\deci\bel} within \SIrange{250}{800}{\hertz}, \SI{20}{\deci\bel} within \SIrange{800}{2500}{\hertz}, or \SI{15}{\deci\bel} within \SIrange{2500}{8000}{\hertz}, above the background noise. The sensor and algorithm was able to detect the sawtoothed grain beetle, \textit{O. surinamensis}, within barley and was able to determine the level of infestation using cross-correlation \cite{muller-blenkleMethodAcousticStorage2023}.
-
-% The Acoustic Emission Consulting AED 2010L was able to detect one to two insects per \si{\kilo\gram} of wheat grain with \SIrange{72}{100}{\percent} accuracy. The portable, battery-operated system uses a piezoelectric sensor mounted on a metal probe that is inserted into a grain sample. The system was able to predict the population densities of the tested live specimen including the rice weevil, \textit{S. oryzae}, the lesser grain borer, \textit{R. dominica}, the confused flour beetle \textit{T. confusum}, the sawtoothed grain beetle, \textit{O. surinamensis}, the rusty grain beetle, \textit{C. ferrugineus}, the khapra beetle, \textit{T. granarium}, and the cigarette beetle, \textit{L. serricorne}, through chi-squared tests and machine learning classifiers \cite{eliopoulosDetectionAdultBeetles2015,eliopoulosEstimationPopulationDensity2016}.
-
-% The Postharvest Insect Detection System (PDS) uses electret microphones centered on a plexiglass base onto which grain sample is placed. The system was tested with the rice weevil, \textit{S. oryzae}, and the red flour beetle, \textit{T. castaneum} \cite{mankinPerformanceLowCostAcoustic2020}. The Computerized Acoustical Larval Detection system was patented in 1988 and consists of a bowl capable of holding \SI{1}{\liter} of grain sample with a diaphram at the bottom that is coupled with a microphone through a conduit \cite{j.c.webb.c.a.litzkowComputerizedAcousticalLarval1988}. The Ultrasonic Insect Detector, also known as the Purdue INsect Feeding monitor, was patented in 1990 \cite{shadeDetectionHiddenInsect1990}. The active sensor was able to detect the cowpea beetle, \textit{Callosobruchus maculatus}, larva inside the cowpea seeds at the \SI{40}{\kilo\hertz} range \cite{shadeUltrasonicInsectDetector1989} and monitor the development of the rice weevil, \textit{Sitophilus o.} in maize kernels \cite{pittendrighMonitoringRiceWeevil1997}. The sensor is only effective at distances less than a few millimeters because of the attenuation of the sound waves at high frequencies when traveling through grain \cite{shadeUltrasonicInsectDetector1989}.
-
-% The Sensor Technology and Applied Research (STAR) Center at Stevens Institute of Technology developed and refined acoustic sensors and detection algorithms for identifying insects in stored products during transportation and import inspection. These systems were tested on live specimens, including the larger cabinet beetle, \textit{T. inclusum}, mealworm and darkling beetle, \textit{T. molitor}, corn earworm, \textit{H. zea}, \textit{Copitarsia} larvae, and khapra beetle, \textit{T. granarium}, across various substrates.
-
-% The initial platform featured a test container with ceramic piezoelectric sensors, delivering four audio channels to an external preamplifier and ADC. Housed within a sound-attenuated enclosure, the system achieved up to \SIrange{50}{80}{\deci\bel} attenuation above \SI{500}{\hertz}. Analysis showed insect signals were concentrated between \SIrange{400}{1000}{\hertz}. A processing chain separated recordings into noise and insect bands, extracted Hilbert envelopes, and used their difference as a detection metric, achieving up to 100\% accuracy for larvae and 70\% for adults, with no false positives in clean rice samples \cite{flynnAcousticMethodsInvasive2016}.
-
-% Later versions integrated electronics for portability and used a Pelican case lined with acoustic dampening material, providing \SI{60}{\deci\bel} attenuation above \SI{500}{\hertz}. The updated enclosure featured three channels with piezoelectric modules and a revised algorithm: bandpass filtering from \SIrange{500}{5000}{\hertz}, moving average smoothing, and normalization. Detection was indicated when the signal exceeded background noise by at least \SI{5}{\deci\bel} \cite{sutinVibroacousticMethodsInsect2017}.
-
-% \subsubsection{Automated Acoustic Systems}
-
-% \newpage
-% \begin{landscape}
-% \begin{table}[!htbp]
-% 	\caption{Summary of Automated Acoustic Detection Systems.\label{tab:acoustic_performance}}
-%     \centering
-%     \small
-%         \begin{tabular}{@{}p{4.5cm}p{2.5cm}p{5cm}p{3.5cm}p{2cm}@{}}
-% 			\toprule
-% 			\textbf{Tested Subject-Material}                                                                                                                               & \textbf{Sensor Type}     & \textbf{Volume of Tested Material and Noise Suppression}                                                                  & \textbf{Insect Detection Algorithm}                        & \textbf{Reference}                                                                               \\
-% 			\midrule
-
-% 			\textit{S. oryzae}, \textit{R. dominica}, and \textit{S. cerealella} - wheat                                                                                   & Acoustic microphone      & 1-20 kernels per \SI{100}{\milli\liter} placed in grain holder separated from sensor by diaphragm and sealed air column   & Amplitude thresholding                                     & \cite{vickSoundDetectionStoredProduct1988, webbAcousticalSystemDetect1988}                       \\
-
-% 			\midrule
-
-% 			\textit{R. dominica} - wheat                                                                                                         & Piezoelectric probe      & 2, 5, 10, 20 adults in \SI{1.5}{\kilo\gram}                                                                               & Listening to amplified sound and pulse counting                                        & \cite{hagstrumAcousticalMonitoringRhyzopertha1990}                                               \\
-
-% 			\midrule
-
-% 			\textit{S. oryzae} - wheat                                                                                                                                     & Piezoelectric disc array & 1-3 larvae in \SI{1}{\kilo\gram} in a receptacle                                                                           & Amplitude thresholding        & \cite{shumanQuantitativeAcousticalDetection1993,mankinAcousticCountingAdult1997}                 \\
-
-% 			\midrule
-
-% 			\textit{S. oryzae}, \textit{R. dominica} - wheat                                                                                                               & Piezoelectric probe      & 1-10 larva and adults in \SI{1}{\kilo\gram} in sound insulated chamber                                                    & SNR and frequency peak position matching                   & \cite{fleurat-lessardAcousticDetectionAutomatic2006}                                             \\
-
-% 			\midrule
-
-% 			\textit{S. oryzae} - rice                                                                                                                                      & Piezoelectric probe      & Not disclosed                                                                                                             & GMM classifier on FCC and DWPF features                    & \cite{potamitisAutomaticBioacousticDetection2009}                                                \\
-
-% 			\midrule
-
-% 			\textit{S. oryzae}, \textit{R. dominica}, \textit{T. confusum}, \textit{O. surinamensis}, \textit{C. ferrugineus}, and \textit{L. serricorne} - wheat and corn & Piezoelectric probe      & 1-2 adults per 1, 2, \SI{10}{\kilo\gram}                                                                                  & Hilbert transform, envelope thresholding, machine learning & \cite{eliopoulosDetectionAdultBeetles2015, eliopoulosEstimationPopulationDensity2016}            \\
-
-% 			\midrule
-
-% 			\textit{T. inclusum} - rice                                                                                                                                    & Piezoelectric array      & 1 adult in \SI{1}{\kilo\gram} within a box-in-box design with acoustic foam insulation                                    & Bandpass filtering and envelope thresholding               & \cite{flynnAcousticMethodsInvasive2016}                                                          \\
-
-% 			\midrule
-
-% 			\textit{S. oryzae} and \textit{T. castaneum} in wheat and flour                                                                                                & Electret microphone      & 1-50 adults in \SI{2.6}{\kilo\gram}                                                                                       & Spectral matching                                          & \cite{mankinPerformanceLowCostAcoustic2020}                                                      \\
-
-% 			\midrule
-
-% 			\textit{O. surinamensis} - barley                                                                                                                              & Piezoelectric probe      & \SI{70}{\tonne}, \SI{300}{\tonne}, and \SI{1}{\meter\cubed} containers, stored product material provides sound insulation & Energy thresholding in $\frac{1}{3}$-octave frequency bands                                       & \cite{muller-blenkleMethodAcousticStorage2023}                                                   \\
-
-% 			\midrule
-
-% 			\textit{R. dominica}, \textit{S. oryzae}, and \textit{T. castaneum} - rice                                                                                     & MEMS microphone          & 20 adults in \SI{500}{\gram} placed in a double chamber with foam insulation and spring suspension                        & CNN on spectrogram images                                  & \cite{balingbingDeterminingSoundSignatures2024,balingbingApplicationMultilayerConvolutional2024} \\
-
-% 			\midrule
-
-% 			\textit{C. chinesis}, \textit{Z. subfasiatus}, \textit{C. maculatus}, and \textit{C. analis} - red and green beans                                             & Piezoelectric probe      & 10 adults in \SI{10}{\kilo\gram} placed in a bin insulated with aluminum and polyurethane foam                            & FIR high-pass filter and amplitude threshold                   & \cite{changBioacousticDetectionFour2025}                                                         \\
-% 			\bottomrule
-%         \end{tabular}
-% \end{table}
-% \end{landscape}
 
 \newpage
 \subsection{Acoustic Insect Datasets}
